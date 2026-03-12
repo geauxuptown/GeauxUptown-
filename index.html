@@ -1,7 +1,659 @@
 <!DOCTYPE html>
-<html>
-<head><title>Geaux Uptown Solutions</title></head>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Geaux Uptown Solutions — Fractional COO for Health-Tech Startups</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --navy:#0D1B2A;--navy-mid:#122333;--navy-light:#1a2f42;
+  --gold:#C9A84C;--gold-soft:#e8d08a;--gold-pale:#f7f0df;
+  --cream:#FAF7F2;--white:#fff;--text:#1a1a1a;--muted:#888;
+  --border:rgba(201,168,76,0.18);--border-light:rgba(201,168,76,0.1);
+}
+html{scroll-behavior:smooth}
+body{font-family:'Montserrat',sans-serif;background:var(--cream);color:var(--text);overflow-x:hidden}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(13,27,42,0.97);backdrop-filter:blur(16px);border-bottom:1px solid var(–border);padding:0 48px;display:flex;align-items:center;justify-content:space-between;height:64px}
+.nav-brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+.nav-fleur{font-size:16px;color:var(–gold)}
+.nav-name{font-family:‘Cormorant Garamond’,serif;font-size:17px;color:var(–gold);letter-spacing:2px;font-weight:600}
+.nav-links{display:flex;align-items:center;gap:32px}
+.nav-links a{font-size:9px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.45);text-decoration:none;transition:color 0.2s}
+.nav-links a:hover{color:var(–gold)}
+.nav-cta{background:var(–gold);color:var(–navy);font-size:8.5px;font-weight:800;letter-spacing:2px;text-transform:uppercase;padding:10px 22px;text-decoration:none;transition:all 0.2s;border:none;cursor:pointer}
+.nav-cta:hover{background:var(–gold-soft)}
+.nav-menu{display:none;flex-direction:column;gap:4px;cursor:pointer;padding:8px}
+.nav-menu span{width:22px;height:2px;background:var(–gold);display:block}
+
+/* ── HERO ── */
+.hero{min-height:100vh;background:var(–navy);display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden;padding:100px 48px 80px}
+.hero-bg{position:absolute;inset:0;overflow:hidden;pointer-events:none}
+.hero-circle{position:absolute;border-radius:50%;border:1px solid rgba(201,168,76,0.08)}
+.hero-circle:nth-child(1){width:600px;height:600px;top:-200px;right:-200px}
+.hero-circle:nth-child(2){width:400px;height:400px;top:-100px;right:-100px}
+.hero-circle:nth-child(3){width:800px;height:800px;bottom:-400px;left:-300px;border-color:rgba(201,168,76,0.04)}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(201,168,76,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.03) 1px,transparent 1px);background-size:60px 60px}
+
+.hero-content{position:relative;z-index:1;max-width:760px}
+.hero-eyebrow{display:flex;align-items:center;gap:12px;margin-bottom:20px}
+.hero-eyebrow-line{width:40px;height:1px;background:var(–gold)}
+.hero-eyebrow-text{font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(–gold);font-weight:600}
+.hero-title{font-family:‘Cormorant Garamond’,serif;font-size:clamp(42px,6vw,78px);color:#fff;line-height:1.05;margin-bottom:20px;font-weight:300}
+.hero-title em{color:var(–gold);font-style:italic}
+.hero-title strong{font-weight:600}
+.hero-sub{font-size:13px;color:rgba(255,255,255,0.45);line-height:1.8;max-width:540px;margin-bottom:36px;font-weight:300}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap}
+.btn-primary{background:var(–gold);color:var(–navy);font-size:9px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;padding:16px 32px;text-decoration:none;transition:all 0.2s;display:inline-block}
+.btn-primary:hover{background:var(–gold-soft);transform:translateY(-1px)}
+.btn-outline{border:1px solid rgba(201,168,76,0.4);color:var(–gold);font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:15px 28px;text-decoration:none;transition:all 0.2s;display:inline-block}
+.btn-outline:hover{border-color:var(–gold);background:rgba(201,168,76,0.06)}
+
+.hero-stats{position:absolute;bottom:0;left:0;right:0;border-top:1px solid var(–border);display:grid;grid-template-columns:repeat(4,1fr);z-index:1}
+.hero-stat{padding:22px 24px;border-right:1px solid var(–border);text-align:center}
+.hero-stat:last-child{border-right:none}
+.hs-num{font-family:‘Cormorant Garamond’,serif;font-size:32px;color:var(–gold);line-height:1}
+.hs-label{font-size:7.5px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-top:5px}
+
+/* ── SECTION BASE ── */
+section{padding:80px 48px}
+.section-label{font-size:8px;letter-spacing:4px;text-transform:uppercase;color:var(–gold);font-weight:700;margin-bottom:12px;display:flex;align-items:center;gap:12px}
+.section-label::after{content:’’;flex:1;height:1px;background:linear-gradient(90deg,var(–border),transparent)}
+.section-title{font-family:‘Cormorant Garamond’,serif;font-size:clamp(32px,4vw,48px);color:var(–navy);line-height:1.1;margin-bottom:10px;font-weight:400}
+.section-title em{color:var(–gold);font-style:italic}
+.section-sub{font-size:11px;color:var(–muted);line-height:1.8;max-width:560px;margin-bottom:48px;font-weight:300}
+
+/* ── MARQUEE ── */
+.marquee-wrap{background:var(–gold);padding:13px 0;overflow:hidden;white-space:nowrap}
+.marquee-track{display:inline-flex;animation:marquee 25s linear infinite}
+.marquee-item{font-size:9px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:var(–navy);padding:0 32px}
+.marquee-dot{color:rgba(13,27,42,0.35)}
+@keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+/* ── SERVICES ── */
+.services-section{background:var(–navy)}
+.services-section .section-title{color:#fff}
+.services-section .section-sub{color:rgba(255,255,255,0.35)}
+.services-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(–border-light);border:1px solid var(–border)}
+.svc-card{background:var(–navy-mid);padding:40px 36px;position:relative;overflow:hidden;transition:background 0.3s;cursor:default}
+.svc-card::before{content:’’;position:absolute;top:0;left:0;right:0;height:2px;background:var(–gold);transform:scaleX(0);transform-origin:left;transition:transform 0.4s}
+.svc-card:hover{background:var(–navy-light)}
+.svc-card:hover::before{transform:scaleX(1)}
+.svc-number{font-family:‘Cormorant Garamond’,serif;font-size:48px;color:rgba(201,168,76,0.12);font-weight:700;line-height:1;margin-bottom:16px;transition:color 0.3s}
+.svc-card:hover .svc-number{color:rgba(201,168,76,0.25)}
+.svc-icon{font-size:24px;margin-bottom:12px}
+.svc-title{font-family:‘Cormorant Garamond’,serif;font-size:22px;color:#fff;margin-bottom:8px;font-weight:500}
+.svc-desc{font-size:10px;color:rgba(255,255,255,0.4);line-height:1.8;margin-bottom:18px}
+.svc-deliverables{display:flex;flex-direction:column;gap:5px;margin-bottom:20px}
+.svc-del{font-size:9.5px;color:rgba(255,255,255,0.55);padding-left:14px;position:relative;line-height:1.5}
+.svc-del::before{content:“→”;position:absolute;left:0;color:var(–gold);font-size:9px}
+.svc-price{font-family:‘Cormorant Garamond’,serif;font-size:20px;color:var(–gold)}
+.svc-price-note{font-size:8.5px;color:rgba(255,255,255,0.25);margin-left:6px}
+
+/* ── PROCESS ── */
+.process-section{background:var(–cream)}
+.process-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative;margin-top:0}
+.process-steps::before{content:’’;position:absolute;top:28px;left:12.5%;right:12.5%;height:1px;background:linear-gradient(90deg,transparent,var(–gold),transparent)}
+.proc-step{text-align:center;padding:0 16px}
+.proc-num{width:56px;height:56px;border:2px solid var(–gold);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-family:‘Cormorant Garamond’,serif;font-size:22px;color:var(–gold);background:var(–cream);position:relative;z-index:1}
+.proc-title{font-size:11px;font-weight:700;color:var(–navy);margin-bottom:8px;text-transform:uppercase;letter-spacing:0.5px}
+.proc-desc{font-size:9.5px;color:var(–muted);line-height:1.7}
+
+/* ── WHO WE SERVE ── */
+.serve-section{background:var(–white)}
+.serve-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.serve-card{border:1px solid var(–border);padding:28px 24px;position:relative;overflow:hidden;transition:all 0.3s}
+.serve-card::after{content:’’;position:absolute;bottom:0;left:0;right:0;height:2px;background:var(–gold);transform:scaleX(0);transform-origin:left;transition:transform 0.4s}
+.serve-card:hover{border-color:rgba(201,168,76,0.4);transform:translateY(-2px);box-shadow:0 8px 32px rgba(201,168,76,0.08)}
+.serve-card:hover::after{transform:scaleX(1)}
+.serve-icon{font-size:28px;margin-bottom:14px}
+.serve-title{font-size:13px;font-weight:700;color:var(–navy);margin-bottom:6px}
+.serve-pain{font-size:9.5px;color:var(–muted);line-height:1.7;margin-bottom:12px}
+.serve-tag{font-size:7.5px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(–gold);border:1px solid rgba(201,168,76,0.3);padding:3px 10px;display:inline-block}
+
+/* ── CREDENTIALS ── */
+.creds-section{background:var(–navy);padding:60px 48px}
+.creds-inner{max-width:900px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.creds-left{}
+.creds-right{}
+.cred-title{font-family:‘Cormorant Garamond’,serif;font-size:36px;color:#fff;margin-bottom:6px;font-weight:300;line-height:1.2}
+.cred-title em{color:var(–gold);font-style:italic}
+.cred-sub{font-size:10px;color:rgba(255,255,255,0.35);line-height:1.8;margin-bottom:28px}
+.cred-employers{display:flex;flex-direction:column;gap:10px}
+.employer{display:flex;gap:14px;align-items:center;padding:12px 16px;border:1px solid rgba(201,168,76,0.1);background:rgba(255,255,255,0.02)}
+.emp-dot{width:8px;height:8px;background:var(–gold);flex-shrink:0}
+.emp-name{font-size:11px;font-weight:600;color:#fff}
+.emp-role{font-size:9px;color:rgba(255,255,255,0.3);margin-top:1px}
+.cert-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.cert{background:rgba(201,168,76,0.06);border:1px solid rgba(201,168,76,0.15);padding:14px 16px;text-align:center}
+.cert-icon{font-size:20px;margin-bottom:6px}
+.cert-name{font-size:9.5px;font-weight:700;color:var(–gold-soft);margin-bottom:2px}
+.cert-detail{font-size:8px;color:rgba(255,255,255,0.3)}
+
+/* ── PRICING PREVIEW ── */
+.pricing-section{background:var(–cream)}
+.pricing-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.price-card{background:var(–white);border:1px solid var(–border);overflow:hidden;transition:all 0.3s}
+.price-card:hover{border-color:rgba(201,168,76,0.5);box-shadow:0 8px 40px rgba(0,0,0,0.08);transform:translateY(-3px)}
+.price-card.featured{border-color:var(–gold);border-width:2px}
+.pc-head{background:var(–navy);padding:20px;text-align:center}
+.price-card.featured .pc-head{background:var(–gold)}
+.pc-service{font-size:7.5px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:6px}
+.price-card.featured .pc-service{color:rgba(13,27,42,0.55)}
+.pc-price{font-family:‘Cormorant Garamond’,serif;font-size:30px;color:#fff;line-height:1}
+.price-card.featured .pc-price{color:var(–navy)}
+.pc-period{font-size:8.5px;color:rgba(255,255,255,0.3);margin-top:3px}
+.price-card.featured .pc-period{color:rgba(13,27,42,0.45)}
+.pc-body{padding:18px}
+.pc-feat{font-size:9.5px;color:#555;line-height:2;padding-left:12px;position:relative}
+.pc-feat::before{content:“→”;position:absolute;left:0;color:var(–gold);font-size:9px}
+.pc-cta{display:block;text-align:center;font-size:8.5px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:11px;margin-top:14px;background:var(–gold-pale);color:#8a6a1a;text-decoration:none;transition:all 0.2s}
+.pc-cta:hover{background:var(–gold);color:var(–navy)}
+.price-card.featured .pc-cta{background:var(–gold);color:var(–navy)}
+.price-card.featured .pc-cta:hover{background:var(–gold-soft)}
+
+/* ── CTA SECTION ── */
+.cta-section{background:var(–navy);padding:80px 48px;text-align:center;position:relative;overflow:hidden}
+.cta-section::before{content:‘⚜’;position:absolute;font-size:300px;color:rgba(201,168,76,0.03);top:50%;left:50%;transform:translate(-50%,-50%);line-height:1}
+.cta-eyebrow{font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(–gold);font-weight:700;margin-bottom:16px}
+.cta-title{font-family:‘Cormorant Garamond’,serif;font-size:clamp(32px,5vw,58px);color:#fff;margin-bottom:12px;font-weight:300;line-height:1.1}
+.cta-title em{color:var(–gold);font-style:italic}
+.cta-sub{font-size:11px;color:rgba(255,255,255,0.35);margin-bottom:36px;line-height:1.7}
+.cta-contact{display:flex;align-items:center;justify-content:center;gap:40px;flex-wrap:wrap;margin-top:40px;padding-top:40px;border-top:1px solid var(–border)}
+.cta-info{text-align:center}
+.cta-info-label{font-size:8px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.25);margin-bottom:4px}
+.cta-info-value{font-family:‘Cormorant Garamond’,serif;font-size:18px;color:var(–gold)}
+
+/* ── FOOTER ── */
+footer{background:#080f18;padding:28px 48px;display:flex;align-items:center;justify-content:space-between;border-top:1px solid rgba(201,168,76,0.1)}
+.footer-brand{font-family:‘Cormorant Garamond’,serif;font-size:15px;color:var(–gold);letter-spacing:1px}
+.footer-links{display:flex;gap:24px}
+.footer-links a{font-size:8.5px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.2);text-decoration:none;transition:color 0.2s}
+.footer-links a:hover{color:var(–gold)}
+.footer-copy{font-size:8.5px;color:rgba(255,255,255,0.15);letter-spacing:0.5px}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+.hero-content>*{animation:fadeUp 0.7s ease both}
+.hero-eyebrow{animation-delay:0.1s}
+.hero-title{animation-delay:0.2s}
+.hero-sub{animation-delay:0.3s}
+.hero-actions{animation-delay:0.4s}
+
+/* ── RESPONSIVE ── */
+@media(max-width:768px){
+nav{padding:0 20px}
+.nav-links{display:none}
+.nav-menu{display:flex}
+section{padding:60px 20px}
+.hero{padding:100px 20px 80px}
+.hero-stats{grid-template-columns:repeat(2,1fr)}
+.services-grid{grid-template-columns:1fr}
+.process-steps{grid-template-columns:repeat(2,1fr)}
+.process-steps::before{display:none}
+.serve-grid{grid-template-columns:1fr}
+.creds-inner{grid-template-columns:1fr;gap:32px}
+.pricing-grid{grid-template-columns:1fr 1fr}
+.cta-section{padding:60px 20px}
+footer{flex-direction:column;gap:16px;text-align:center;padding:24px 20px}
+.footer-links{flex-wrap:wrap;justify-content:center}
+}
+@media(max-width:480px){
+.pricing-grid{grid-template-columns:1fr}
+.cert-grid{grid-template-columns:1fr}
+}
+</style>
+
+</head>
 <body>
-<h1>Coming Soon</h1>
-</body>
+
+<!-- NAV -->
+
+<nav>
+  <a class="nav-brand" href="#">
+    <span class="nav-fleur">⚜</span>
+    <div>
+      <div class="nav-name">Geaux Uptown Solutions</div>
+    </div>
+  </a>
+  <div class="nav-links">
+    <a href="#services">Services</a>
+    <a href="#who-we-serve">Who We Serve</a>
+    <a href="#about">About</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <a href="#contact" class="nav-cta">Start a Conversation</a>
+  <div class="nav-menu" onclick="toggleMobileMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- HERO -->
+
+<section class="hero">
+  <div class="hero-bg">
+    <div class="hero-circle"></div>
+    <div class="hero-circle"></div>
+    <div class="hero-circle"></div>
+    <div class="hero-grid"></div>
+  </div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">
+      <div class="hero-eyebrow-line"></div>
+      <div class="hero-eyebrow-text">Fractional COO · AI Automation · Health-Tech Operations</div>
+    </div>
+    <h1 class="hero-title">
+      Your funding round<br>
+      needs <em>operational</em><br>
+      <strong>infrastructure.</strong>
+    </h1>
+    <p class="hero-sub">Geaux Uptown Solutions provides fractional COO leadership and AI automation for health-tech startups post-funding. Fortune 4 healthcare operations expertise — without the $300K full-time overhead.</p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-primary">Let's Talk About Your Business</a>
+      <a href="#services" class="btn-outline">See What We Do</a>
+    </div>
+  </div>
+  <div class="hero-stats">
+    <div class="hero-stat">
+      <div class="hs-num">12+</div>
+      <div class="hs-label">Years Healthcare Ops</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hs-num">Fortune 4</div>
+      <div class="hs-label">Enterprise Background</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hs-num">Seed–B</div>
+      <div class="hs-label">Stage We Specialize In</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hs-num">10–20hrs</div>
+      <div class="hs-label">Per Month · No Full-Time Cost</div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <span class="marquee-item">AI Automation <span class="marquee-dot">✦</span></span>
+    <span class="marquee-item">Operations Consulting <span class="marquee-dot">✦</span></span>
+    <span class="marquee-item">Review Management <span class="marquee-dot">✦</span></span>
+    <span class="marquee-item">Fractional COO <span class="marquee-dot">✦</span></span>
+    <span class="marquee-item">SOP Development <span class="marquee-dot">✦</span></span>
+    <span class="marquee-item">Business Process Design <span class="marquee-dot">✦</span></span>
+    <span class="marquee-item">Compliance Frameworks <span class="marquee-dot">✦</span></span>
+    <span class="marquee-item">Lead Automation <span class="marquee-dot">✦</span></span>
+    <span class="marquee-item">AI Automation <span class="marquee-dot">✦</span></span>
+    <span class="marquee-item">Operations Consulting <span class="marquee-dot">✦</span></span>
+    <span class="marquee-item">Review Management <span class="marquee-dot">✦</span></span>
+    <span class="marquee-item">Fractional COO <span class="marquee-dot">✦</span></span>
+    <span class="marquee-item">SOP Development <span class="marquee-dot">✦</span></span>
+    <span class="marquee-item">Business Process Design <span class="marquee-dot">✦</span></span>
+    <span class="marquee-item">Compliance Frameworks <span class="marquee-dot">✦</span></span>
+    <span class="marquee-item">Lead Automation <span class="marquee-dot">✦</span></span>
+  </div>
+</div>
+
+<!-- SERVICES -->
+
+<section class="services-section" id="services">
+  <div style="max-width:900px;margin:0 auto">
+    <div class="section-label">What We Do</div>
+    <h2 class="section-title">Four Ways We <em>Build Your Infrastructure</em></h2>
+    <p class="section-sub">From fractional COO leadership to AI automation — we bring Fortune 4 healthcare operations expertise to health-tech companies that just raised and need to scale without the chaos.</p>
+    <div class="services-grid">
+
+```
+  <div class="svc-card">
+    <div class="svc-number">01</div>
+    <div class="svc-icon">🤖</div>
+    <div class="svc-title">AI Automation & Concierge</div>
+    <p class="svc-desc">Custom AI systems that handle your leads, qualify clients, and book appointments 24/7 — even when your team is off the clock. Built specifically for your business, not a generic template.</p>
+    <div class="svc-deliverables">
+      <div class="svc-del">AI concierge for lead capture & qualification</div>
+      <div class="svc-del">Automated client intake & booking</div>
+      <div class="svc-del">Contraindication flagging for medical businesses</div>
+      <div class="svc-del">Provider dashboard with AI consultation notes</div>
+      <div class="svc-del">After-hours response automation</div>
+    </div>
+    <div class="svc-price">From $497 <span class="svc-price-note">one-time setup</span></div>
+  </div>
+
+  <div class="svc-card">
+    <div class="svc-number">02</div>
+    <div class="svc-icon">👑</div>
+    <div class="svc-title">Fractional COO & Operations Leadership</div>
+    <p class="svc-desc">Senior operations leadership for health-tech startups post-funding. We step in during critical growth phases — audit your current state, build your infrastructure, and give you the systems to scale without everything running through the founder.</p>
+    <div class="svc-deliverables">
+      <div class="svc-del">Operational diagnostic & gap analysis</div>
+      <div class="svc-del">Team structure & cross-training design</div>
+      <div class="svc-del">SOP library development & management</div>
+      <div class="svc-del">Go-live planning & change management</div>
+      <div class="svc-del">Weekly ops leadership (10–20 hrs/week)</div>
+    </div>
+    <div class="svc-price">From $7,500 <span class="svc-price-note">per month</span></div>
+  </div>
+
+  <div class="svc-card">
+    <div class="svc-number">03</div>
+    <div class="svc-icon">⭐</div>
+    <div class="svc-title">Reputation & Review Management</div>
+    <p class="svc-desc">93% of clients read reviews before booking. We automate the process of getting more 5-star reviews, monitor every platform daily, and respond to negative reviews before they cost you clients.</p>
+    <div class="svc-deliverables">
+      <div class="svc-del">Automated review request campaigns (SMS/email)</div>
+      <div class="svc-del">Google, Yelp, Facebook, Healthgrades monitoring</div>
+      <div class="svc-del">Negative review response drafting (24hrs)</div>
+      <div class="svc-del">Monthly reputation report & trend analysis</div>
+      <div class="svc-del">Competitor benchmarking (Premium)</div>
+    </div>
+    <div class="svc-price">From $499 <span class="svc-price-note">per month</span></div>
+  </div>
+
+  <div class="svc-card">
+    <div class="svc-number">04</div>
+    <div class="svc-icon">📋</div>
+    <div class="svc-title">SOP & Compliance Infrastructure</div>
+    <p class="svc-desc">The documentation that keeps your business audit-ready, scalable, and protected. We build SOPs, BRDs, and compliance frameworks that close enterprise contracts and survive regulatory scrutiny.</p>
+    <div class="svc-deliverables">
+      <div class="svc-del">SOP development & library management</div>
+      <div class="svc-del">Business Requirements Documents (BRD)</div>
+      <div class="svc-del">HIPAA, FDA, DEA compliance frameworks</div>
+      <div class="svc-del">Audit preparation & documentation review</div>
+      <div class="svc-del">Training materials & onboarding systems</div>
+    </div>
+    <div class="svc-price">From $750 <span class="svc-price-note">per project</span></div>
+  </div>
+
+</div>
+```
+
+  </div>
+</section>
+
+<!-- PROCESS -->
+
+<section class="process-section" id="process">
+  <div style="max-width:900px;margin:0 auto">
+    <div class="section-label">How It Works</div>
+    <h2 class="section-title">Simple Process. <em>Real Results.</em></h2>
+    <p class="section-sub">No lengthy onboarding. No intake forms. We move fast because your business can't afford to wait.</p>
+    <div class="process-steps">
+      <div class="proc-step">
+        <div class="proc-num">1</div>
+        <div class="proc-title">Discovery Call</div>
+        <p class="proc-desc">A 30-minute conversation about your business, your biggest bottlenecks, and what you need to grow. No pitch. Just a real conversation.</p>
+      </div>
+      <div class="proc-step">
+        <div class="proc-num">2</div>
+        <div class="proc-title">Tailored Proposal</div>
+        <p class="proc-desc">We send you a clear scope of work, timeline, and fixed price within 48 hours. No surprises, no scope creep.</p>
+      </div>
+      <div class="proc-step">
+        <div class="proc-num">3</div>
+        <div class="proc-title">We Build</div>
+        <p class="proc-desc">Work begins within one week of agreement. First deliverable in two weeks. You see progress immediately.</p>
+      </div>
+      <div class="proc-step">
+        <div class="proc-num">4</div>
+        <div class="proc-title">You Scale</div>
+        <p class="proc-desc">Systems are live, team is trained, and your business runs better. We stay on for ongoing support or hand off cleanly — your call.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHO WE SERVE -->
+
+<section class="serve-section" id="who-we-serve">
+  <div style="max-width:900px;margin:0 auto">
+    <div class="section-label">Who We Serve</div>
+    <h2 class="section-title">Built for <em>Health-Tech</em> — and the Businesses That Support It</h2>
+    <p class="section-sub">Our primary focus is health-tech startups post-funding. We also serve the broader healthcare ecosystem — medspas, practices, and growing businesses that need Fortune 4-level operations without the Fortune 4 overhead.</p>
+    <div class="serve-grid">
+      <div class="serve-card">
+        <div class="serve-icon">🚀</div>
+        <div class="serve-title">Health-Tech Startups (Seed–Series B)</div>
+        <p class="serve-pain">Just raised and need operational infrastructure fast — SOPs, compliance frameworks, team structure, and AI systems that scale with you.</p>
+        <span class="serve-tag">Primary Niche · Fractional COO</span>
+      </div>
+      <div class="serve-card">
+        <div class="serve-icon">🏥</div>
+        <div class="serve-title">Digital Health & Clinical Platforms</div>
+        <p class="serve-pain">Building a healthcare product and need someone who has lived inside the operations, compliance, and workflow challenges your clients face every day.</p>
+        <span class="serve-tag">Fractional COO + Compliance</span>
+      </div>
+      <div class="serve-card">
+        <div class="serve-icon">💉</div>
+        <div class="serve-title">MedSpas & Aesthetic Practices</div>
+        <p class="serve-pain">Missing leads after hours, no review strategy, and a team that can't operate without the owner in the room.</p>
+        <span class="serve-tag">AI Concierge + Review Mgmt</span>
+      </div>
+      <div class="serve-card">
+        <div class="serve-icon">🦷</div>
+        <div class="serve-title">Dental & Specialty Practices</div>
+        <p class="serve-pain">Losing new patients to competitors with better ratings. Reviews aren't being managed. Intake is still manual.</p>
+        <span class="serve-tag">Review Management + AI</span>
+      </div>
+      <div class="serve-card">
+        <div class="serve-icon">💊</div>
+        <div class="serve-title">Specialty Pharmacies & PBMs</div>
+        <p class="serve-pain">Complex regulatory environment, SLA management pressure, and operational scaling without documented processes.</p>
+        <span class="serve-tag">SOP Dev + Fractional Ops</span>
+      </div>
+      <div class="serve-card">
+        <div class="serve-icon">📈</div>
+        <div class="serve-title">Growing Businesses Ready to Operate Smarter</div>
+        <p class="serve-pain">Scaling fast but no systems, no documentation, and no senior ops experience on the team to build it properly.</p>
+        <span class="serve-tag">AI Toolkit + Operations Build</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CREDENTIALS -->
+
+<section class="creds-section" id="about">
+  <div class="creds-inner">
+    <div class="creds-left">
+      <div class="section-label" style="color:var(--gold)">The Person Behind It</div>
+      <div class="cred-title">Fortune 4 Expertise.<br><em>Boutique Attention.</em></div>
+      <p class="cred-sub">Tarean Thompson brings 12+ years of operational leadership across three of the most demanding environments in healthcare — a Level 1 trauma hospital, a national pharmacy chain, and a Fortune 4 enterprise. Now that expertise is available to businesses of every size.</p>
+      <div class="cred-employers">
+        <div class="employer">
+          <div class="emp-dot"></div>
+          <div>
+            <div class="emp-name">McKesson — Fortune 4 Healthcare</div>
+            <div class="emp-role">Operations Manager · 10%+ above targets · 3+ years consecutive</div>
+          </div>
+        </div>
+        <div class="employer">
+          <div class="emp-dot"></div>
+          <div>
+            <div class="emp-name">Alliance Walgreens — National Distribution</div>
+            <div class="emp-role">Operations Supervisor · 60-person team · Lean Systems Office</div>
+          </div>
+        </div>
+        <div class="employer">
+          <div class="emp-dot"></div>
+          <div>
+            <div class="emp-name">Parkland Health — Level 1 Trauma, Dallas</div>
+            <div class="emp-role">Pharmacy Tech Supervisor · 7 years · Policy & SOP implementation</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="creds-right">
+      <div class="section-label" style="color:var(--gold)">Credentials</div>
+      <div class="cert-grid">
+        <div class="cert">
+          <div class="cert-icon">📜</div>
+          <div class="cert-name">Lean Six Sigma</div>
+          <div class="cert-detail">Yellow Belt · Cert #703303</div>
+        </div>
+        <div class="cert">
+          <div class="cert-icon">🔄</div>
+          <div class="cert-name">Scrum Master</div>
+          <div class="cert-detail">SMC #001480711 · Valid 2029</div>
+        </div>
+        <div class="cert">
+          <div class="cert-icon">💊</div>
+          <div class="cert-name">PTCB Licensed</div>
+          <div class="cert-detail">Pharmacy Tech · Valid 2027</div>
+        </div>
+        <div class="cert">
+          <div class="cert-icon">🏛️</div>
+          <div class="cert-name">TX State Board</div>
+          <div class="cert-detail">Pharmacy License · Valid 2027</div>
+        </div>
+        <div class="cert">
+          <div class="cert-icon">🤝</div>
+          <div class="cert-name">David Marie Consulting</div>
+          <div class="cert-detail">Co-Founder · Woman-Owned</div>
+        </div>
+        <div class="cert">
+          <div class="cert-icon">🛡️</div>
+          <div class="cert-name">OQP Solutions Advisor</div>
+          <div class="cert-detail">NMSDC-Certified MBE · GovCon</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+
+<section class="pricing-section" id="pricing">
+  <div style="max-width:900px;margin:0 auto">
+    <div class="section-label">Investment</div>
+    <h2 class="section-title">Transparent Pricing. <em>No Surprises.</em></h2>
+    <p class="section-sub">Every engagement starts with a conversation. Here's what most clients invest — custom quotes available for complex scopes.</p>
+    <div class="pricing-grid">
+
+```
+  <div class="price-card">
+    <div class="pc-head">
+      <div class="pc-service">Ops Audit + Roadmap</div>
+      <div class="pc-price">$2.5K</div>
+      <div class="pc-period">flat · 2-week engagement</div>
+    </div>
+    <div class="pc-body">
+      <div class="pc-feat">Current state assessment</div>
+      <div class="pc-feat">Gap analysis report</div>
+      <div class="pc-feat">Prioritized action roadmap</div>
+      <div class="pc-feat">30-min executive readout</div>
+      <div class="pc-feat">Entry point to retainer</div>
+      <a href="#contact" class="pc-cta">Start Here →</a>
+    </div>
+  </div>
+
+  <div class="price-card featured">
+    <div class="pc-head">
+      <div class="pc-service">Fractional COO</div>
+      <div class="pc-price">$7.5K</div>
+      <div class="pc-period">per month · 15–20 hrs/month</div>
+    </div>
+    <div class="pc-body">
+      <div class="pc-feat">Ongoing ops leadership</div>
+      <div class="pc-feat">SOP development</div>
+      <div class="pc-feat">Team structure design</div>
+      <div class="pc-feat">Compliance oversight</div>
+      <div class="pc-feat">Investor-ready reporting</div>
+      <a href="#contact" class="pc-cta">Most Popular →</a>
+    </div>
+  </div>
+
+  <div class="price-card">
+    <div class="pc-head">
+      <div class="pc-service">Review Management</div>
+      <div class="pc-price">$499</div>
+      <div class="pc-period">per month · single location</div>
+    </div>
+    <div class="pc-body">
+      <div class="pc-feat">Automated review requests</div>
+      <div class="pc-feat">All-platform monitoring</div>
+      <div class="pc-feat">Response drafting</div>
+      <div class="pc-feat">Monthly report</div>
+      <div class="pc-feat">Strategy review call</div>
+      <a href="#contact" class="pc-cta">Get Started</a>
+    </div>
+  </div>
+
+  <div class="price-card">
+    <div class="pc-head">
+      <div class="pc-service">SOP Project</div>
+      <div class="pc-price">$3.5K</div>
+      <div class="pc-period">per project · 5-SOP package</div>
+    </div>
+    <div class="pc-body">
+      <div class="pc-feat">5 complete SOPs</div>
+      <div class="pc-feat">Exception workflows</div>
+      <div class="pc-feat">Training materials</div>
+      <div class="pc-feat">Audit-ready formatting</div>
+      <div class="pc-feat">2-week delivery</div>
+      <a href="#contact" class="pc-cta">Get Started</a>
+    </div>
+  </div>
+
+</div>
+```
+
+  </div>
+</section>
+
+<!-- CTA -->
+
+<section class="cta-section" id="contact">
+  <div style="position:relative;z-index:1;max-width:680px;margin:0 auto">
+    <div class="cta-eyebrow">Ready When You Are</div>
+    <h2 class="cta-title">Let's Build the Infrastructure <em>Your Investors Expect</em></h2>
+    <p class="cta-sub">No long intake forms. No sales runaround. Just a real 30-minute conversation about where your ops are and what needs to be built. Most clients have a proposal within 48 hours.</p>
+    <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
+      <a href="mailto:geauxuptown@gmail.com" class="btn-primary">Send a Message</a>
+      <a href="tel:(972) 885-7685" class="btn-outline">Call Directly</a>
+    </div>
+    <div class="cta-contact">
+      <div class="cta-info">
+        <div class="cta-info-label">Phone</div>
+        <div class="cta-info-value">(972) 885-7685</div>
+      </div>
+      <div class="cta-info">
+        <div class="cta-info-label">Email</div>
+        <div class="cta-info-value"><a href="mailto:geauxuptown@gmail.com" style="color:inherit">geauxuptown@gmail.com</a></div>
+      </div>
+      <div class="cta-info">
+        <div class="cta-info-label">Based In</div>
+        <div class="cta-info-value">Dallas, TX · Remote Nationwide</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+
+<footer>
+  <div class="footer-brand">⚜ Geaux Uptown Solutions</div>
+  <div class="footer-links">
+    <a href="#services">Services</a>
+    <a href="#who-we-serve">Clients</a>
+    <a href="#about">About</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <div class="footer-copy">© 2025 Geaux Uptown Solutions · Dallas, TX</div>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+
+function toggleMobileMenu(){
+const links = document.querySelector(’.nav-links’);
+if(links.style.display === ‘flex’){
+links.style.display = ‘none’;
+} else {
+links.style.cssText = ’display:flex;flex-direction:column;position:fixed;top:64px;left:0;right:0;background:rgba(13,27,42,0.98
 </html>
