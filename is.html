@@ -1,0 +1,1193 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Geaux Uptown — Business Operating System</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --navy:#0D1B2A;--navy-mid:#0f1f30;--navy-light:#162840;
+  --gold:#C9A84C;--gold-soft:#e8d08a;--dark:#1a1a1a;
+  --cream:#faf8f5;--white:#fff;--muted:#777;
+  --border:rgba(201,168,76,0.2);
+  --red:#c0392b;--green:#2d7a4f;--blue:#2980b9;--purple:#8e44ad;
+  --stage-new:#2980b9;--stage-proposal:#d4a017;--stage-call:#8e44ad;
+  --stage-paid:#2d7a4f;--stage-active:#C9A84C;--stage-lost:#c0392b;
+}
+body{font-family:'Montserrat',sans-serif;background:#0a0f1a;color:var(--dark);min-height:100vh}
+
+/* PASSWORD GATE */
+.gate{position:fixed;inset:0;background:var(–navy);display:flex;align-items:center;justify-content:center;z-index:9999;flex-direction:column;gap:20px}
+.gate-logo{font-family:‘Cormorant Garamond’,serif;font-size:48px;color:var(–gold)}
+.gate-title{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:rgba(255,255,255,0.3)}
+.gate-input{background:rgba(255,255,255,0.05);border:1px solid rgba(201,168,76,0.3);color:#fff;padding:12px 20px;font-size:13px;font-family:‘Montserrat’,sans-serif;outline:none;width:280px;text-align:center;letter-spacing:3px}
+.gate-btn{background:var(–gold);color:var(–navy);border:none;padding:12px 32px;font-size:9px;font-weight:800;letter-spacing:2px;text-transform:uppercase;cursor:pointer;width:280px}
+.gate-error{font-size:10px;color:var(–red);letter-spacing:1px;display:none}
+
+/* LAYOUT */
+.app{display:none;flex-direction:column;min-height:100vh}
+.app.visible{display:flex}
+
+/* TOP NAV */
+.topnav{background:var(–navy);padding:0 24px;display:flex;align-items:center;gap:0;border-bottom:1px solid var(–border);height:52px;position:sticky;top:0;z-index:100}
+.topnav-brand{font-family:‘Cormorant Garamond’,serif;font-size:17px;color:var(–gold);letter-spacing:1.5px;margin-right:32px;white-space:nowrap}
+.tab-btn{font-size:8.5px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:0 18px;height:52px;border:none;background:transparent;cursor:pointer;transition:all 0.2s;color:rgba(255,255,255,0.35);border-bottom:2px solid transparent;white-space:nowrap}
+.tab-btn:hover{color:rgba(255,255,255,0.7)}
+.tab-btn.active{color:var(–gold);border-bottom-color:var(–gold)}
+.topnav-right{margin-left:auto;display:flex;align-items:center;gap:12px}
+.notif-dot{width:8px;height:8px;background:var(–red);border-radius:50%;display:none}
+.notif-dot.show{display:block}
+
+/* VIEWS */
+.view{display:none;flex:1}
+.view.active{display:block}
+
+/* ─── DASHBOARD VIEW ─── */
+.dash-wrap{padding:28px;max-width:1200px;margin:0 auto}
+.dash-greeting{margin-bottom:28px}
+.dash-greeting h1{font-family:‘Cormorant Garamond’,serif;font-size:32px;color:#fff;font-weight:300;margin-bottom:4px}
+.dash-greeting h1 em{color:var(–gold);font-style:italic}
+.dash-greeting p{font-size:10px;color:rgba(255,255,255,0.35);letter-spacing:0.5px}
+
+.kpi-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:28px}
+.kpi{background:var(–navy);border:1px solid var(–border);padding:20px 16px;position:relative;overflow:hidden}
+.kpi::before{content:’’;position:absolute;top:0;left:0;right:0;height:2px;background:var(–gold)}
+.kpi-label{font-size:7.5px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:8px}
+.kpi-value{font-family:‘Cormorant Garamond’,serif;font-size:36px;color:var(–gold);line-height:1}
+.kpi-sub{font-size:8.5px;color:rgba(255,255,255,0.2);margin-top:4px}
+
+/* PIPELINE */
+.pipeline-wrap{background:var(–navy);border:1px solid var(–border);padding:20px;margin-bottom:24px}
+.pipeline-title{font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:var(–gold);margin-bottom:16px;font-weight:700}
+.pipeline-stages{display:grid;grid-template-columns:repeat(6,1fr);gap:8px}
+.stage-col{border:1px solid rgba(255,255,255,0.06);padding:12px 8px;min-height:120px}
+.stage-header{font-size:7.5px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid rgba(255,255,255,0.06)}
+.stage-new .stage-header{color:var(–stage-new)}
+.stage-proposal .stage-header{color:var(–stage-proposal)}
+.stage-call .stage-header{color:var(–stage-call)}
+.stage-paid .stage-header{color:var(–stage-paid)}
+.stage-active .stage-header{color:var(–stage-active)}
+.stage-lost .stage-header{color:var(–stage-lost)}
+.stage-card{background:rgba(255,255,255,0.04);padding:8px;margin-bottom:6px;cursor:pointer;border-left:2px solid;transition:all 0.2s;font-size:9px}
+.stage-card:hover{background:rgba(255,255,255,0.08)}
+.stage-card.sn{border-left-color:var(–stage-new)}
+.stage-card.sp{border-left-color:var(–stage-proposal)}
+.stage-card.sc{border-left-color:var(–stage-call)}
+.stage-card.sa{border-left-color:var(–stage-paid)}
+.stage-card.sac{border-left-color:var(–stage-active)}
+.stage-card.sl{border-left-color:var(–stage-lost)}
+.sc-name{font-weight:600;color:#fff;margin-bottom:2px;font-size:9.5px}
+.sc-company{color:rgba(255,255,255,0.35);font-size:8px}
+.sc-value{color:var(–gold);font-size:8.5px;margin-top:3px;font-weight:700}
+
+/* RECENT ACTIVITY */
+.activity-feed{background:var(–navy);border:1px solid var(–border);padding:20px}
+.activity-item{display:flex;gap:12px;padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.04)}
+.activity-item:last-child{border-bottom:none}
+.activity-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;margin-top:4px}
+.activity-text{font-size:10px;color:rgba(255,255,255,0.6);line-height:1.5}
+.activity-time{font-size:8px;color:rgba(255,255,255,0.2);margin-top:2px}
+
+/* ─── INTAKE VIEW ─── */
+.intake-wrap{max-width:680px;margin:0 auto;padding:32px 20px;background:var(–cream);min-height:calc(100vh - 52px)}
+.intake-hero{text-align:center;margin-bottom:32px}
+.intake-hero h1{font-family:‘Cormorant Garamond’,serif;font-size:36px;color:var(–navy);font-weight:400;margin-bottom:8px}
+.intake-hero h1 em{color:var(–gold);font-style:italic}
+.intake-hero p{font-size:11px;color:var(–muted);line-height:1.8;max-width:480px;margin:0 auto}
+.progress-wrap{background:#e8e8e8;height:3px;margin-bottom:6px;overflow:hidden}
+.progress-bar{height:100%;background:linear-gradient(90deg,var(–gold),var(–gold-soft));transition:width 0.4s}
+.progress-label{font-size:8px;color:var(–muted);text-align:right;margin-bottom:20px;letter-spacing:1px}
+.form-section{background:var(–white);border:1px solid var(–border);padding:24px;margin-bottom:16px;display:none}
+.form-section.show{display:block;animation:fadeUp 0.3s ease}
+@keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.fs-title{font-family:‘Cormorant Garamond’,serif;font-size:20px;color:var(–navy);margin-bottom:3px;font-weight:600}
+.fs-sub{font-size:9px;color:var(–muted);margin-bottom:18px;line-height:1.6}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px}
+.form-row.single{grid-template-columns:1fr}
+.form-group{display:flex;flex-direction:column;gap:4px}
+.form-group label{font-size:8.5px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(–navy)}
+.form-group input,.form-group select,.form-group textarea{border:1px solid #ddd;padding:9px 12px;font-size:11px;font-family:‘Montserrat’,sans-serif;color:var(–dark);outline:none;transition:border-color 0.2s}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(–gold)}
+.form-group textarea{resize:vertical;min-height:72px;line-height:1.6}
+.check-grid{display:grid;grid-template-columns:1fr 1fr;gap:7px}
+.check-item{display:flex;align-items:center;gap:8px;padding:8px 11px;border:1px solid #eee;cursor:pointer;transition:all 0.2s;user-select:none}
+.check-item:hover,.check-item.selected{border-color:var(–gold);background:rgba(201,168,76,0.05)}
+.check-item input{accent-color:var(–gold);width:13px;height:13px;flex-shrink:0}
+.check-item span{font-size:9.5px;color:var(–dark);line-height:1.4}
+.source-tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:6px}
+.source-tag{padding:6px 12px;border:1px solid #ddd;font-size:9px;cursor:pointer;transition:all 0.2s;color:var(–dark)}
+.source-tag.selected{border-color:var(–gold);background:rgba(201,168,76,0.08);color:var(–navy);font-weight:700}
+.form-nav{display:flex;justify-content:space-between;align-items:center;margin-top:20px}
+.btn-back{background:transparent;border:1px solid #ddd;color:var(–muted);font-size:8.5px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:9px 20px;cursor:pointer;transition:all 0.2s}
+.btn-back:hover{border-color:var(–navy);color:var(–navy)}
+.btn-next{background:var(–navy);color:#fff;font-size:8.5px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:9px 22px;cursor:pointer;border:none;transition:all 0.2s}
+.btn-next:hover{background:var(–gold);color:var(–navy)}
+.btn-submit{background:var(–gold);color:var(–navy);font-size:9px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;padding:12px 28px;cursor:pointer;border:none}
+
+/* ─── CLIENTS VIEW ─── */
+.clients-wrap{display:grid;grid-template-columns:280px 1fr;min-height:calc(100vh - 52px)}
+.clients-sidebar{background:var(–navy);overflow-y:auto}
+.cs-header{padding:16px 20px;border-bottom:1px solid rgba(201,168,76,0.1);display:flex;align-items:center;justify-content:space-between}
+.cs-count{font-family:‘Cormorant Garamond’,serif;font-size:24px;color:var(–gold)}
+.cs-label{font-size:7.5px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.3)}
+.client-item{padding:12px 18px;cursor:pointer;border-left:3px solid transparent;transition:all 0.2s;border-bottom:1px solid rgba(255,255,255,0.03)}
+.client-item:hover{background:rgba(255,255,255,0.04);border-left-color:rgba(201,168,76,0.4)}
+.client-item.active{background:rgba(201,168,76,0.08);border-left-color:var(–gold)}
+.ci-name{font-size:11.5px;font-weight:600;color:#fff;margin-bottom:2px}
+.ci-company{font-size:8.5px;color:rgba(255,255,255,0.3);margin-bottom:5px}
+.ci-tags{display:flex;gap:5px;flex-wrap:wrap}
+.ci-tag{font-size:7px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:2px 6px;border:1px solid}
+.tag-website{color:#7eb8f7;border-color:rgba(126,184,247,0.3)}
+.tag-contra{color:#a78bf7;border-color:rgba(167,139,247,0.3)}
+.tag-gofractional{color:#7ef7b8;border-color:rgba(126,247,184,0.3)}
+.tag-gumroad{color:#f7c77e;border-color:rgba(247,199,126,0.3)}
+.tag-linkedin{color:#7eaef7;border-color:rgba(126,174,247,0.3)}
+.tag-referral{color:var(–gold);border-color:rgba(201,168,76,0.3)}
+.tag-other{color:rgba(255,255,255,0.3);border-color:rgba(255,255,255,0.1)}
+.stage-badge{font-size:7px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:2px 7px}
+.sb-new{background:rgba(41,128,185,0.15);color:#7eb8f7}
+.sb-proposal{background:rgba(212,160,23,0.15);color:#f7c77e}
+.sb-call{background:rgba(142,68,173,0.15);color:#c39bd3}
+.sb-paid{background:rgba(45,122,79,0.15);color:#7ef7b8}
+.sb-active{background:rgba(201,168,76,0.15);color:var(–gold)}
+.sb-lost{background:rgba(192,57,43,0.15);color:#ff8a7a}
+
+/* PROPOSAL PANEL */
+.proposal-panel{padding:28px;overflow-y:auto;background:var(–cream)}
+.pp-header{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:24px;padding-bottom:18px;border-bottom:1px solid var(–border)}
+.pp-client h2{font-family:‘Cormorant Garamond’,serif;font-size:30px;color:var(–navy);font-weight:400}
+.pp-meta{font-size:9.5px;color:var(–muted);margin-top:4px;line-height:1.9}
+.pp-actions{display:flex;gap:7px;flex-wrap:wrap}
+.act-btn{font-size:7.5px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:7px 14px;cursor:pointer;border:none;transition:all 0.2s;white-space:nowrap}
+.ab-gold{background:var(–gold);color:var(–navy)}
+.ab-navy{background:var(–navy);color:#fff}
+.ab-green{background:#2d7a4f;color:#fff}
+.ab-purple{background:#8e44ad;color:#fff}
+.ab-outline{background:transparent;border:1px solid var(–border);color:var(–muted)}
+.ab-outline:hover{border-color:var(–gold);color:var(–gold)}
+.ab-red{background:var(–red);color:#fff}
+
+/* STAGE SELECTOR */
+.stage-selector{display:flex;gap:6px;margin-bottom:20px;flex-wrap:wrap}
+.stage-opt{font-size:7.5px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:6px 12px;cursor:pointer;border:1px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.4);background:var(–navy);transition:all 0.2s}
+.stage-opt:hover,.stage-opt.active{color:#fff}
+.so-new.active{background:var(–stage-new);border-color:var(–stage-new)}
+.so-proposal.active{background:var(–stage-proposal);border-color:var(–stage-proposal)}
+.so-call.active{background:var(–stage-call);border-color:var(–stage-call)}
+.so-paid.active{background:var(–stage-paid);border-color:var(–stage-paid)}
+.so-active.active{background:var(–stage-active);border-color:var(–stage-active)}
+.so-lost.active{background:var(–stage-lost);border-color:var(–stage-lost)}
+
+/* INFO CARDS */
+.info-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:20px}
+.info-card{background:var(–white);border:1px solid var(–border);padding:18px}
+.ic-title{font-size:7.5px;letter-spacing:2.5px;text-transform:uppercase;color:var(–gold);font-weight:700;margin-bottom:10px}
+.ic-row{display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid #f5f5f5}
+.ic-row:last-child{border-bottom:none}
+.ic-label{font-size:8.5px;color:var(–muted)}
+.ic-value{font-size:9.5px;color:var(–dark);font-weight:600;text-align:right;max-width:55%}
+
+/* PROPOSAL SECTIONS */
+.prop-block{background:var(–white);border:1px solid var(–border);padding:22px;margin-bottom:16px}
+.pb-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;padding-bottom:10px;border-bottom:1px solid #f5f5f5}
+.pb-title{font-family:‘Cormorant Garamond’,serif;font-size:20px;color:var(–navy)}
+.pb-badge{font-size:7.5px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:4px 10px;background:rgba(201,168,76,0.1);color:var(–gold);border:1px solid rgba(201,168,76,0.2)}
+
+.rec-list{display:flex;flex-direction:column;gap:10px}
+.rec-item{display:grid;grid-template-columns:1fr auto;gap:14px;align-items:center;padding:14px;border:1px solid var(–border);background:var(–cream)}
+.ri-name{font-size:11.5px;font-weight:700;color:var(–navy);margin-bottom:3px}
+.ri-desc{font-size:9px;color:var(–muted);line-height:1.6}
+.ri-tag{font-size:7px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:2px 7px;margin-top:5px;display:inline-block}
+.tag-now{background:rgba(192,57,43,0.1);color:var(–red);border:1px solid rgba(192,57,43,0.2)}
+.tag-next{background:rgba(201,168,76,0.1);color:#8a6a1a;border:1px solid rgba(201,168,76,0.2)}
+.tag-later{background:rgba(45,122,79,0.1);color:var(–green);border:1px solid rgba(45,122,79,0.2)}
+.ri-price{text-align:right}
+.ri-amount{font-family:‘Cormorant Garamond’,serif;font-size:26px;color:var(–gold);line-height:1}
+.ri-period{font-size:8px;color:var(–muted);margin-top:2px}
+
+.tl-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid var(–border)}
+.tl-item{padding:14px;border-right:1px solid var(–border);text-align:center}
+.tl-item:last-child{border-right:none}
+.tl-phase{font-size:7.5px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(–gold);margin-bottom:5px}
+.tl-action{font-size:10.5px;font-weight:600;color:var(–navy);margin-bottom:3px}
+.tl-detail{font-size:8.5px;color:var(–muted);line-height:1.5}
+
+.inv-box{background:var(–navy);padding:20px;margin-top:14px}
+.inv-title{font-size:7.5px;letter-spacing:2.5px;text-transform:uppercase;color:var(–gold);margin-bottom:14px}
+.inv-row{display:flex;justify-content:space-between;font-size:10.5px;color:rgba(255,255,255,0.55);padding:6px 0;border-bottom:1px solid rgba(255,255,255,0.05)}
+.inv-total{display:flex;justify-content:space-between;align-items:center;padding-top:12px;border-top:1px solid rgba(201,168,76,0.3);margin-top:8px}
+.inv-total-label{font-size:9.5px;font-weight:700;color:#fff;letter-spacing:1px;text-transform:uppercase}
+.inv-total-amount{font-family:‘Cormorant Garamond’,serif;font-size:30px;color:var(–gold)}
+
+/* CONTRACT */
+.contract-text{font-size:9.5px;color:var(–dark);line-height:2;white-space:pre-line;font-family:‘Montserrat’,sans-serif}
+.contract-sig{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:28px;padding-top:18px;border-top:1px solid var(–border)}
+.sig-line{border-bottom:1px solid #ccc;margin-bottom:5px;height:32px}
+.sig-label{font-size:8px;color:var(–muted);letter-spacing:0.5px}
+
+/* EMAIL MODAL */
+.modal{position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:500;display:none;align-items:center;justify-content:center;padding:20px}
+.modal.show{display:flex}
+.modal-box{background:var(–white);width:100%;max-width:600px;max-height:90vh;overflow-y:auto}
+.modal-header{background:var(–navy);padding:20px 24px;display:flex;align-items:center;justify-content:space-between}
+.modal-title{font-family:‘Cormorant Garamond’,serif;font-size:22px;color:var(–gold)}
+.modal-close{background:transparent;border:none;color:rgba(255,255,255,0.4);font-size:20px;cursor:pointer;padding:4px 8px}
+.modal-body{padding:24px}
+.modal-field{margin-bottom:16px}
+.modal-field label{font-size:8.5px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(–navy);display:block;margin-bottom:5px}
+.modal-field input,.modal-field textarea{width:100%;border:1px solid #ddd;padding:10px 14px;font-size:11px;font-family:‘Montserrat’,sans-serif;color:var(–dark);outline:none}
+.modal-field input:focus,.modal-field textarea:focus{border-color:var(–gold)}
+.modal-field textarea{min-height:180px;resize:vertical;line-height:1.7}
+.modal-footer{padding:16px 24px;border-top:1px solid #eee;display:flex;gap:10px;justify-content:flex-end}
+.modal-btn{font-size:8.5px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:10px 22px;cursor:pointer;border:none}
+
+/* ─── SETTINGS VIEW ─── */
+.settings-wrap{max-width:700px;margin:0 auto;padding:32px 20px}
+.settings-wrap h2{font-family:‘Cormorant Garamond’,serif;font-size:32px;color:#fff;margin-bottom:6px}
+.settings-wrap p{font-size:10px;color:rgba(255,255,255,0.35);margin-bottom:28px}
+.settings-card{background:var(–navy);border:1px solid var(–border);padding:24px;margin-bottom:16px}
+.sc-title{font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:var(–gold);font-weight:700;margin-bottom:16px}
+.settings-row{margin-bottom:14px}
+.settings-row label{font-size:8.5px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.5);display:block;margin-bottom:5px}
+.settings-row input{width:100%;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);color:#fff;padding:9px 14px;font-size:11px;font-family:‘Montserrat’,sans-serif;outline:none}
+.settings-row input:focus{border-color:var(–gold)}
+.settings-row input::placeholder{color:rgba(255,255,255,0.2)}
+.save-btn{background:var(–gold);color:var(–navy);border:none;padding:10px 24px;font-size:8.5px;font-weight:800;letter-spacing:2px;text-transform:uppercase;cursor:pointer;margin-top:4px}
+.integration-status{display:flex;align-items:center;gap:8px;font-size:9.5px;margin-top:8px}
+.int-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.int-connected{background:#2d7a4f}
+.int-disconnected{background:#c0392b}
+
+/* TOAST */
+.toast{position:fixed;bottom:24px;right:24px;background:var(–navy);color:var(–gold);font-size:10px;font-weight:600;padding:12px 20px;border:1px solid rgba(201,168,76,0.3);transform:translateY(100px);opacity:0;transition:all 0.3s;z-index:9998;max-width:300px}
+.toast.show{transform:translateY(0);opacity:1}
+
+@media(max-width:768px){
+.kpi-grid{grid-template-columns:repeat(2,1fr)}
+.pipeline-stages{grid-template-columns:repeat(3,1fr)}
+.clients-wrap{grid-template-columns:1fr}
+.clients-sidebar{display:none}
+.form-row{grid-template-columns:1fr}
+.check-grid{grid-template-columns:1fr}
+.info-grid{grid-template-columns:1fr}
+.tl-grid{grid-template-columns:1fr 1fr}
+.contract-sig{grid-template-columns:1fr}
+}
+@media print{
+.topnav,.clients-sidebar,.pp-actions,.stage-selector,.gate{display:none!important}
+.clients-wrap{grid-template-columns:1fr}
+.proposal-panel{padding:16px}
+body{background:#fff}
+}
+</style>
+
+</head>
+<body>
+
+<!-- PASSWORD GATE -->
+
+<div class="gate" id="gate">
+  <div class="gate-logo">⚜</div>
+  <div class="gate-title">Geaux Uptown · Business OS</div>
+  <input class="gate-input" type="password" id="gateInput" placeholder="ACCESS CODE" onkeydown="if(event.key==='Enter')checkPassword()">
+  <button class="gate-btn" onclick="checkPassword()">Enter</button>
+  <div class="gate-error" id="gateError">Incorrect access code</div>
+</div>
+
+<!-- APP -->
+
+<div class="app" id="app">
+
+  <!-- TOP NAV -->
+
+  <nav class="topnav">
+    <div class="topnav-brand">⚜ Geaux Uptown OS</div>
+    <button class="tab-btn active" onclick="switchTab('dashboard',this)">Dashboard</button>
+    <button class="tab-btn" onclick="switchTab('intake',this)">New Intake</button>
+    <button class="tab-btn" onclick="switchTab('clients',this)">Clients</button>
+    <button class="tab-btn" onclick="switchTab('settings',this)">Settings</button>
+    <div class="topnav-right">
+      <div class="notif-dot" id="notifDot"></div>
+      <span style="font-size:8.5px;color:rgba(255,255,255,0.3);letter-spacing:1px" id="clockDisplay"></span>
+    </div>
+  </nav>
+
+  <!-- DASHBOARD -->
+
+  <div class="view active" id="view-dashboard">
+    <div class="dash-wrap">
+      <div class="dash-greeting">
+        <h1>Good <em id="timeGreeting">morning</em>, Tarean</h1>
+        <p id="dashDate">Loading...</p>
+      </div>
+
+```
+  <div class="kpi-grid">
+    <div class="kpi">
+      <div class="kpi-label">Total Clients</div>
+      <div class="kpi-value" id="kpi-total">0</div>
+      <div class="kpi-sub">All time</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">Active Retainers</div>
+      <div class="kpi-value" id="kpi-active">0</div>
+      <div class="kpi-sub">Monthly recurring</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">Pipeline Value</div>
+      <div class="kpi-value" id="kpi-pipeline">$0</div>
+      <div class="kpi-sub">Open opportunities</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">MRR</div>
+      <div class="kpi-value" id="kpi-mrr">$0</div>
+      <div class="kpi-sub">Monthly recurring revenue</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">New This Week</div>
+      <div class="kpi-value" id="kpi-new">0</div>
+      <div class="kpi-sub">New leads</div>
+    </div>
+  </div>
+
+  <div class="pipeline-wrap">
+    <div class="pipeline-title">Sales Pipeline</div>
+    <div class="pipeline-stages" id="pipelineView"></div>
+  </div>
+
+  <div class="activity-feed">
+    <div class="pipeline-title" style="margin-bottom:14px">Recent Activity</div>
+    <div id="activityFeed">
+      <div style="font-size:10px;color:rgba(255,255,255,0.2);text-align:center;padding:20px">No activity yet. Submit your first intake form!</div>
+    </div>
+  </div>
+</div>
+```
+
+  </div>
+
+  <!-- INTAKE FORM -->
+
+  <div class="view" id="view-intake">
+    <div class="intake-wrap">
+      <div class="intake-hero">
+        <h1>New Client <em>Intake</em></h1>
+        <p>Complete this form to generate a custom proposal with recommended services, pricing, rollout plan, and contract — ready to send in minutes.</p>
+      </div>
+      <div class="progress-wrap"><div class="progress-bar" id="progressBar" style="width:25%"></div></div>
+      <div class="progress-label" id="progressLabel">Step 1 of 4</div>
+
+```
+  <!-- STEP 1 -->
+  <div class="form-section show" id="step1">
+    <div class="fs-title">Contact Information</div>
+    <div class="fs-sub">Basic info to generate the proposal and follow up within 24 hours.</div>
+    <div class="form-row">
+      <div class="form-group"><label>First Name</label><input type="text" id="firstName" placeholder="First name"></div>
+      <div class="form-group"><label>Last Name</label><input type="text" id="lastName" placeholder="Last name"></div>
+    </div>
+    <div class="form-row">
+      <div class="form-group"><label>Email</label><input type="email" id="email" placeholder="email@company.com"></div>
+      <div class="form-group"><label>Phone</label><input type="tel" id="phone" placeholder="(555) 000-0000"></div>
+    </div>
+    <div class="form-row">
+      <div class="form-group"><label>Company</label><input type="text" id="company" placeholder="Company name"></div>
+      <div class="form-group"><label>Title / Role</label><input type="text" id="role" placeholder="CEO, Founder..."></div>
+    </div>
+    <div class="form-row single">
+      <div class="form-group">
+        <label>How did they find you?</label>
+        <div class="source-tags" id="sourceTags">
+          <div class="source-tag" onclick="selectSource(this,'Website')">Website</div>
+          <div class="source-tag" onclick="selectSource(this,'Contra')">Contra</div>
+          <div class="source-tag" onclick="selectSource(this,'GoFractional')">GoFractional</div>
+          <div class="source-tag" onclick="selectSource(this,'Gumroad')">Gumroad</div>
+          <div class="source-tag" onclick="selectSource(this,'LinkedIn')">LinkedIn</div>
+          <div class="source-tag" onclick="selectSource(this,'Referral')">Referral</div>
+          <div class="source-tag" onclick="selectSource(this,'TikTok')">TikTok</div>
+          <div class="source-tag" onclick="selectSource(this,'Instagram')">Instagram</div>
+          <div class="source-tag" onclick="selectSource(this,'Other')">Other</div>
+        </div>
+      </div>
+    </div>
+    <div class="form-nav"><div></div><button class="btn-next" onclick="nextStep(1)">Continue →</button></div>
+  </div>
+
+  <!-- STEP 2 -->
+  <div class="form-section" id="step2">
+    <div class="fs-title">Their Business</div>
+    <div class="fs-sub">Understanding their situation helps us recommend the right services.</div>
+    <div class="form-row">
+      <div class="form-group">
+        <label>Business Type</label>
+        <select id="bizType">
+          <option value="">Select...</option>
+          <option>Health-Tech Startup (Post-Seed)</option>
+          <option>Health-Tech Startup (Series A+)</option>
+          <option>Healthcare Organization</option>
+          <option>Hospital / Health System</option>
+          <option>MedSpa / Aesthetic Clinic</option>
+          <option>Pharmacy / Clinic</option>
+          <option>Other Healthcare</option>
+          <option>Non-Healthcare Business</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Team Size</label>
+        <select id="teamSize">
+          <option value="">Select...</option>
+          <option>Solo / Just me</option>
+          <option>2–5 people</option>
+          <option>6–15 people</option>
+          <option>16–50 people</option>
+          <option>50+ people</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label>Revenue Range</label>
+        <select id="revenue">
+          <option value="">Select...</option>
+          <option>Pre-revenue</option>
+          <option>Under $500K</option>
+          <option>$500K – $1M</option>
+          <option>$1M – $5M</option>
+          <option>$5M – $20M</option>
+          <option>$20M+</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Funding Stage</label>
+        <select id="funding">
+          <option value="">Select...</option>
+          <option>Bootstrapped</option>
+          <option>Pre-Seed</option>
+          <option>Seed</option>
+          <option>Series A</option>
+          <option>Series B+</option>
+          <option>Not applicable</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-nav">
+      <button class="btn-back" onclick="prevStep(2)">← Back</button>
+      <button class="btn-next" onclick="nextStep(2)">Continue →</button>
+    </div>
+  </div>
+
+  <!-- STEP 3 -->
+  <div class="form-section" id="step3">
+    <div class="fs-title">Challenges & Needs</div>
+    <div class="fs-sub">Select all that apply — this drives the AI proposal recommendations.</div>
+    <div class="check-grid" id="challengeGrid">
+      <label class="check-item"><input type="checkbox" value="No documented SOPs or processes"><span>No documented SOPs</span></label>
+      <label class="check-item"><input type="checkbox" value="Team not scaling efficiently"><span>Team not scaling</span></label>
+      <label class="check-item"><input type="checkbox" value="Operations haven't caught up with growth"><span>Ops behind growth</span></label>
+      <label class="check-item"><input type="checkbox" value="Compliance or regulatory concerns"><span>Compliance concerns</span></label>
+      <label class="check-item"><input type="checkbox" value="Investor reporting not organized"><span>Investor reporting gaps</span></label>
+      <label class="check-item"><input type="checkbox" value="Need fractional COO support"><span>Need fractional COO</span></label>
+      <label class="check-item"><input type="checkbox" value="Poor online reputation or reviews"><span>Reputation / reviews</span></label>
+      <label class="check-item"><input type="checkbox" value="No 24/7 lead capture system"><span>No 24/7 lead capture</span></label>
+      <label class="check-item"><input type="checkbox" value="Technology implementation challenges"><span>Tech implementation</span></label>
+      <label class="check-item"><input type="checkbox" value="Need audit/accreditation prep"><span>Audit / accreditation prep</span></label>
+    </div>
+    <div class="form-row single" style="margin-top:14px">
+      <div class="form-group"><label>Additional Notes</label><textarea id="additionalNotes" placeholder="Any other context, goals, or specific asks..."></textarea></div>
+    </div>
+    <div class="form-nav">
+      <button class="btn-back" onclick="prevStep(3)">← Back</button>
+      <button class="btn-next" onclick="nextStep(3)">Continue →</button>
+    </div>
+  </div>
+
+  <!-- STEP 4 -->
+  <div class="form-section" id="step4">
+    <div class="fs-title">Timeline & Budget</div>
+    <div class="fs-sub">Final details to tailor the proposal investment summary.</div>
+    <div class="form-row">
+      <div class="form-group">
+        <label>How soon do they need help?</label>
+        <select id="timeline">
+          <option value="">Select...</option>
+          <option>Immediately — this week</option>
+          <option>Within 30 days</option>
+          <option>Within 60–90 days</option>
+          <option>Just exploring</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Monthly Budget</label>
+        <select id="budget">
+          <option value="">Select...</option>
+          <option>Under $1,000</option>
+          <option>$1,000 – $3,000</option>
+          <option>$3,000 – $7,500</option>
+          <option>$7,500 – $15,000</option>
+          <option>$15,000+</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-row single">
+      <div class="form-group"><label>What does success look like in 90 days?</label><textarea id="successVision" placeholder="What would make this engagement a win?"></textarea></div>
+    </div>
+    <div class="form-nav">
+      <button class="btn-back" onclick="prevStep(4)">← Back</button>
+      <button class="btn-submit" onclick="submitIntake()">Generate Proposal ✦</button>
+    </div>
+  </div>
+
+  <!-- CONFIRM -->
+  <div class="form-section" id="stepConfirm">
+    <div style="text-align:center;padding:36px 16px">
+      <div style="font-size:40px;margin-bottom:14px">✦</div>
+      <div style="font-family:'Cormorant Garamond',serif;font-size:28px;color:var(--navy);margin-bottom:8px">Proposal Ready!</div>
+      <p style="font-size:10.5px;color:var(--muted);line-height:1.8;margin-bottom:20px">Custom proposal generated. Go to Clients to view recommendations, pricing, rollout plan, and send the proposal.</p>
+      <button class="btn-next" onclick="switchTab('clients', document.querySelectorAll('.tab-btn')[2])">View Proposal →</button>
+    </div>
+  </div>
+</div>
+```
+
+  </div>
+
+  <!-- CLIENTS -->
+
+  <div class="view" id="view-clients">
+    <div class="clients-wrap">
+      <div class="clients-sidebar">
+        <div class="cs-header">
+          <div><div class="cs-label">Clients</div><div class="cs-count" id="sidebarCount">0</div></div>
+        </div>
+        <div id="clientList"><div style="padding:20px;font-size:9px;color:rgba(255,255,255,0.2);text-align:center;line-height:1.8">No clients yet.<br>Add via New Intake.</div></div>
+      </div>
+      <div class="proposal-panel" id="proposalPanel">
+        <div style="text-align:center;padding:80px 24px;color:var(--muted)">
+          <div style="font-size:40px;margin-bottom:14px;opacity:0.2">⚜</div>
+          <div style="font-size:11px">Select a client to view their proposal.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SETTINGS -->
+
+  <div class="view" id="view-settings">
+    <div class="settings-wrap">
+      <h2>Settings</h2>
+      <p>Configure integrations to automate your workflow — email proposals, Calendly booking, and Stripe payments.</p>
+
+```
+  <div class="settings-card">
+    <div class="sc-title">Email Settings (EmailJS)</div>
+    <div class="settings-row"><label>EmailJS Service ID</label><input type="text" id="set-emailjs-service" placeholder="service_xxxxxxx"></div>
+    <div class="settings-row"><label>EmailJS Template ID</label><input type="text" id="set-emailjs-template" placeholder="template_xxxxxxx"></div>
+    <div class="settings-row"><label>EmailJS Public Key</label><input type="text" id="set-emailjs-key" placeholder="your_public_key"></div>
+    <button class="save-btn" onclick="saveSettings()">Save Email Settings</button>
+    <div class="integration-status"><div class="int-dot" id="email-dot" style="background:#c0392b"></div><span style="font-size:9px;color:rgba(255,255,255,0.3)" id="email-status">Not configured — set up at emailjs.com (free)</span></div>
+  </div>
+
+  <div class="settings-card">
+    <div class="sc-title">Calendly Booking Link</div>
+    <div class="settings-row"><label>Your Calendly URL</label><input type="text" id="set-calendly" placeholder="https://calendly.com/your-link"></div>
+    <button class="save-btn" onclick="saveSettings()">Save</button>
+    <div class="integration-status"><div class="int-dot" id="calendly-dot" style="background:#c0392b"></div><span style="font-size:9px;color:rgba(255,255,255,0.3)" id="calendly-status">Not configured — set up at calendly.com (free)</span></div>
+  </div>
+
+  <div class="settings-card">
+    <div class="sc-title">Stripe Payment Links</div>
+    <div class="settings-row"><label>Operational Audit — $2,500 Stripe Link</label><input type="text" id="set-stripe-audit" placeholder="https://buy.stripe.com/..."></div>
+    <div class="settings-row"><label>Fractional COO — $7,500 Stripe Link</label><input type="text" id="set-stripe-coo" placeholder="https://buy.stripe.com/..."></div>
+    <div class="settings-row"><label>AI Chatbot Setup — $497 Stripe Link</label><input type="text" id="set-stripe-bot" placeholder="https://buy.stripe.com/..."></div>
+    <div class="settings-row"><label>Review Management — $499 Stripe Link</label><input type="text" id="set-stripe-reviews" placeholder="https://buy.stripe.com/..."></div>
+    <button class="save-btn" onclick="saveSettings()">Save Payment Links</button>
+  </div>
+
+  <div class="settings-card">
+    <div class="sc-title">Your Info</div>
+    <div class="settings-row"><label>Your Name</label><input type="text" id="set-name" value="Tarean Thompson"></div>
+    <div class="settings-row"><label>Business Name</label><input type="text" id="set-biz" value="Geaux Uptown Solutions"></div>
+    <div class="settings-row"><label>Email</label><input type="text" id="set-email" value="geauxuptown@gmail.com"></div>
+    <div class="settings-row"><label>Phone</label><input type="text" id="set-phone" value="(972) 885-7685"></div>
+    <div class="settings-row"><label>Website</label><input type="text" id="set-website" value="geauxuptownsolutions.com"></div>
+    <button class="save-btn" onclick="saveSettings()">Save Info</button>
+  </div>
+</div>
+```
+
+  </div>
+
+</div>
+
+<!-- EMAIL MODAL -->
+
+<div class="modal" id="emailModal">
+  <div class="modal-box">
+    <div class="modal-header">
+      <div class="modal-title">Send Proposal Email</div>
+      <button class="modal-close" onclick="closeModal('emailModal')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-field"><label>To</label><input type="text" id="emailTo" readonly></div>
+      <div class="modal-field"><label>Subject</label><input type="text" id="emailSubject"></div>
+      <div class="modal-field"><label>Message</label><textarea id="emailBody"></textarea></div>
+      <div style="background:#fff8e8;border:1px solid rgba(201,168,76,0.3);padding:12px;font-size:9px;color:#8a6a1a;line-height:1.7;margin-top:8px">
+        <strong>To enable auto-send:</strong> Set up EmailJS at emailjs.com (free) and add your keys in Settings. Until then, use "Copy Email" to paste into Gmail.
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="modal-btn ab-outline" onclick="copyEmailContent()">Copy Email</button>
+      <button class="modal-btn ab-gold" onclick="sendEmail()">Send via EmailJS</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ── PASSWORD ──
+const PASSWORD = 'GeauxUptown2026';
+function checkPassword() {
+  const val = document.getElementById('gateInput').value;
+  if(val === PASSWORD) {
+    document.getElementById('gate').style.display = 'none';
+    document.getElementById('app').classList.add('visible');
+    initApp();
+  } else {
+    document.getElementById('gateError').style.display = 'block';
+    document.getElementById('gateInput').value = '';
+  }
+}
+document.getElementById('gateInput').addEventListener('keydown', e => {
+  if(e.key === 'Enter') checkPassword();
+});
+
+// ── STATE ──
+let clients = JSON.parse(localStorage.getItem('gus_clients') || '[]');
+let activeClient = null;
+let currentStep = 1;
+let selectedSource = '';
+let settings = JSON.parse(localStorage.getItem('gus_settings') || '{}');
+let activityLog = JSON.parse(localStorage.getItem('gus_activity') || '[]');
+
+function saveClients() { localStorage.setItem('gus_clients', JSON.stringify(clients)); }
+function saveActivity() { localStorage.setItem('gus_activity', JSON.stringify(activityLog)); }
+function logActivity(text, color='#C9A84C') {
+  activityLog.unshift({text, color, time: new Date().toLocaleString()});
+  if(activityLog.length > 20) activityLog = activityLog.slice(0,20);
+  saveActivity();
+  renderActivity();
+}
+
+// ── INIT ──
+function initApp() {
+  updateClock();
+  setInterval(updateClock, 60000);
+  updateDashboard();
+  loadSettings();
+  renderActivity();
+}
+
+function updateClock() {
+  const now = new Date();
+  const h = now.getHours();
+  document.getElementById('timeGreeting').textContent = h < 12 ? 'morning' : h < 17 ? 'afternoon' : 'evening';
+  document.getElementById('dashDate').textContent = now.toLocaleDateString('en-US', {weekday:'long', month:'long', day:'numeric', year:'numeric'});
+  document.getElementById('clockDisplay').textContent = now.toLocaleTimeString('en-US', {hour:'numeric', minute:'2-digit'});
+}
+
+// ── TABS ──
+function switchTab(tab, btn) {
+  document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('view-' + tab).classList.add('active');
+  if(btn) btn.classList.add('active');
+  if(tab === 'dashboard') updateDashboard();
+  if(tab === 'clients') { renderClientList(); if(activeClient) renderProposal(activeClient); }
+  if(tab === 'settings') loadSettings();
+}
+
+// ── SOURCE ──
+function selectSource(el, val) {
+  document.querySelectorAll('.source-tag').forEach(t => t.classList.remove('selected'));
+  el.classList.add('selected');
+  selectedSource = val;
+}
+
+// ── STEPS ──
+function updateProgress(step) {
+  document.getElementById('progressBar').style.width = (step/4*100) + '%';
+  document.getElementById('progressLabel').textContent = 'Step ' + step + ' of 4';
+}
+function nextStep(from) {
+  document.getElementById('step'+from).style.display = 'none';
+  currentStep = from + 1;
+  const next = document.getElementById('step'+currentStep);
+  next.style.display = 'block';
+  setTimeout(() => next.classList.add('show'), 10);
+  updateProgress(currentStep);
+  window.scrollTo(0,200);
+}
+function prevStep(from) {
+  document.getElementById('step'+from).style.display = 'none';
+  currentStep = from - 1;
+  const prev = document.getElementById('step'+currentStep);
+  prev.style.display = 'block';
+  setTimeout(() => prev.classList.add('show'), 10);
+  updateProgress(currentStep);
+  window.scrollTo(0,200);
+}
+function getChecked(id) {
+  return Array.from(document.querySelectorAll('#'+id+' input:checked')).map(i => i.value);
+}
+
+// ── SUBMIT ──
+function submitIntake() {
+  const client = {
+    id: Date.now(),
+    firstName: document.getElementById('firstName').value || 'New',
+    lastName: document.getElementById('lastName').value || 'Client',
+    email: document.getElementById('email').value,
+    phone: document.getElementById('phone').value,
+    company: document.getElementById('company').value,
+    role: document.getElementById('role').value,
+    source: selectedSource || 'Other',
+    bizType: document.getElementById('bizType').value,
+    teamSize: document.getElementById('teamSize').value,
+    revenue: document.getElementById('revenue').value,
+    funding: document.getElementById('funding').value,
+    challenges: getChecked('challengeGrid'),
+    notes: document.getElementById('additionalNotes').value,
+    timeline: document.getElementById('timeline').value,
+    budget: document.getElementById('budget').value,
+    successVision: document.getElementById('successVision').value,
+    submittedAt: new Date().toLocaleDateString('en-US', {month:'short', day:'numeric', year:'numeric'}),
+    stage: 'new',
+    value: 2500
+  };
+  clients.unshift(client);
+  activeClient = client;
+  saveClients();
+  logActivity(`New intake: ${client.firstName} ${client.lastName} from ${client.source}`, '#7eb8f7');
+  updateDashboard();
+
+  // Reset form
+  document.getElementById('step4').style.display = 'none';
+  document.getElementById('stepConfirm').style.display = 'block';
+  setTimeout(() => document.getElementById('stepConfirm').classList.add('show'), 10);
+  document.getElementById('progressBar').style.width = '100%';
+  document.getElementById('progressLabel').textContent = 'Complete!';
+
+  // Reset for next use
+  currentStep = 1;
+  selectedSource = '';
+}
+
+// ── SERVICES GENERATOR ──
+function generateServices(client) {
+  const ch = client.challenges || [];
+  const biz = client.bizType || '';
+  const services = [];
+
+  services.push({name:'Operational Audit + Roadmap', desc:'Full 2-week diagnostic. Gap analysis, risk assessment, prioritized 90-day roadmap.', price:'$2,500', amount:2500, period:'flat · 2 weeks', priority:'now', label:'Start Here'});
+
+  if(ch.some(c=>c.includes('COO')||c.includes('Ops behind')||c.includes('scaling')) || biz.includes('Health-Tech')) {
+    services.push({name:'Fractional COO Retainer', desc:'Ongoing ops leadership 15-20 hrs/month. SOPs, team structure, compliance, investor reporting.', price:'$7,500', amount:7500, period:'per month', priority:'now', label:'Highest Impact'});
+  }
+  if(ch.some(c=>c.includes('SOPs')||c.includes('Compliance')||c.includes('audit'))) {
+    services.push({name:'SOP Development Package', desc:'5 complete SOPs with workflows, training materials, and audit-ready formatting.', price:'$3,500', amount:3500, period:'per project', priority:'next', label:'Quick Win'});
+  }
+  if(ch.some(c=>c.includes('reputation')||c.includes('reviews'))) {
+    services.push({name:'Review Management', desc:'Automated review requests, all-platform monitoring, response drafting, monthly reports.', price:'$499', amount:499, period:'per month', priority:'next', label:'Add On'});
+  }
+  if(ch.some(c=>c.includes('24/7')||c.includes('lead'))) {
+    services.push({name:'AI Chatbot Setup', desc:'Done-for-you bot installed on website in 48 hours. Captures leads around the clock.', price:'$497', amount:497, period:'one-time', priority:'later', label:'Quick Win'});
+  }
+  return services;
+}
+
+function generateTimeline(client) {
+  const urgent = client.timeline && client.timeline.includes('Immediately');
+  return [
+    {phase: urgent?'Week 1':'Month 1', action:'Discovery + Audit', detail:'Full ops assessment'},
+    {phase: urgent?'Week 2':'Month 1-2', action:'Roadmap Delivery', detail:'Priority action plan'},
+    {phase: urgent?'Week 3-4':'Month 2-3', action:'Implementation', detail:'SOPs + systems'},
+    {phase: urgent?'Month 2+':'Month 3+', action:'Ongoing COO', detail:'Fractional retainer'},
+  ];
+}
+
+function generateContract(client, services) {
+  const today = new Date().toLocaleDateString('en-US', {month:'long', day:'numeric', year:'numeric'});
+  return `SERVICE AGREEMENT — ${today}
+
+PROVIDER: Tarean Thompson | Geaux Uptown Solutions
+Dallas, TX | geauxuptownsolutions.com | (972) 885-7685
+
+CLIENT: ${client.firstName} ${client.lastName} | ${client.company||''}
+${client.email} | ${client.phone||''}
+
+────────────────────────────────────────
+
+SCOPE OF SERVICES:
+${services.map((s,i)=>`${i+1}. ${s.name} — ${s.price} ${s.period}`).join('\n')}
+
+────────────────────────────────────────
+
+TERMS & CONDITIONS:
+• Engagement begins upon signed agreement and deposit receipt
+• Monthly retainers billed on the 1st of each month, in advance
+• Project work: 50% upfront, 50% upon delivery
+• Either party may terminate with 30 days written notice
+• All deliverables remain client property upon full payment
+• Confidentiality: all information held in strict confidence
+• Governing law: State of Texas
+
+────────────────────────────────────────
+
+PAYMENT METHODS: Stripe · Bank Transfer · Contra
+`;
+}
+
+// ── DASHBOARD ──
+function updateDashboard() {
+  document.getElementById('kpi-total').textContent = clients.length;
+  const active = clients.filter(c=>c.stage==='active').length;
+  const mrr = clients.filter(c=>c.stage==='active').reduce((s,c)=>s+(c.mrr||7500),0);
+  const pipeline = clients.filter(c=>['new','proposal','call'].includes(c.stage)).reduce((s,c)=>s+(c.value||2500),0);
+  const thisWeek = clients.filter(c=>{
+    const d = new Date(c.id);
+    return (Date.now()-d.getTime()) < 7*24*60*60*1000;
+  }).length;
+  document.getElementById('kpi-active').textContent = active;
+  document.getElementById('kpi-mrr').textContent = '$'+mrr.toLocaleString();
+  document.getElementById('kpi-pipeline').textContent = '$'+pipeline.toLocaleString();
+  document.getElementById('kpi-new').textContent = thisWeek;
+  renderPipeline();
+}
+
+function renderPipeline() {
+  const stages = [
+    {key:'new', label:'New Lead', cls:'stage-new sn'},
+    {key:'proposal', label:'Proposal Sent', cls:'stage-proposal sp'},
+    {key:'call', label:'Call Booked', cls:'stage-call sc'},
+    {key:'paid', label:'Deposit Paid', cls:'stage-paid sa'},
+    {key:'active', label:'Active Client', cls:'stage-active sac'},
+    {key:'lost', label:'Lost', cls:'stage-lost sl'},
+  ];
+  document.getElementById('pipelineView').innerHTML = stages.map(s => {
+    const stageClients = clients.filter(c=>c.stage===s.key);
+    return `<div class="stage-col ${s.cls.split(' ')[0]}">
+      <div class="stage-header">${s.label} (${stageClients.length})</div>
+      ${stageClients.map(c=>`<div class="stage-card ${s.cls.split(' ')[1]}" onclick="viewClient(${c.id})">
+        <div class="sc-name">${c.firstName} ${c.lastName}</div>
+        <div class="sc-company">${c.company||'No company'}</div>
+        <div class="sc-value">${c.price||'$2,500'}</div>
+      </div>`).join('')}
+    </div>`;
+  }).join('');
+}
+
+function viewClient(id) {
+  switchTab('clients', document.querySelectorAll('.tab-btn')[2]);
+  const client = clients.find(c=>c.id===id);
+  if(client) { activeClient = client; renderClientList(); renderProposal(client); }
+}
+
+function renderActivity() {
+  const feed = document.getElementById('activityFeed');
+  if(!activityLog.length) {
+    feed.innerHTML = '<div style="font-size:10px;color:rgba(255,255,255,0.2);text-align:center;padding:20px">No activity yet.</div>';
+    return;
+  }
+  feed.innerHTML = activityLog.slice(0,8).map(a=>`
+    <div class="activity-item">
+      <div class="activity-dot" style="background:${a.color}"></div>
+      <div><div class="activity-text">${a.text}</div><div class="activity-time">${a.time}</div></div>
+    </div>`).join('');
+}
+
+// ── CLIENT LIST ──
+function renderClientList() {
+  document.getElementById('sidebarCount').textContent = clients.length;
+  const list = document.getElementById('clientList');
+  if(!clients.length) {
+    list.innerHTML = '<div style="padding:20px;font-size:9px;color:rgba(255,255,255,0.2);text-align:center;line-height:1.8">No clients yet.</div>';
+    return;
+  }
+  list.innerHTML = clients.map(c => {
+    const srcCls = 'tag-'+(c.source||'other').toLowerCase().replace(/\s/g,'');
+    const stageCls = 'sb-'+(c.stage||'new');
+    return `<div class="client-item ${activeClient&&activeClient.id===c.id?'active':''}" onclick="selectClient(${c.id})">
+      <div class="ci-name">${c.firstName} ${c.lastName}</div>
+      <div class="ci-company">${c.company||'No company'}</div>
+      <div class="ci-tags">
+        <span class="ci-tag ${srcCls}">${c.source||'Other'}</span>
+        <span class="ci-tag stage-badge ${stageCls}">${(c.stage||'new').replace('_',' ')}</span>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function selectClient(id) {
+  activeClient = clients.find(c=>c.id===id);
+  renderClientList();
+  renderProposal(activeClient);
+}
+
+// ── RENDER PROPOSAL ──
+function renderProposal(client) {
+  const services = generateServices(client);
+  const timeline = generateTimeline(client);
+  const contract = generateContract(client, services);
+  const onetimeTotal = services.filter(s=>!s.period.includes('month')).reduce((s,sv)=>s+sv.amount,0);
+  const monthlyTotal = services.filter(s=>s.period.includes('month')).reduce((s,sv)=>s+sv.amount,0);
+  const stageOptions = ['new','proposal','call','paid','active','lost'];
+
+  document.getElementById('proposalPanel').innerHTML = `
+    <div class="pp-header">
+      <div class="pp-client">
+        <h2>${client.firstName} ${client.lastName}</h2>
+        <div class="pp-meta">
+          ${client.company||'No company'} · ${client.role||''}<br>
+          ${client.email||'No email'} · ${client.phone||'No phone'}<br>
+          Source: <strong>${client.source||'Unknown'}</strong> · ${client.submittedAt}
+        </div>
+      </div>
+      <div class="pp-actions">
+        <button class="act-btn ab-gold" onclick="openEmailModal(${client.id})">✉ Send Proposal</button>
+        <button class="act-btn ab-purple" onclick="openCalendly()">📅 Send Booking Link</button>
+        <button class="act-btn ab-green" onclick="openStripe()">💳 Send Payment Link</button>
+        <button class="act-btn ab-navy" onclick="window.print()">Print PDF</button>
+        <button class="act-btn ab-outline" onclick="copyProposal(${client.id})">Copy</button>
+        <button class="act-btn ab-red" onclick="deleteClient(${client.id})">Delete</button>
+      </div>
+    </div>
+
+    <div style="margin-bottom:20px">
+      <div style="font-size:7.5px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:8px;background:var(--navy);padding:8px 12px;display:inline-block">Move to Stage:</div>
+      <div class="stage-selector">
+        ${stageOptions.map(s=>`<div class="stage-opt so-${s} ${(client.stage||'new')===s?'active':''}" onclick="updateStage(${client.id},'${s}')">${s.replace('_',' ')}</div>`).join('')}
+      </div>
+    </div>
+
+    <div class="info-grid">
+      <div class="info-card">
+        <div class="ic-title">Business Profile</div>
+        <div class="ic-row"><span class="ic-label">Type</span><span class="ic-value">${client.bizType||'—'}</span></div>
+        <div class="ic-row"><span class="ic-label">Team</span><span class="ic-value">${client.teamSize||'—'}</span></div>
+        <div class="ic-row"><span class="ic-label">Revenue</span><span class="ic-value">${client.revenue||'—'}</span></div>
+        <div class="ic-row"><span class="ic-label">Funding</span><span class="ic-value">${client.funding||'—'}</span></div>
+      </div>
+      <div class="info-card">
+        <div class="ic-title">Engagement Details</div>
+        <div class="ic-row"><span class="ic-label">Timeline</span><span class="ic-value">${client.timeline||'—'}</span></div>
+        <div class="ic-row"><span class="ic-label">Budget</span><span class="ic-value">${client.budget||'—'}</span></div>
+        <div class="ic-row"><span class="ic-label">Success Vision</span><span class="ic-value">${client.successVision||'—'}</span></div>
+        <div class="ic-row"><span class="ic-label">Notes</span><span class="ic-value">${client.notes||'—'}</span></div>
+      </div>
+    </div>
+
+    ${(client.challenges||[]).length ? `<div class="info-card" style="margin-bottom:16px">
+      <div class="ic-title">Challenges Identified</div>
+      ${client.challenges.map(ch=>`<div class="ic-row"><span class="ic-value" style="text-align:left;color:var(--red);font-size:9px">⚠ ${ch}</span></div>`).join('')}
+    </div>` : ''}
+
+    <div class="prop-block">
+      <div class="pb-header"><div class="pb-title">Recommended Services</div><div class="pb-badge">AI Generated</div></div>
+      <div class="rec-list">
+        ${services.map(s=>`<div class="rec-item">
+          <div><div class="ri-name">${s.name}</div><div class="ri-desc">${s.desc}</div><span class="ri-tag tag-${s.priority}">${s.label}</span></div>
+          <div class="ri-price"><div class="ri-amount">${s.price}</div><div class="ri-period">${s.period}</div></div>
+        </div>`).join('')}
+      </div>
+      <div class="inv-box">
+        <div class="inv-title">Investment Summary</div>
+        ${services.map(s=>`<div class="inv-row"><span>${s.name}</span><span>${s.price} ${s.period.includes('month')?'/mo':''}</span></div>`).join('')}
+        <div class="inv-total">
+          <div>
+            <div class="inv-total-label">Total Recommended</div>
+            <div style="font-size:8px;color:rgba(255,255,255,0.2);margin-top:2px">${onetimeTotal>0?'$'+onetimeTotal.toLocaleString()+' upfront':''} ${monthlyTotal>0?'+ $'+monthlyTotal.toLocaleString()+'/mo':''}</div>
+          </div>
+          <div class="inv-total-amount">$${(onetimeTotal+monthlyTotal).toLocaleString()}</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="prop-block">
+      <div class="pb-header"><div class="pb-title">Rollout Plan</div><div class="pb-badge">Customized</div></div>
+      <div class="tl-grid">
+        ${timeline.map(t=>`<div class="tl-item"><div class="tl-phase">${t.phase}</div><div class="tl-action">${t.action}</div><div class="tl-detail">${t.detail}</div></div>`).join('')}
+      </div>
+    </div>
+
+    <div class="prop-block">
+      <div class="pb-header">
+        <div class="pb-title">Service Agreement</div>
+        <button class="act-btn ab-outline" onclick="copyContractText(\`${contract.replace(/`/g,"'").replace(/\n/g,'\\n')}\`)">Copy Contract</button>
+      </div>
+      <div class="contract-text">${contract}</div>
+      <div class="contract-sig">
+        <div><div class="sig-line"></div><div class="sig-label">Tarean Thompson · Geaux Uptown Solutions</div></div>
+        <div><div class="sig-line"></div><div class="sig-label">${client.firstName} ${client.lastName} · ${client.company||'Client'}</div></div>
+      </div>
+    </div>
+  `;
+}
+
+// ── ACTIONS ──
+function updateStage(id, stage) {
+  const c = clients.find(c=>c.id===id);
+  if(c) {
+    c.stage = stage;
+    saveClients();
+    logActivity(`${c.firstName} ${c.lastName} moved to "${stage}"`, '#a78bf7');
+    updateDashboard();
+    renderClientList();
+    renderProposal(c);
+    showToast('Stage updated to ' + stage);
+  }
+}
+
+function deleteClient(id) {
+  if(!confirm('Delete this client?')) return;
+  clients = clients.filter(c=>c.id!==id);
+  activeClient = null;
+  saveClients();
+  updateDashboard();
+  renderClientList();
+  document.getElementById('proposalPanel').innerHTML = '<div style="text-align:center;padding:80px;color:var(--muted)"><div style="font-size:40px;opacity:0.2;margin-bottom:14px">⚜</div><div>Client deleted.</div></div>';
+  showToast('Client deleted');
+}
+
+function openCalendly() {
+  const link = settings.calendly || 'https://calendly.com/your-link';
+  if(!settings.calendly) {
+    showToast('Add your Calendly link in Settings!');
+    navigator.clipboard.writeText('Schedule a call with me: ' + link);
+  } else {
+    navigator.clipboard.writeText('Schedule a discovery call: ' + link);
+    showToast('Calendly link copied! Paste into your email.');
+  }
+}
+
+function openStripe() {
+  const link = settings.stripeAudit || 'https://buy.stripe.com/your-link';
+  if(!settings.stripeAudit) {
+    showToast('Add your Stripe links in Settings!');
+  } else {
+    navigator.clipboard.writeText(link);
+    showToast('Stripe payment link copied!');
+  }
+}
+
+function copyProposal(id) {
+  const client = clients.find(c=>c.id===id);
+  const services = generateServices(client);
+  const calendly = settings.calendly || '[YOUR CALENDLY LINK]';
+  const text = `Hi ${client.firstName},\n\nThank you for your interest in Geaux Uptown Solutions! Based on our conversation, here's a custom proposal for ${client.company||'your business'}:\n\n` +
+    `RECOMMENDED SERVICES:\n${services.map((s,i)=>`${i+1}. ${s.name} — ${s.price} ${s.period}`).join('\n')}\n\n` +
+    `NEXT STEP: Book a 30-minute discovery call to discuss details:\n${calendly}\n\n` +
+    `Looking forward to working together!\n\nTarean Thompson\nGeaux Uptown Solutions\ngeauxuptown@gmail.com | (972) 885-7685\ngeauxuptownsolutions.com`;
+  navigator.clipboard.writeText(text).then(()=>showToast('Proposal copied to clipboard!'));
+}
+
+function copyContractText(text) {
+  navigator.clipboard.writeText(text.replace(/\\n/g,'\n')).then(()=>showToast('Contract copied!'));
+}
+
+// ── EMAIL MODAL ──
+function openEmailModal(id) {
+  const client = clients.find(c=>c.id===id);
+  const services = generateServices(client);
+  const calendly = settings.calendly || '[YOUR CALENDLY LINK]';
+  document.getElementById('emailTo').value = client.email || '';
+  document.getElementById('emailSubject').value = `Custom Proposal — ${client.company||client.firstName+' '+client.lastName} × Geaux Uptown Solutions`;
+  document.getElementById('emailBody').value = `Hi ${client.firstName},\n\nThank you for reaching out to Geaux Uptown Solutions!\n\nBased on what you shared, here's a custom proposal for ${client.company||'your business'}:\n\n${services.map((s,i)=>`${i+1}. ${s.name} — ${s.price} ${s.period}`).join('\n')}\n\nI'd love to connect for a 30-minute discovery call to walk through your situation in detail:\n${calendly}\n\nMost clients receive a full proposal within 48 hours of our call.\n\nLooking forward to speaking with you!\n\nWarm regards,\nTarean Thompson\nFounder & Fractional COO | Geaux Uptown Solutions\n(972) 885-7685 | geauxuptown@gmail.com\ngeauxuptownsolutions.com`;
+  document.getElementById('emailModal').classList.add('show');
+  logActivity(`Proposal email drafted for ${client.firstName} ${client.lastName}`, '#f7c77e');
+}
+
+function closeModal(id) { document.getElementById(id).classList.remove('show'); }
+
+function copyEmailContent() {
+  const subj = document.getElementById('emailSubject').value;
+  const body = document.getElementById('emailBody').value;
+  const to = document.getElementById('emailTo').value;
+  navigator.clipboard.writeText(`TO: ${to}\nSUBJECT: ${subj}\n\n${body}`).then(()=>{
+    showToast('Email copied! Paste into Gmail.');
+    closeModal('emailModal');
+  });
+}
+
+function sendEmail() {
+  if(!settings.emailjsService) {
+    showToast('Set up EmailJS in Settings first!');
+    return;
+  }
+  // EmailJS integration placeholder
+  showToast('EmailJS not configured yet — use Copy Email instead.');
+}
+
+// ── SETTINGS ──
+function saveSettings() {
+  settings = {
+    emailjsService: document.getElementById('set-emailjs-service').value,
+    emailjsTemplate: document.getElementById('set-emailjs-template').value,
+    emailjsKey: document.getElementById('set-emailjs-key').value,
+    calendly: document.getElementById('set-calendly').value,
+    stripeAudit: document.getElementById('set-stripe-audit').value,
+    stripeCOO: document.getElementById('set-stripe-coo').value,
+    stripeBot: document.getElementById('set-stripe-bot').value,
+    stripeReviews: document.getElementById('set-stripe-reviews').value,
+    name: document.getElementById('set-name').value,
+    biz: document.getElementById('set-biz').value,
+    email: document.getElementById('set-email').value,
+    phone: document.getElementById('set-phone').value,
+    website: document.getElementById('set-website').value,
+  };
+  localStorage.setItem('gus_settings', JSON.stringify(settings));
+  updateIntegrationStatus();
+  showToast('Settings saved!');
+  logActivity('Settings updated', '#7ef7b8');
+}
+
+function loadSettings() {
+  if(settings.emailjsService) document.getElementById('set-emailjs-service').value = settings.emailjsService;
+  if(settings.emailjsTemplate) document.getElementById('set-emailjs-template').value = settings.emailjsTemplate;
+  if(settings.emailjsKey) document.getElementById('set-emailjs-key').value = settings.emailjsKey;
+  if(settings.calendly) document.getElementById('set-calendly').value = settings.calendly;
+  if(settings.stripeAudit) document.getElementById('set-stripe-audit').value = settings.stripeAudit;
+  if(settings.stripeCOO) document.getElementById('set-stripe-coo').value = settings.stripeCOO;
+  if(settings.stripeBot) document.getElementById('set-stripe-bot').value = settings.stripeBot;
+  if(settings.stripeReviews) document.getElementById('set-stripe-reviews').value = settings.stripeReviews;
+  updateIntegrationStatus();
+}
+
+function updateIntegrationStatus() {
+  const emailOk = settings.emailjsService && settings.emailjsKey;
+  document.getElementById('email-dot').style.background = emailOk ? '#2d7a4f' : '#c0392b';
+  document.getElementById('email-status').textContent = emailOk ? 'Connected — emailjs.com' : 'Not configured — set up at emailjs.com (free)';
+  const calOk = !!settings.calendly;
+  document.getElementById('calendly-dot').style.background = calOk ? '#2d7a4f' : '#c0392b';
+  document.getElementById('calendly-status').textContent = calOk ? 'Connected: ' + settings.calendly : 'Not configured — set up at calendly.com (free)';
+}
+
+// ── TOAST ──
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'), 3000);
+}
+
+// Init checkboxes
+document.querySelectorAll('.check-item').forEach(item => {
+  item.addEventListener('click', function(){this.classList.toggle('selected')});
+});
+</script>
+
+</body>
+</html>
