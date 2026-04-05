@@ -1,0 +1,1336 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Services — Geaux Uptown Solutions</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Montserrat:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0D1B2A;
+    --navy-mid: #1A2E42;
+    --navy-light: #243B55;
+    --gold: #C9A84C;
+    --gold-light: #F5EDD4;
+    --cream: #FAF7F2;
+    --white: #FFFFFF;
+    --border: rgba(201,168,76,0.25);
+    --muted: rgba(201,168,76,0.6);
+    --text-muted: rgba(255,255,255,0.45);
+  }
+
+- { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+font-family: ‘Montserrat’, sans-serif;
+background: var(–navy);
+color: var(–cream);
+min-height: 100vh;
+}
+
+/* NAV */
+.nav {
+background: var(–navy);
+border-bottom: 1px solid var(–border);
+padding: 20px 48px;
+display: flex;
+justify-content: space-between;
+align-items: center;
+position: sticky;
+top: 0;
+z-index: 100;
+}
+
+.nav-logo {
+display: flex;
+flex-direction: column;
+gap: 0;
+}
+
+.nav-logo-top {
+display: flex;
+align-items: center;
+gap: 10px;
+}
+
+.nav-fleur {
+font-size: 18px;
+color: var(–gold);
+}
+
+.nav-name {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: 24px;
+font-weight: 400;
+color: var(–gold);
+letter-spacing: 3px;
+text-transform: uppercase;
+line-height: 1;
+}
+
+.nav-name strong {
+color: var(–white);
+font-weight: 600;
+}
+
+.nav-sub {
+font-size: 7px;
+font-weight: 300;
+letter-spacing: 5px;
+text-transform: uppercase;
+color: var(–text-muted);
+margin-top: 3px;
+padding-left: 28px;
+}
+
+.nav-links {
+display: flex;
+align-items: center;
+gap: 36px;
+list-style: none;
+}
+
+.nav-links a {
+font-size: 8px;
+font-weight: 500;
+letter-spacing: 3px;
+text-transform: uppercase;
+color: var(–text-muted);
+text-decoration: none;
+transition: color 0.2s;
+}
+
+.nav-links a:hover,
+.nav-links a.active { color: var(–gold); }
+
+.nav-cta {
+background: transparent;
+border: 1px solid var(–gold);
+color: var(–gold);
+font-family: ‘Montserrat’, sans-serif;
+font-size: 8px;
+font-weight: 600;
+letter-spacing: 3px;
+padding: 10px 24px;
+text-decoration: none;
+text-transform: uppercase;
+transition: all 0.2s;
+cursor: pointer;
+}
+
+.nav-cta:hover {
+background: var(–gold);
+color: var(–navy);
+}
+
+/* HERO */
+.hero {
+background: var(–navy);
+padding: 72px 48px 64px;
+position: relative;
+overflow: hidden;
+border-bottom: 1px solid var(–border);
+}
+
+.hero::before {
+content: ‘’;
+position: absolute;
+top: -100px; right: -100px;
+width: 400px; height: 400px;
+border-radius: 50%;
+border: 1px solid rgba(201,168,76,0.06);
+}
+
+.hero::after {
+content: ‘’;
+position: absolute;
+bottom: -60px; left: 40%;
+width: 300px; height: 300px;
+border-radius: 50%;
+border: 1px solid rgba(201,168,76,0.04);
+}
+
+.hero-inner {
+max-width: 860px;
+margin: 0 auto;
+position: relative;
+z-index: 2;
+}
+
+.hero-label {
+font-size: 8px;
+font-weight: 600;
+letter-spacing: 5px;
+text-transform: uppercase;
+color: var(–gold);
+margin-bottom: 20px;
+display: flex;
+align-items: center;
+gap: 14px;
+}
+
+.hero-label::after {
+content: ‘’;
+width: 48px;
+height: 1px;
+background: var(–gold);
+opacity: 0.4;
+}
+
+.hero h1 {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: clamp(42px, 6vw, 68px);
+font-weight: 400;
+color: var(–white);
+letter-spacing: 2px;
+line-height: 1.05;
+margin-bottom: 20px;
+}
+
+.hero h1 em {
+color: var(–gold);
+font-style: italic;
+}
+
+.hero-divider {
+width: 80px;
+height: 1px;
+background: linear-gradient(90deg, var(–gold), transparent);
+margin-bottom: 20px;
+}
+
+.hero-sub {
+font-size: 13px;
+font-weight: 300;
+color: var(–text-muted);
+max-width: 580px;
+line-height: 1.9;
+letter-spacing: 0.3px;
+}
+
+.hero-sub strong {
+color: rgba(255,255,255,0.75);
+font-weight: 500;
+}
+
+/* GOLD STRIP */
+.gold-strip {
+background: var(–gold);
+padding: 10px 48px;
+display: flex;
+justify-content: space-between;
+align-items: center;
+flex-wrap: wrap;
+gap: 8px;
+}
+
+.gold-strip-text {
+font-size: 7.5px;
+font-weight: 700;
+letter-spacing: 4px;
+text-transform: uppercase;
+color: var(–navy);
+}
+
+/* CREDENTIALS BAR */
+.cred-bar {
+background: var(–navy-mid);
+border-bottom: 1px solid var(–border);
+padding: 18px 48px;
+display: flex;
+flex-wrap: wrap;
+gap: 32px;
+justify-content: center;
+}
+
+.cred-item {
+display: flex;
+align-items: center;
+gap: 8px;
+font-size: 7.5px;
+font-weight: 500;
+letter-spacing: 2.5px;
+text-transform: uppercase;
+color: var(–text-muted);
+}
+
+.cred-mark {
+color: var(–gold);
+font-size: 10px;
+}
+
+/* SECTION WRAPPER */
+.section {
+max-width: 900px;
+margin: 0 auto;
+padding: 64px 48px;
+border-bottom: 1px solid var(–border);
+}
+
+.section:last-of-type { border-bottom: none; }
+
+.section-header {
+margin-bottom: 40px;
+}
+
+.section-eyebrow {
+font-size: 7.5px;
+font-weight: 700;
+letter-spacing: 5px;
+text-transform: uppercase;
+color: var(–gold);
+margin-bottom: 10px;
+display: flex;
+align-items: center;
+gap: 12px;
+}
+
+.section-eyebrow::after {
+content: ‘’;
+width: 32px;
+height: 1px;
+background: var(–gold);
+opacity: 0.4;
+}
+
+.section-title {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: clamp(28px, 4vw, 40px);
+font-weight: 400;
+color: var(–white);
+letter-spacing: 1px;
+line-height: 1.1;
+margin-bottom: 12px;
+}
+
+.section-sub {
+font-size: 12.5px;
+font-weight: 300;
+color: var(–text-muted);
+max-width: 580px;
+line-height: 1.9;
+}
+
+/* SERVICE GRID */
+.service-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+gap: 1px;
+background: var(–border);
+border: 1px solid var(–border);
+margin-top: 40px;
+}
+
+.service-card {
+background: var(–navy);
+padding: 32px 28px;
+transition: background 0.2s;
+position: relative;
+}
+
+.service-card:hover { background: var(–navy-mid); }
+
+.service-card.featured {
+background: var(–navy-mid);
+border: 1px solid var(–gold);
+margin: -1px;
+z-index: 1;
+}
+
+.service-featured-label {
+font-size: 7px;
+font-weight: 700;
+letter-spacing: 3px;
+text-transform: uppercase;
+color: var(–navy);
+background: var(–gold);
+padding: 4px 12px;
+display: inline-block;
+margin-bottom: 16px;
+}
+
+.service-tier {
+font-size: 7.5px;
+font-weight: 600;
+letter-spacing: 3px;
+text-transform: uppercase;
+color: var(–gold);
+margin-bottom: 10px;
+opacity: 0.7;
+}
+
+.service-name {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: 22px;
+font-weight: 500;
+color: var(–white);
+letter-spacing: 1px;
+margin-bottom: 10px;
+line-height: 1.2;
+}
+
+.service-desc {
+font-size: 11.5px;
+font-weight: 300;
+color: var(–text-muted);
+line-height: 1.8;
+margin-bottom: 20px;
+}
+
+.service-price {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: 26px;
+font-weight: 500;
+color: var(–gold);
+letter-spacing: 1px;
+margin-bottom: 4px;
+line-height: 1;
+}
+
+.service-price-note {
+font-size: 8px;
+font-weight: 400;
+letter-spacing: 2px;
+text-transform: uppercase;
+color: var(–text-muted);
+margin-bottom: 20px;
+}
+
+.service-divider {
+height: 1px;
+background: var(–border);
+margin-bottom: 16px;
+}
+
+.service-includes {
+list-style: none;
+margin-bottom: 24px;
+}
+
+.service-includes li {
+font-size: 11px;
+font-weight: 300;
+color: var(–text-muted);
+padding: 5px 0;
+border-bottom: 1px solid rgba(201,168,76,0.08);
+display: flex;
+gap: 10px;
+align-items: flex-start;
+line-height: 1.5;
+}
+
+.service-includes li:last-child { border-bottom: none; }
+
+.service-includes li::before {
+content: ‘—’;
+color: var(–gold);
+opacity: 0.5;
+flex-shrink: 0;
+font-size: 10px;
+margin-top: 1px;
+}
+
+.service-link {
+display: inline-block;
+font-size: 8px;
+font-weight: 600;
+letter-spacing: 3px;
+text-transform: uppercase;
+color: var(–gold);
+text-decoration: none;
+padding-bottom: 2px;
+border-bottom: 1px solid rgba(201,168,76,0.3);
+transition: border-color 0.2s;
+}
+
+.service-link:hover { border-color: var(–gold); }
+
+/* TIER LABEL BAND */
+.tier-band {
+background: var(–navy-mid);
+border-top: 1px solid var(–border);
+border-bottom: 1px solid var(–border);
+padding: 14px 48px;
+display: flex;
+align-items: center;
+gap: 16px;
+max-width: 100%;
+}
+
+.tier-band-num {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: 13px;
+font-weight: 500;
+color: var(–gold);
+letter-spacing: 2px;
+}
+
+.tier-band-divider {
+width: 1px;
+height: 20px;
+background: var(–border);
+}
+
+.tier-band-name {
+font-size: 8px;
+font-weight: 700;
+letter-spacing: 4px;
+text-transform: uppercase;
+color: var(–white);
+}
+
+.tier-band-range {
+margin-left: auto;
+font-family: ‘Cormorant Garamond’, serif;
+font-size: 16px;
+color: var(–gold);
+letter-spacing: 1px;
+}
+
+/* WHO WE SERVE */
+.serve-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+gap: 1px;
+background: var(–border);
+border: 1px solid var(–border);
+margin-top: 40px;
+}
+
+.serve-card {
+background: var(–navy);
+padding: 28px 24px;
+transition: background 0.2s;
+}
+
+.serve-card:hover { background: var(–navy-mid); }
+
+.serve-mark {
+font-size: 8px;
+font-weight: 700;
+letter-spacing: 3px;
+text-transform: uppercase;
+color: var(–gold);
+margin-bottom: 10px;
+opacity: 0.6;
+}
+
+.serve-name {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: 20px;
+font-weight: 500;
+color: var(–white);
+letter-spacing: 1px;
+margin-bottom: 10px;
+}
+
+.serve-desc {
+font-size: 11px;
+font-weight: 300;
+color: var(–text-muted);
+line-height: 1.8;
+}
+
+/* CREDENTIALS SECTION */
+.cred-full-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+gap: 1px;
+background: var(–border);
+border: 1px solid var(–border);
+margin-top: 40px;
+}
+
+.cred-full-card {
+background: var(–navy);
+padding: 28px 24px;
+transition: background 0.2s;
+}
+
+.cred-full-card:hover { background: var(–navy-mid); }
+
+.cred-full-mark {
+width: 1px;
+height: 32px;
+background: var(–gold);
+margin-bottom: 16px;
+opacity: 0.6;
+}
+
+.cred-full-title {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: 18px;
+font-weight: 500;
+color: var(–white);
+letter-spacing: 0.5px;
+margin-bottom: 8px;
+line-height: 1.2;
+}
+
+.cred-full-detail {
+font-size: 11px;
+font-weight: 300;
+color: var(–text-muted);
+line-height: 1.8;
+}
+
+/* PROCESS */
+.process-grid {
+display: grid;
+grid-template-columns: repeat(4, 1fr);
+gap: 1px;
+background: var(–border);
+border: 1px solid var(–border);
+margin-top: 40px;
+}
+
+@media (max-width: 700px) {
+.process-grid { grid-template-columns: 1fr 1fr; }
+}
+
+.process-step {
+background: var(–navy);
+padding: 28px 24px;
+}
+
+.process-num {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: 42px;
+font-weight: 300;
+color: var(–gold);
+opacity: 0.2;
+line-height: 1;
+margin-bottom: 12px;
+}
+
+.process-title {
+font-size: 9px;
+font-weight: 700;
+letter-spacing: 3px;
+text-transform: uppercase;
+color: var(–white);
+margin-bottom: 10px;
+}
+
+.process-desc {
+font-size: 11px;
+font-weight: 300;
+color: var(–text-muted);
+line-height: 1.8;
+}
+
+/* CTA SECTION */
+.cta-section {
+background: var(–navy-mid);
+border-top: 1px solid var(–border);
+border-bottom: 1px solid var(–border);
+padding: 80px 48px;
+text-align: center;
+position: relative;
+overflow: hidden;
+}
+
+.cta-section::before {
+content: ‘⚜’;
+position: absolute;
+font-size: 280px;
+color: var(–gold);
+opacity: 0.02;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+pointer-events: none;
+line-height: 1;
+}
+
+.cta-label {
+font-size: 8px;
+font-weight: 600;
+letter-spacing: 5px;
+text-transform: uppercase;
+color: var(–gold);
+margin-bottom: 20px;
+}
+
+.cta-title {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: clamp(32px, 5vw, 52px);
+font-weight: 400;
+color: var(–white);
+letter-spacing: 1px;
+line-height: 1.1;
+margin-bottom: 16px;
+}
+
+.cta-title em { color: var(–gold); font-style: italic; }
+
+.cta-divider {
+width: 48px;
+height: 1px;
+background: var(–gold);
+margin: 0 auto 20px;
+opacity: 0.4;
+}
+
+.cta-sub {
+font-size: 12px;
+font-weight: 300;
+color: var(–text-muted);
+max-width: 420px;
+margin: 0 auto 36px;
+line-height: 1.9;
+letter-spacing: 0.3px;
+}
+
+.cta-btn {
+display: inline-block;
+background: var(–gold);
+color: var(–navy);
+font-family: ‘Montserrat’, sans-serif;
+font-size: 8px;
+font-weight: 700;
+letter-spacing: 4px;
+padding: 16px 48px;
+text-decoration: none;
+text-transform: uppercase;
+transition: background 0.2s;
+}
+
+.cta-btn:hover { background: var(–gold-light); }
+
+.cta-note {
+font-size: 7.5px;
+font-weight: 300;
+letter-spacing: 3px;
+text-transform: uppercase;
+color: var(–text-muted);
+margin-top: 16px;
+}
+
+/* FOOTER */
+.footer {
+background: var(–navy);
+border-top: 1px solid var(–border);
+padding: 28px 48px;
+display: flex;
+justify-content: space-between;
+align-items: center;
+flex-wrap: wrap;
+gap: 12px;
+}
+
+.footer-left {
+font-size: 7.5px;
+font-weight: 300;
+letter-spacing: 3px;
+text-transform: uppercase;
+color: var(–text-muted);
+}
+
+.footer-right {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: 13px;
+font-style: italic;
+color: var(–gold);
+letter-spacing: 0.5px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 640px) {
+.nav { padding: 16px 20px; }
+.nav-links { display: none; }
+.hero { padding: 48px 20px 40px; }
+.cred-bar { padding: 16px 20px; gap: 16px; }
+.section { padding: 48px 20px; }
+.tier-band { padding: 12px 20px; }
+.cta-section { padding: 60px 20px; }
+.footer { padding: 20px; }
+.service-grid { grid-template-columns: 1fr; }
+.process-grid { grid-template-columns: 1fr 1fr; }
+}
+</style>
+
+</head>
+<body>
+
+<!-- NAV -->
+
+<nav class="nav">
+  <div class="nav-logo">
+    <div class="nav-logo-top">
+      <span class="nav-fleur">⚜</span>
+      <div class="nav-name">Geaux <strong>Uptown</strong></div>
+    </div>
+    <div class="nav-sub">Solutions &nbsp;·&nbsp; Dallas, TX &nbsp;·&nbsp; AI Automation</div>
+  </div>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="services.html" class="active">Services</a></li>
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+  <a href="#book" class="nav-cta">Book a Call</a>
+</nav>
+
+<!-- HERO -->
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-label">Services</div>
+    <h1>Healthcare Operations<br>That <em>Actually Works.</em></h1>
+    <div class="hero-divider"></div>
+    <p class="hero-sub">
+      We bring <strong>18 years of real healthcare operations experience</strong> — Fortune 500 systems, Level 1 trauma hospitals, national pharmacy networks — directly to your organization. Combined with AI automation, we don't just consult. <strong>We build systems that run without you.</strong>
+    </p>
+  </div>
+</div>
+
+<!-- GOLD STRIP -->
+
+<div class="gold-strip">
+  <div class="gold-strip-text">The Standard of Excellence, Automated.</div>
+  <div class="gold-strip-text">Geaux Uptown Solutions &nbsp;·&nbsp; Dallas, TX &nbsp;·&nbsp; Remote Nationwide</div>
+</div>
+
+<!-- CREDENTIALS BAR -->
+
+<div class="cred-bar">
+  <div class="cred-item"><span class="cred-mark">⚜</span> Lean Six Sigma Yellow Belt</div>
+  <div class="cred-item"><span class="cred-mark">⚜</span> Certified Scrum Master</div>
+  <div class="cred-item"><span class="cred-mark">⚜</span> PTCB Licensed · TX Board Licensed</div>
+  <div class="cred-item"><span class="cred-mark">⚜</span> McKesson Fortune 4</div>
+  <div class="cred-item"><span class="cred-mark">⚜</span> Parkland Health System</div>
+  <div class="cred-item"><span class="cred-mark">⚜</span> Root Cause Analysis</div>
+</div>
+
+<!-- TIER 01: DIGITAL PRODUCTS -->
+
+<div class="tier-band">
+  <span class="tier-band-num">Tier 01</span>
+  <div class="tier-band-divider"></div>
+  <span class="tier-band-name">Digital Products</span>
+  <span class="tier-band-range">$37 — $297</span>
+</div>
+
+<div class="section">
+  <div class="section-header">
+    <div class="section-eyebrow">Start Here</div>
+    <div class="section-title">Expertise, Packaged<br>and Ready to Deploy.</div>
+    <p class="section-sub">18 years of healthcare operations knowledge — distilled into digital products you can implement today. No engagement required.</p>
+  </div>
+
+  <div class="service-grid">
+    <div class="service-card">
+      <div class="service-tier">Product 01</div>
+      <div class="service-name">AI Prompt Pack for Healthcare</div>
+      <div class="service-desc">40 copy-paste ChatGPT prompts built specifically for healthcare professionals. SOPs, patient communications, reports, and proposals — completed in minutes.</div>
+      <div class="service-price">$37</div>
+      <div class="service-price-note">One time · Instant delivery via Gumroad</div>
+      <div class="service-divider"></div>
+      <ul class="service-includes">
+        <li>40 healthcare-specific prompts</li>
+        <li>SOP writing and documentation prompts</li>
+        <li>Patient communication templates</li>
+        <li>Proposal and executive report prompts</li>
+      </ul>
+      <a href="#" class="service-link">Get the Prompt Pack</a>
+    </div>
+
+```
+<div class="service-card featured">
+  <div class="service-featured-label">Most Popular</div>
+  <div class="service-tier">Product 02</div>
+  <div class="service-name">Healthcare AI Mini Course</div>
+  <div class="service-desc">The exact AI tools and workflows a healthcare operations professional needs to save 10 or more hours per week. Built from 18 years of real experience — not theory.</div>
+  <div class="service-price">$97</div>
+  <div class="service-price-note">One time · Lifetime access</div>
+  <div class="service-divider"></div>
+  <ul class="service-includes">
+    <li>6 core AI tools for healthcare operations</li>
+    <li>Real workflow demonstrations</li>
+    <li>Full prompt library included</li>
+    <li>Implementation checklist</li>
+    <li>Lifetime access and updates</li>
+  </ul>
+  <a href="#" class="service-link">Get the Course</a>
+</div>
+
+<div class="service-card">
+  <div class="service-tier">Product 03</div>
+  <div class="service-name">SOP Template Library</div>
+  <div class="service-desc">Ready-to-deploy SOP templates built for healthcare environments. Written by a professional who has authored SOPs for Fortune 500 healthcare organizations.</div>
+  <div class="service-price">$297</div>
+  <div class="service-price-note">One time · Instant delivery</div>
+  <div class="service-divider"></div>
+  <ul class="service-includes">
+    <li>15 healthcare SOP templates</li>
+    <li>Pharmacy workflow SOPs</li>
+    <li>Patient intake and onboarding SOPs</li>
+    <li>Staff training templates</li>
+    <li>Editable Word and PDF formats</li>
+  </ul>
+  <a href="#" class="service-link">Get the Templates</a>
+</div>
+```
+
+  </div>
+</div>
+
+<!-- TIER 02: DOCUMENTATION -->
+
+<div class="tier-band">
+  <span class="tier-band-num">Tier 02</span>
+  <div class="tier-band-divider"></div>
+  <span class="tier-band-name">Operations Documentation</span>
+  <span class="tier-band-range">$500 — $8,000</span>
+</div>
+
+<div class="section">
+  <div class="section-header">
+    <div class="section-eyebrow">Documentation Services</div>
+    <div class="section-title">SOPs and BRDs Written<br>by Someone Who Has Built Them.</div>
+    <p class="section-sub">Not templates. Not guesswork. Every document is authored by a professional who has written SOPs, BRDs, and job aids inside Fortune 500 healthcare organizations for 18 years.</p>
+  </div>
+
+  <div class="service-grid">
+    <div class="service-card">
+      <div class="service-tier">Service 01</div>
+      <div class="service-name">Single SOP Development</div>
+      <div class="service-desc">One comprehensive Standard Operating Procedure — researched, written, and formatted to your organization's standards. Delivered in 3 to 5 business days.</div>
+      <div class="service-price">$500 — $1,500</div>
+      <div class="service-price-note">Per SOP · 3 to 5 day delivery</div>
+      <div class="service-divider"></div>
+      <ul class="service-includes">
+        <li>Discovery call included</li>
+        <li>One round of revisions</li>
+        <li>Word and PDF delivery</li>
+        <li>Implementation notes included</li>
+      </ul>
+      <a href="#book" class="service-link">Book a Call</a>
+    </div>
+
+```
+<div class="service-card featured">
+  <div class="service-featured-label">Best Value</div>
+  <div class="service-tier">Service 02</div>
+  <div class="service-name">SOP Library Build</div>
+  <div class="service-desc">10 custom SOPs built for your organization. Covers your most critical workflows, patient-facing processes, and staff operations. Delivered in 2 to 3 weeks.</div>
+  <div class="service-price">$5,000 — $8,000</div>
+  <div class="service-price-note">Per project · 2 to 3 week delivery</div>
+  <div class="service-divider"></div>
+  <ul class="service-includes">
+    <li>Process discovery session</li>
+    <li>10 custom SOPs</li>
+    <li>Job aids included</li>
+    <li>Two rounds of revisions</li>
+    <li>Full implementation guide</li>
+  </ul>
+  <a href="#book" class="service-link">Book a Call</a>
+</div>
+
+<div class="service-card">
+  <div class="service-tier">Service 03</div>
+  <div class="service-name">BRD and Program Launch Support</div>
+  <div class="service-desc">Business Requirements Documents and full program launch documentation. Built using Agile and Scrum methodology. Stakeholder-ready from day one.</div>
+  <div class="service-price">$2,500 — $5,000</div>
+  <div class="service-price-note">Per project · 1 to 2 week delivery</div>
+  <div class="service-divider"></div>
+  <ul class="service-includes">
+    <li>Stakeholder requirements gathering</li>
+    <li>Full BRD documentation</li>
+    <li>Scrum Master facilitation</li>
+    <li>Launch checklist and job aids</li>
+    <li>Executive-ready presentation</li>
+  </ul>
+  <a href="#book" class="service-link">Book a Call</a>
+</div>
+```
+
+  </div>
+</div>
+
+<!-- TIER 03: ANALYSIS -->
+
+<div class="tier-band">
+  <span class="tier-band-num">Tier 03</span>
+  <div class="tier-band-divider"></div>
+  <span class="tier-band-name">Root Cause Analysis and Process Improvement</span>
+  <span class="tier-band-range">$2,500 — $15,000</span>
+</div>
+
+<div class="section">
+  <div class="section-header">
+    <div class="section-eyebrow">Analysis and Strategy</div>
+    <div class="section-title">We Don't Just Find<br><em>What</em> Is Broken.</div>
+    <p class="section-sub">Using Six Sigma methodology, we identify exactly why your systems fail — and build the processes that prevent them from failing again. This is 18 years of healthcare operations applied to your organization.</p>
+  </div>
+
+  <div class="service-grid">
+    <div class="service-card">
+      <div class="service-tier">Service 01</div>
+      <div class="service-name">Root Cause Analysis Audit</div>
+      <div class="service-desc">Identify the exact root causes of your most costly operational failures. Delivered with a prioritized remediation plan your team can execute immediately.</div>
+      <div class="service-price">$2,500</div>
+      <div class="service-price-note">Per audit · 1 week delivery</div>
+      <div class="service-divider"></div>
+      <ul class="service-includes">
+        <li>Process mapping session</li>
+        <li>Root cause identification</li>
+        <li>Six Sigma methodology applied</li>
+        <li>Prioritized fix roadmap</li>
+        <li>Executive summary included</li>
+      </ul>
+      <a href="#book" class="service-link">Book a Call</a>
+    </div>
+
+```
+<div class="service-card featured">
+  <div class="service-featured-label">Most Requested</div>
+  <div class="service-tier">Service 02</div>
+  <div class="service-name">Full Operational Gap Analysis</div>
+  <div class="service-desc">A comprehensive audit of your entire operation. Current state, desired state, and exactly how to get there — with AI automation built into every recommendation.</div>
+  <div class="service-price">$5,000 — $7,500</div>
+  <div class="service-price-note">Per engagement · 2 week delivery</div>
+  <div class="service-divider"></div>
+  <ul class="service-includes">
+    <li>Full operations discovery</li>
+    <li>Current state process mapping</li>
+    <li>Data-driven gap analysis</li>
+    <li>AI automation recommendations</li>
+    <li>90-day implementation roadmap</li>
+    <li>C-suite ready presentation</li>
+  </ul>
+  <a href="#book" class="service-link">Book a Call</a>
+</div>
+
+<div class="service-card">
+  <div class="service-tier">Service 03</div>
+  <div class="service-name">Process Improvement Sprint</div>
+  <div class="service-desc">A focused 4-week engagement targeting one specific operational problem. We identify it, fix it, document it, and train your team on the new process.</div>
+  <div class="service-price">$8,000 — $15,000</div>
+  <div class="service-price-note">Per sprint · 4 week engagement</div>
+  <div class="service-divider"></div>
+  <ul class="service-includes">
+    <li>Scrum-based sprint structure</li>
+    <li>Weekly stakeholder check-ins</li>
+    <li>Process redesign and documentation</li>
+    <li>Staff training materials</li>
+    <li>30-day post-launch support</li>
+  </ul>
+  <a href="#book" class="service-link">Book a Call</a>
+</div>
+```
+
+  </div>
+</div>
+
+<!-- TIER 04: AI AUTOMATION -->
+
+<div class="tier-band">
+  <span class="tier-band-num">Tier 04</span>
+  <div class="tier-band-divider"></div>
+  <span class="tier-band-name">AI Automation Implementation</span>
+  <span class="tier-band-range">$5,000 — $10,000 + Retainer</span>
+</div>
+
+<div class="section">
+  <div class="section-header">
+    <div class="section-eyebrow">AI Implementation</div>
+    <div class="section-title">Your Practice Responds<br>in 60 Seconds. <em>Around the Clock.</em></div>
+    <p class="section-sub">Custom AI systems that automate your patient intake, lead capture, scheduling, and team communications. No additional staff. No missed inquiries. Built and delivered in 5 to 7 days.</p>
+  </div>
+
+  <div class="service-grid">
+    <div class="service-card">
+      <div class="service-tier">Service 01</div>
+      <div class="service-name">AI Intake Agent</div>
+      <div class="service-desc">A custom AI agent that greets every patient inquiry, collects intake information, and books appointments automatically — 24 hours a day, 7 days a week.</div>
+      <div class="service-price">$5,000 + $2,000/mo</div>
+      <div class="service-price-note">Setup fee + monthly retainer</div>
+      <div class="service-divider"></div>
+      <ul class="service-includes">
+        <li>Custom AI agent build</li>
+        <li>24 / 7 patient response</li>
+        <li>Appointment booking automation</li>
+        <li>Lead qualification flow</li>
+        <li>Delivered in 5 to 7 days</li>
+        <li>Monthly monitoring and optimization</li>
+      </ul>
+      <a href="#book" class="service-link">Book a Call</a>
+    </div>
+
+```
+<div class="service-card featured">
+  <div class="service-featured-label">Most Popular</div>
+  <div class="service-tier">Service 02</div>
+  <div class="service-name">Full AI Operations Stack</div>
+  <div class="service-desc">The complete AI automation build. Intake agent, lead nurture sequences, scheduling automation, CRM integration, and team notification flows — your entire front-end operations automated.</div>
+  <div class="service-price">$7,500 + $2,500/mo</div>
+  <div class="service-price-note">Setup fee + monthly retainer</div>
+  <div class="service-divider"></div>
+  <ul class="service-includes">
+    <li>Everything in AI Intake Agent</li>
+    <li>HubSpot CRM integration</li>
+    <li>Zapier workflow automation</li>
+    <li>Lead nurture email sequences</li>
+    <li>Team Slack notifications</li>
+    <li>Monthly performance reporting</li>
+  </ul>
+  <a href="#book" class="service-link">Book a Call</a>
+</div>
+
+<div class="service-card">
+  <div class="service-tier">Service 03</div>
+  <div class="service-name">Enterprise AI Build</div>
+  <div class="service-desc">For multi-location practices and larger healthcare organizations. A fully custom AI automation system built to your specific workflows, compliance requirements, and operational standards.</div>
+  <div class="service-price">$10,000 + $3,000/mo</div>
+  <div class="service-price-note">Per location · Custom scope</div>
+  <div class="service-divider"></div>
+  <ul class="service-includes">
+    <li>Custom discovery and scoping</li>
+    <li>Multi-location deployment</li>
+    <li>HIPAA-aware build</li>
+    <li>Staff training and documentation</li>
+    <li>Dedicated account management</li>
+    <li>Priority support and SLA</li>
+  </ul>
+  <a href="#book" class="service-link">Book a Call</a>
+</div>
+```
+
+  </div>
+</div>
+
+<!-- TIER 05: FRACTIONAL COO -->
+
+<div class="tier-band">
+  <span class="tier-band-num">Tier 05</span>
+  <div class="tier-band-divider"></div>
+  <span class="tier-band-name">Fractional COO</span>
+  <span class="tier-band-range">$5,000 — $12,000 / Month</span>
+</div>
+
+<div class="section">
+  <div class="section-header">
+    <div class="section-eyebrow">Fractional Leadership</div>
+    <div class="section-title">Senior Operations Leadership.<br><em>Without the Full-Time Cost.</em></div>
+    <p class="section-sub">We embed into your organization — running meetings, managing teams, building systems, and reporting to your C-suite. Everything a full-time COO delivers at a fraction of the investment.</p>
+  </div>
+
+  <div class="service-grid">
+    <div class="service-card">
+      <div class="service-tier">Engagement 01</div>
+      <div class="service-name">Fractional COO — Essentials</div>
+      <div class="service-desc">10 hours per week of dedicated operations leadership. Scrum facilitation, process improvement, team management, and stakeholder reporting.</div>
+      <div class="service-price">$5,000/mo</div>
+      <div class="service-price-note">3 month minimum · 10 hours per week</div>
+      <div class="service-divider"></div>
+      <ul class="service-includes">
+        <li>Weekly leadership meetings</li>
+        <li>Process improvement oversight</li>
+        <li>Scrum facilitation</li>
+        <li>Monthly executive reporting</li>
+        <li>Slack and email access</li>
+      </ul>
+      <a href="#book" class="service-link">Book a Call</a>
+    </div>
+
+```
+<div class="service-card featured">
+  <div class="service-featured-label">Best Value</div>
+  <div class="service-tier">Engagement 02</div>
+  <div class="service-name">Fractional COO — Full</div>
+  <div class="service-desc">20 hours per week of senior operations leadership. The full COO experience — strategy, systems, team development, AI implementation, and C-suite partnership.</div>
+  <div class="service-price">$8,000/mo</div>
+  <div class="service-price-note">3 month minimum · 20 hours per week</div>
+  <div class="service-divider"></div>
+  <ul class="service-includes">
+    <li>Everything in Essentials</li>
+    <li>AI automation strategy</li>
+    <li>Team development and training</li>
+    <li>SOP and documentation oversight</li>
+    <li>KPI dashboard development</li>
+    <li>Direct C-suite partnership</li>
+  </ul>
+  <a href="#book" class="service-link">Book a Call</a>
+</div>
+
+<div class="service-card">
+  <div class="service-tier">Engagement 03</div>
+  <div class="service-name">Fractional COO — Executive</div>
+  <div class="service-desc">Full fractional COO engagement for organizations in rapid growth, transition, or crisis. Maximum impact, maximum availability, board-ready reporting.</div>
+  <div class="service-price">$12,000/mo</div>
+  <div class="service-price-note">6 month minimum · Full availability</div>
+  <div class="service-divider"></div>
+  <ul class="service-includes">
+    <li>Everything in Full engagement</li>
+    <li>Board-level reporting</li>
+    <li>Organizational redesign</li>
+    <li>Full AI stack implementation</li>
+    <li>Hiring and team build support</li>
+    <li>Priority response guarantee</li>
+  </ul>
+  <a href="#book" class="service-link">Book a Call</a>
+</div>
+```
+
+  </div>
+</div>
+
+<!-- WHO WE SERVE -->
+
+<div class="tier-band">
+  <span class="tier-band-num">Who We Serve</span>
+  <div class="tier-band-divider"></div>
+  <span class="tier-band-name">Built for Healthcare</span>
+</div>
+
+<div class="section">
+  <div class="section-header">
+    <div class="section-eyebrow">Our Clients</div>
+    <div class="section-title">Not Generalists.<br><em>Healthcare Specialists.</em></div>
+    <p class="section-sub">We have lived inside these systems. We know exactly where they break — and exactly how to fix them.</p>
+  </div>
+
+  <div class="serve-grid">
+    <div class="serve-card">
+      <div class="serve-mark">Medical Practices</div>
+      <div class="serve-name">Clinics and Group Practices</div>
+      <div class="serve-desc">Primary care, specialty clinics, and group practices looking to modernize operations, reduce manual work, and improve patient experience through AI automation.</div>
+    </div>
+    <div class="serve-card">
+      <div class="serve-mark">Aesthetics and Wellness</div>
+      <div class="serve-name">MedSpas and Aesthetic Clinics</div>
+      <div class="serve-desc">Luxury wellness and aesthetic clinics that need AI intake, lead capture, and booking automation to stop losing patients after hours.</div>
+    </div>
+    <div class="serve-card">
+      <div class="serve-mark">Pharmacy</div>
+      <div class="serve-name">Pharmacy Operations</div>
+      <div class="serve-desc">Independent pharmacies, specialty pharmacies, and pharmacy benefit managers needing workflow SOPs, compliance documentation, and process improvement from a licensed pharmacy professional.</div>
+    </div>
+    <div class="serve-card">
+      <div class="serve-mark">Health Technology</div>
+      <div class="serve-name">Health-Tech Startups</div>
+      <div class="serve-desc">Series A through C health-tech companies building their operations infrastructure for the first time and needing experienced leadership without the full-time cost.</div>
+    </div>
+    <div class="serve-card">
+      <div class="serve-mark">Home Health</div>
+      <div class="serve-name">Home Health and Hospice</div>
+      <div class="serve-desc">Home health and hospice organizations needing SOPs, job aids, staff training documentation, and AI-powered intake systems.</div>
+    </div>
+    <div class="serve-card">
+      <div class="serve-mark">Adjacent Industries</div>
+      <div class="serve-name">Healthcare-Adjacent Organizations</div>
+      <div class="serve-desc">Law firms, insurance companies, and professional services firms serving the healthcare industry that need operations expertise and AI automation.</div>
+    </div>
+  </div>
+</div>
+
+<!-- CREDENTIALS -->
+
+<div class="tier-band">
+  <span class="tier-band-num">Credentials</span>
+  <div class="tier-band-divider"></div>
+  <span class="tier-band-name">The Experience Behind Every Engagement</span>
+</div>
+
+<div class="section">
+  <div class="section-header">
+    <div class="section-eyebrow">Qualifications</div>
+    <div class="section-title">Every Recommendation Comes<br>From Someone Who Has <em>Done This Work.</em></div>
+  </div>
+
+  <div class="cred-full-grid">
+    <div class="cred-full-card">
+      <div class="cred-full-mark"></div>
+      <div class="cred-full-title">Lean Six Sigma Yellow Belt</div>
+      <div class="cred-full-detail">Root cause analysis, process improvement, and data-driven operational optimization. Every engagement is measured and every recommendation is substantiated with methodology — not opinion.</div>
+    </div>
+    <div class="cred-full-card">
+      <div class="cred-full-mark"></div>
+      <div class="cred-full-title">Certified Scrum Master (SMC)</div>
+      <div class="cred-full-detail">Agile project management and sprint facilitation for AI implementations, program launches, and cross-functional operational projects. Stakeholder-ready reporting at every stage.</div>
+    </div>
+    <div class="cred-full-card">
+      <div class="cred-full-mark"></div>
+      <div class="cred-full-title">PTCB Licensed Pharmacy Technician</div>
+      <div class="cred-full-detail">Active since 2008. Texas Board licensed. Clinical operations, medication workflows, and pharmacy compliance expertise built over 16 years of licensed practice.</div>
+    </div>
+    <div class="cred-full-card">
+      <div class="cred-full-mark"></div>
+      <div class="cred-full-title">McKesson Corporation — Fortune 4</div>
+      <div class="cred-full-detail">Call center operations management at Fortune 4 scale. ScriptMed Cloud, Five9, SLA management, and enterprise-level healthcare workflow design. The largest healthcare organization in the country.</div>
+    </div>
+    <div class="cred-full-card">
+      <div class="cred-full-mark"></div>
+      <div class="cred-full-title">Parkland Health and Hospital System</div>
+      <div class="cred-full-detail">Level 1 trauma hospital experience. Clinical operations, patient workflow management, and large-scale healthcare system operations in one of the most demanding hospital environments in the country.</div>
+    </div>
+    <div class="cred-full-card">
+      <div class="cred-full-mark"></div>
+      <div class="cred-full-title">SOPs · BRDs · Job Aids · Program Launches</div>
+      <div class="cred-full-detail">18 years of documentation development for healthcare organizations. Every SOP, BRD, and job aid delivered is authored from lived operational experience — not templates, not guesswork.</div>
+    </div>
+  </div>
+</div>
+
+<!-- PROCESS -->
+
+<div class="tier-band">
+  <span class="tier-band-num">Process</span>
+  <div class="tier-band-divider"></div>
+  <span class="tier-band-name">Simple. Fast. Built to Last.</span>
+</div>
+
+<div class="section">
+  <div class="section-header">
+    <div class="section-eyebrow">How It Works</div>
+    <div class="section-title">No Bloated Onboarding.<br><em>No Lengthy Sales Process.</em></div>
+    <p class="section-sub">We move with the same efficiency we build into your organization.</p>
+  </div>
+
+  <div class="process-grid">
+    <div class="process-step">
+      <div class="process-num">01</div>
+      <div class="process-title">Discovery Call</div>
+      <div class="process-desc">30 minutes. We learn exactly where your operation is breaking and what it is costing you. No intake forms. No sales process. Just a direct conversation.</div>
+    </div>
+    <div class="process-step">
+      <div class="process-num">02</div>
+      <div class="process-title">Proposal and Scope</div>
+      <div class="process-desc">A clear, specific proposal delivered within 24 hours. Exact deliverables, timeline, and investment. No surprises and no scope creep.</div>
+    </div>
+    <div class="process-step">
+      <div class="process-num">03</div>
+      <div class="process-title">We Build</div>
+      <div class="process-desc">Fast, focused delivery. Most projects completed in 5 to 14 days. AI builds delivered in 5 to 7. SOPs in 3 to 5. We respect your time.</div>
+    </div>
+    <div class="process-step">
+      <div class="process-num">04</div>
+      <div class="process-title">You Run It</div>
+      <div class="process-desc">Everything we build comes with documentation, training, and implementation support. Your team can run it independently from day one.</div>
+    </div>
+  </div>
+</div>
+
+<!-- CTA -->
+
+<div class="cta-section" id="book">
+  <div class="cta-label">Ready to Begin</div>
+  <div class="cta-title">Ready to Stop Leaving<br><em>Money on the Table?</em></div>
+  <div class="cta-divider"></div>
+  <p class="cta-sub">Every day your operations run manually is a day you are paying for inefficiency. Let us fix it — starting this week.</p>
+  <a href="https://calendly.com" class="cta-btn">Book Your Discovery Call</a>
+  <p class="cta-note">30 minutes &nbsp;·&nbsp; No obligation &nbsp;·&nbsp; Direct conversation &nbsp;·&nbsp; No intake forms</p>
+</div>
+
+<!-- FOOTER -->
+
+<div class="footer">
+  <div class="footer-left">⚜ Geaux Uptown Solutions &nbsp;·&nbsp; Dallas, TX &nbsp;·&nbsp; Remote Nationwide &nbsp;·&nbsp; geauxuptownsolutions.com</div>
+  <div class="footer-right">The Standard of Excellence, Automated.</div>
+</div>
+
+</body>
+</html>
