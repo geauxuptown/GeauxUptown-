@@ -4,289 +4,301 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Geaux Uptown Solutions — Healthcare Operations + AI Automation</title>
+<title>Geaux Uptown Solutions — Premium Healthcare AI Consulting</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
-  --navy:#0A1628;
-  --navy-2:#0F1E36;
-  --navy-3:#162944;
-  --gold:#B8922A;
-  --gold-light:#D4A843;
-  --gold-pale:#F5EDD6;
-  --cream:#FAF8F4;
-  --white:#FFFFFF;
-  --text:#1C1C1C;
-  --text-2:#4A4A4A;
-  --text-3:#888888;
-  --border:rgba(184,146,42,0.15);
-  --border-2:rgba(184,146,42,0.25);
+  --navy:#0A1628;--navy-2:#0F1E36;--navy-3:#162944;
+  --gold:#B8922A;--gold-light:#D4A843;--gold-pale:#F5EDD6;
+  --cream:#FAF8F4;--white:#FFFFFF;
+  --text:#1C1C1C;--text-2:#4A4A4A;--text-3:#888888;
+  --border:rgba(184,146,42,0.15);--border-2:rgba(184,146,42,0.25);
 }
-html{scroll-behavior:smooth;font-size:16px;background:var(--navy);color:var(--white);overflow-x:hidden;}
-body{font-family:'DM Sans',sans-serif;background:var(--navy);color:var(--white);overflow-x:hidden;max-width:100vw;}
+html{scroll-behavior:smooth;background:var(--navy);color:var(--white);overflow-x:hidden;}
+body{font-family:'DM Sans',sans-serif;background:var(--navy);color:var(--white);overflow-x:hidden;}
 
-/* CUSTOM CURSOR */
-.cursor{position:fixed;width:10px;height:10px;background:var(–gold);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:transform 0.1s;mix-blend-mode:multiply}
+/* CURSOR */
+.cursor{position:fixed;width:10px;height:10px;background:var(–gold);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:transform 0.1s;}
 .cursor-ring{position:fixed;width:36px;height:36px;border:1px solid var(–gold);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:all 0.15s ease;opacity:0.5}
 .cursor-ring.hovering{width:56px;height:56px;opacity:0.8;border-width:1.5px}
-
-/* NOISE OVERLAY */
-body::before{content:’’;position:fixed;inset:0;background-image:url(“data:image/svg+xml,%3Csvg viewBox=‘0 0 256 256’ xmlns=‘http://www.w3.org/2000/svg’%3E%3Cfilter id=‘noise’%3E%3CfeTurbulence type=‘fractalNoise’ baseFrequency=‘0.9’ numOctaves=‘4’ stitchTiles=‘stitch’/%3E%3C/filter%3E%3Crect width=‘100%25’ height=‘100%25’ filter=‘url(%23noise)’ opacity=‘0.03’/%3E%3C/svg%3E”);pointer-events:none;z-index:1;opacity:0.4;}
 
 /* NAV */
 nav{position:fixed;top:0;left:0;right:0;z-index:500;padding:0 56px;height:68px;display:flex;align-items:center;justify-content:space-between;transition:all 0.4s ease;}
 nav.scrolled{background:rgba(10,22,40,0.97);backdrop-filter:blur(20px);border-bottom:1px solid var(–border);}
-.nav-brand{display:flex;align-items:center;gap:12px;text-decoration:none}
-.nav-logo-mark{width:36px;height:36px;border:1.5px solid var(–gold);display:flex;align-items:center;justify-content:center;font-size:22px;color:var(–gold);line-height:1;}
-.nav-name-wrap{}
-.nav-name{font-family:‘DM Sans’,sans-serif;font-size:12px;font-weight:600;color:#fff;letter-spacing:2.5px;text-transform:uppercase;line-height:1}
-.nav-sub{font-size:8px;color:rgba(255,255,255,0.3);letter-spacing:2px;text-transform:uppercase;margin-top:2px}
-.nav-center{display:flex;align-items:center;gap:36px}
-.nav-center a{font-size:10px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.45);text-decoration:none;transition:color 0.2s;position:relative}
-.nav-center a::after{content:’’;position:absolute;bottom:-4px;left:0;width:0;height:1px;background:var(–gold);transition:width 0.3s}
-.nav-center a:hover{color:var(–gold)}
-.nav-center a:hover::after{width:100%}
-.nav-btn{font-size:9px;font-weight:600;letter-spacing:2px;text-transform:uppercase;padding:11px 26px;background:transparent;border:1px solid rgba(184,146,42,0.5);color:var(–gold);text-decoration:none;transition:all 0.3s;position:relative;overflow:hidden;}
-.nav-btn::before{content:’’;position:absolute;inset:0;background:var(–gold);transform:translateX(-101%);transition:transform 0.3s ease}
-.nav-btn:hover{color:var(–navy)}
-.nav-btn:hover::before{transform:translateX(0)}
-.nav-btn span{position:relative;z-index:1}
+.nav-brand{display:flex;align-items:center;text-decoration:none;}
+.nav-logo-img{height:44px;width:auto;object-fit:contain;}
+.nav-center{display:flex;align-items:center;gap:28px;}
+.nav-center a{font-size:9px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.45);text-decoration:none;transition:color 0.2s;position:relative;}
+.nav-center a:hover{color:var(–gold);}
+.nav-btn{font-size:9px;font-weight:600;letter-spacing:2px;text-transform:uppercase;padding:11px 24px;background:transparent;border:1px solid rgba(184,146,42,0.5);color:var(–gold);text-decoration:none;transition:all 0.3s;position:relative;overflow:hidden;white-space:nowrap;}
+.nav-btn:hover{background:var(–gold);color:var(–navy);}
 
 /* HERO */
 .hero{min-height:100vh;background:var(–navy);display:grid;grid-template-columns:1fr 1fr;position:relative;overflow:hidden;}
-.hero-left{padding:140px 56px 80px;display:flex;flex-direction:column;justify-content:center;position:relative;z-index:2;}
+.hero-left{padding:140px 56px 180px;display:flex;flex-direction:column;justify-content:center;position:relative;z-index:2;}
 .hero-right{position:relative;overflow:hidden;}
-.hero-right-img{position:absolute;inset:0;background:linear-gradient(135deg,var(–navy-3) 0%,var(–navy-2) 100%);display:flex;align-items:center;justify-content:center;}
+.hero-right-img{position:absolute;inset:0;background:linear-gradient(135deg,var(–navy-3),var(–navy-2));display:flex;align-items:center;justify-content:center;}
 .hero-right-img::after{content:’’;position:absolute;inset:0;background:linear-gradient(90deg,var(–navy) 0%,rgba(10,22,40,0.2) 50%,transparent 100%);z-index:1;}
 .hero-photo{width:100%;height:100%;object-fit:cover;object-position:center top;opacity:0.55;filter:grayscale(15%);}
-.hero-geometric{position:absolute;z-index:2;right:48px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:2px;align-items:flex-end;}
-.geo-line{height:1px;background:var(–gold);opacity:0.2;transition:width 0.5s}
-.hero-bg-text{position:absolute;bottom:-20px;right:-10px;z-index:0;font-family:‘Playfair Display’,serif;font-size:220px;font-weight:700;color:rgba(184,146,42,0.04);line-height:1;letter-spacing:-5px;user-select:none;}
+.hero-bg-text{position:absolute;bottom:-20px;right:-10px;z-index:0;font-family:‘Playfair Display’,serif;font-size:220px;font-weight:700;color:rgba(184,146,42,0.04);line-height:1;user-select:none;}
 .hero-tag{display:inline-flex;align-items:center;gap:10px;margin-bottom:28px;}
-.hero-tag-line{width:32px;height:1px;background:var(–gold)}
-.hero-tag-text{font-size:9px;letter-spacing:3.5px;text-transform:uppercase;color:var(–gold);font-weight:500}
-.hero-title{font-family:‘Playfair Display’,serif;font-size:clamp(44px,4.5vw,68px);color:#fff;line-height:1.07;font-weight:400;margin-bottom:24px;letter-spacing:-0.5px;}
-.hero-title .italic{font-style:italic;color:var(–gold-light)}
-.hero-title .bold{font-weight:700}
-.hero-desc{font-size:13px;color:rgba(255,255,255,0.45);line-height:1.85;max-width:460px;margin-bottom:44px;font-weight:300;}
-.hero-actions{display:flex;gap:14px;align-items:center}
-.btn-gold{font-size:9px;font-weight:600;letter-spacing:2px;text-transform:uppercase;padding:16px 36px;background:var(–gold);color:var(–navy);text-decoration:none;transition:all 0.3s;display:inline-block;position:relative;overflow:hidden;}
-.btn-gold::after{content:’’;position:absolute;inset:0;background:#fff;opacity:0;transition:opacity 0.2s}
-.btn-gold:hover::after{opacity:0.1}
+.hero-tag-line{width:32px;height:1px;background:var(–gold);}
+.hero-tag-text{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(–gold);font-weight:500;}
+.hero-title{font-family:‘Playfair Display’,serif;font-size:clamp(40px,4.5vw,68px);color:#fff;line-height:1.07;font-weight:400;margin-bottom:24px;}
+.hero-title .italic{font-style:italic;color:var(–gold-light);}
+.hero-title .bold{font-weight:700;}
+.hero-desc{font-size:13px;color:rgba(255,255,255,0.45);line-height:1.85;max-width:460px;margin-bottom:40px;font-weight:300;}
+.hero-actions{display:flex;gap:14px;align-items:center;flex-wrap:wrap;}
+.btn-gold{font-size:9px;font-weight:600;letter-spacing:2px;text-transform:uppercase;padding:16px 36px;background:var(–gold);color:var(–navy);text-decoration:none;transition:all 0.3s;display:inline-block;}
+.btn-gold:hover{background:var(–gold-light);}
 .btn-ghost{font-size:9px;font-weight:500;letter-spacing:2px;text-transform:uppercase;padding:15px 28px;background:transparent;border:1px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.6);text-decoration:none;transition:all 0.3s;display:inline-block;}
-.btn-ghost:hover{border-color:rgba(255,255,255,0.5);color:#fff}
+.btn-ghost:hover{border-color:rgba(255,255,255,0.5);color:#fff;}
 .hero-stats{position:absolute;bottom:0;left:0;right:50%;z-index:10;display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid rgba(184,146,42,0.15);}
-.hstat{padding:20px 20px;border-right:1px solid rgba(184,146,42,0.1);position:relative;overflow:hidden;}
-.hstat::before{content:’’;position:absolute;bottom:0;left:0;right:0;height:2px;background:var(–gold);transform:scaleX(0);transition:transform 0.4s;transform-origin:left}
-.hstat:hover::before{transform:scaleX(1)}
+.hstat{padding:20px;border-right:1px solid rgba(184,146,42,0.1);}
 .hstat-num{font-family:‘Playfair Display’,serif;font-size:26px;color:var(–gold);font-weight:500;line-height:1;}
-.hstat-label{font-size:8px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.25);margin-top:5px}
+.hstat-label{font-size:8px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.25);margin-top:5px;}
 
 /* TICKER */
 .ticker{background:var(–gold);padding:12px 0;overflow:hidden;white-space:nowrap;position:relative;z-index:2;}
-.ticker-track{display:inline-flex;animation:ticker 30s linear infinite}
-.ticker-item{font-size:8.5px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(–navy);padding:0 36px}
-.ticker-sep{color:rgba(10,22,40,0.3);font-size:8px}
+.ticker-track{display:inline-flex;animation:ticker 30s linear infinite;}
+.ticker-item{font-size:8.5px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(–navy);padding:0 36px;}
+.ticker-sep{color:rgba(10,22,40,0.3);}
 @keyframes ticker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 
-/* SECTION COMMONS */
-.section{padding:100px 56px;position:relative}
-.section-inner{max-width:1100px;margin:0 auto}
+/* SECTIONS */
+.section-inner{max-width:1100px;margin:0 auto;}
 .s-eyebrow{display:flex;align-items:center;gap:14px;margin-bottom:14px;}
-.s-eyebrow-rule{width:28px;height:1px;background:var(–gold)}
-.s-eyebrow-text{font-size:8.5px;letter-spacing:3.5px;text-transform:uppercase;color:var(–gold);font-weight:600}
-.s-title{font-family:‘Playfair Display’,serif;font-size:clamp(34px,3.5vw,52px);color:var(–navy);line-height:1.1;font-weight:400;margin-bottom:14px;}
-.s-title.light{color:#fff}
-.s-title .it{font-style:italic;color:var(–gold)}
-.s-body{font-size:12px;color:var(–text-2);line-height:1.85;max-width:540px;font-weight:300}
-.s-body.light{color:rgba(255,255,255,0.4)}
+.s-eyebrow-rule{width:28px;height:1px;background:var(–gold);}
+.s-eyebrow-text{font-size:8.5px;letter-spacing:3.5px;text-transform:uppercase;color:var(–gold);font-weight:600;}
+.s-title{font-family:‘Playfair Display’,serif;font-size:clamp(32px,3.5vw,52px);color:var(–navy);line-height:1.1;font-weight:400;margin-bottom:14px;}
+.s-title.light{color:#fff;}
+.s-title .it{font-style:italic;color:var(–gold);}
+.s-body{font-size:12px;color:var(–text-2);line-height:1.85;max-width:540px;font-weight:300;}
+.s-body.light{color:rgba(255,255,255,0.4);}
 
-/* SERVICES */
-.services-sec{background:var(–navy-2);padding:100px 56px}
-.services-header{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:end;margin-bottom:60px}
-.services-grid{display:grid;grid-template-columns:repeat(2,1fr);border:1px solid rgba(184,146,42,0.12);border-right:none;border-bottom:none;}
-.svc{border-right:1px solid rgba(184,146,42,0.12);border-bottom:1px solid rgba(184,146,42,0.12);padding:44px 40px;position:relative;overflow:hidden;transition:background 0.4s;cursor:default;}
-.svc::before{content:’’;position:absolute;top:0;left:0;right:0;height:1px;background:var(–gold);transform:scaleX(0);transform-origin:left;transition:transform 0.5s ease;}
-.svc:hover{background:rgba(184,146,42,0.04)}
-.svc:hover::before{transform:scaleX(1)}
-.svc-num{font-family:‘DM Mono’,monospace;font-size:11px;color:rgba(184,146,42,0.35);letter-spacing:2px;margin-bottom:28px;display:block;}
-.svc-icon-area{width:44px;height:44px;border:1px solid rgba(184,146,42,0.2);display:flex;align-items:center;justify-content:center;margin-bottom:20px;transition:border-color 0.3s;}
-.svc:hover .svc-icon-area{border-color:rgba(184,146,42,0.5)}
-.svc-icon-svg{width:20px;height:20px;stroke:var(–gold);fill:none;stroke-width:1.5;opacity:0.7}
-.svc-title{font-family:‘Playfair Display’,serif;font-size:22px;color:#fff;font-weight:400;margin-bottom:10px;line-height:1.25;}
-.svc-desc{font-size:11px;color:rgba(255,255,255,0.35);line-height:1.8;margin-bottom:22px;font-weight:300}
-.svc-list{display:flex;flex-direction:column;gap:7px;margin-bottom:24px}
-.svc-item{font-size:10px;color:rgba(255,255,255,0.45);padding-left:16px;position:relative;line-height:1.5;}
-.svc-item::before{content:’—’;position:absolute;left:0;color:var(–gold);font-size:9px;opacity:0.6}
-.svc-rate{font-family:‘Playfair Display’,serif;font-size:18px;color:var(–gold-light);display:flex;align-items:baseline;gap:6px;}
-.svc-rate-note{font-family:‘DM Sans’,sans-serif;font-size:9px;color:rgba(255,255,255,0.2);font-weight:300}
-
-/* FULL SERVICES PAGE SECTION */
-.full-services-sec{background:var(–navy);padding:100px 56px;}
-.tier-band{background:var(–navy-2);border-top:1px solid var(–border);border-bottom:1px solid var(–border);padding:14px 0;display:flex;align-items:center;gap:16px;margin-bottom:0;}
-.tier-band-num{font-family:‘Playfair Display’,serif;font-size:13px;font-weight:500;color:var(–gold);letter-spacing:2px;}
-.tier-band-divider{width:1px;height:20px;background:var(–border);}
-.tier-band-name{font-size:8px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(–white);}
-.tier-band-range{margin-left:auto;font-family:‘Playfair Display’,serif;font-size:16px;color:var(–gold);letter-spacing:1px;}
-.tier-service-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(–border);border:1px solid var(–border);margin-bottom:64px;}
-.tier-svc{background:var(–navy);padding:36px 32px;transition:background 0.3s;position:relative;}
-.tier-svc:hover{background:var(–navy-2)}
-.tier-svc.featured{background:var(–navy-2);border:2px solid rgba(184,146,42,0.4);margin:-1px;z-index:1;}
-.tier-svc-badge{font-size:7px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(–navy);background:var(–gold);padding:4px 12px;display:inline-block;margin-bottom:16px;}
-.tier-svc-num{font-family:‘DM Mono’,monospace;font-size:8px;color:rgba(184,146,42,0.4);letter-spacing:2px;margin-bottom:10px;text-transform:uppercase;}
-.tier-svc-name{font-family:‘Playfair Display’,serif;font-size:20px;color:var(–white);font-weight:400;margin-bottom:10px;line-height:1.25;}
-.tier-svc-desc{font-size:11px;color:rgba(255,255,255,0.35);line-height:1.8;margin-bottom:20px;font-weight:300;}
-.tier-svc-price{font-family:‘Playfair Display’,serif;font-size:24px;color:var(–gold-light);line-height:1;margin-bottom:4px;}
-.tier-svc-price-note{font-size:8px;font-weight:400;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.2);margin-bottom:20px;}
-.tier-svc-divider{height:1px;background:var(–border);margin-bottom:16px;}
-.tier-svc-list{list-style:none;margin-bottom:24px;}
-.tier-svc-list li{font-size:10px;color:rgba(255,255,255,0.4);padding:6px 0 6px 16px;border-bottom:1px solid rgba(255,255,255,0.04);position:relative;line-height:1.5;}
-.tier-svc-list li:last-child{border-bottom:none;}
-.tier-svc-list li::before{content:’—’;position:absolute;left:0;color:var(–gold);font-size:9px;opacity:0.5;}
-.tier-svc-link{font-size:8px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(–gold);text-decoration:none;padding-bottom:2px;border-bottom:1px solid rgba(184,146,42,0.3);transition:border-color 0.2s;}
-.tier-svc-link:hover{border-color:var(–gold);}
-
-/* CREDENTIALS BAR */
-.cred-strip{background:var(–navy-2);border-top:1px solid var(–border);border-bottom:1px solid var(–border);padding:16px 56px;display:flex;flex-wrap:wrap;gap:28px;justify-content:center;}
-.cred-strip-item{display:flex;align-items:center;gap:8px;font-size:7.5px;font-weight:500;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,0.3);}
+/* CRED STRIP */
+.cred-strip{background:var(–navy-2);border-top:1px solid var(–border);border-bottom:1px solid var(–border);padding:18px 56px;display:flex;flex-wrap:wrap;gap:28px;justify-content:center;}
+.cred-strip-item{display:flex;align-items:center;gap:8px;font-size:7.5px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.3);}
 .cred-strip-dot{width:4px;height:4px;background:var(–gold);flex-shrink:0;}
 
-/* ABOUT / CREDENTIALS */
-.about-sec{background:var(–cream);padding:100px 56px}
-.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
-.employer-list{display:flex;flex-direction:column;gap:0;margin-top:40px;border:1px solid rgba(10,22,40,0.1)}
-.employer{display:grid;grid-template-columns:80px 1fr;gap:0;border-bottom:1px solid rgba(10,22,40,0.08);transition:background 0.3s;}
-.employer:last-child{border-bottom:none}
-.employer:hover{background:rgba(184,146,42,0.03)}
-.emp-year{padding:20px 16px;border-right:1px solid rgba(10,22,40,0.08);font-family:‘DM Mono’,monospace;font-size:9px;color:var(–gold);display:flex;align-items:center;justify-content:center;text-align:center;line-height:1.4;letter-spacing:1px;}
-.emp-info{padding:18px 20px}
-.emp-company{font-size:12px;font-weight:600;color:var(–navy);margin-bottom:3px;letter-spacing:0.3px}
-.emp-role{font-size:10px;color:var(–text-3);line-height:1.5}
-.cert-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:40px}
-.cert{padding:18px;border:1px solid rgba(10,22,40,0.1);transition:all 0.3s;position:relative;overflow:hidden;}
-.cert::after{content:’’;position:absolute;bottom:0;left:0;right:0;height:2px;background:var(–gold);transform:scaleX(0);transform-origin:left;transition:transform 0.4s}
-.cert:hover{border-color:rgba(184,146,42,0.3);background:rgba(184,146,42,0.02)}
-.cert:hover::after{transform:scaleX(1)}
-.cert-abbr{font-family:‘DM Mono’,monospace;font-size:10px;font-weight:500;color:var(–gold);letter-spacing:1.5px;margin-bottom:5px}
-.cert-name{font-size:11px;font-weight:600;color:var(–navy);margin-bottom:3px}
-.cert-detail{font-size:9px;color:var(–text-3)}
+/* SERVICES OVERVIEW */
+.services-sec{background:var(–navy-2);padding:100px 56px;}
+.services-header{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:end;margin-bottom:60px;}
+.services-grid{display:grid;grid-template-columns:repeat(2,1fr);border:1px solid rgba(184,146,42,0.12);border-right:none;border-bottom:none;}
+.svc{border-right:1px solid rgba(184,146,42,0.12);border-bottom:1px solid rgba(184,146,42,0.12);padding:44px 40px;position:relative;overflow:hidden;transition:background 0.4s;}
+.svc:hover{background:rgba(184,146,42,0.04);}
+.svc-num{font-family:‘DM Mono’,monospace;font-size:11px;color:rgba(184,146,42,0.35);letter-spacing:2px;margin-bottom:24px;display:block;}
+.svc-icon-area{width:44px;height:44px;border:1px solid rgba(184,146,42,0.2);display:flex;align-items:center;justify-content:center;margin-bottom:20px;}
+.svc-icon-svg{width:20px;height:20px;stroke:var(–gold);fill:none;stroke-width:1.5;opacity:0.7;}
+.svc-title{font-family:‘Playfair Display’,serif;font-size:22px;color:#fff;font-weight:400;margin-bottom:10px;line-height:1.25;}
+.svc-desc{font-size:11px;color:rgba(255,255,255,0.35);line-height:1.8;margin-bottom:22px;font-weight:300;}
+.svc-list{display:flex;flex-direction:column;gap:7px;margin-bottom:24px;}
+.svc-item{font-size:10px;color:rgba(255,255,255,0.45);padding-left:16px;position:relative;line-height:1.5;}
+.svc-item::before{content:’—’;position:absolute;left:0;color:var(–gold);font-size:9px;opacity:0.6;}
+.svc-rate{font-family:‘Playfair Display’,serif;font-size:18px;color:var(–gold-light);display:flex;align-items:baseline;gap:6px;}
+.svc-rate-note{font-family:‘DM Sans’,sans-serif;font-size:9px;color:rgba(255,255,255,0.2);font-weight:300;}
+
+/* WHY SECTION */
+.why-sec{background:var(–navy-2);padding:100px 56px;}
+.why-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
+.why-card-row{display:grid;grid-template-columns:48px 1fr;border-bottom:1px solid var(–border);}
+.why-card-row:last-child{border-bottom:none;}
+.why-card-accent{background:var(–navy);display:flex;align-items:center;justify-content:center;padding:20px 0;}
+.why-card-body{padding:20px 24px;background:var(–navy);}
+.why-card-title{font-size:11px;font-weight:600;color:var(–white);margin-bottom:4px;}
+.why-card-text{font-size:10px;color:rgba(255,255,255,0.4);line-height:1.6;}
+
+/* SOCIAL PROOF */
+.proof-sec{background:var(–navy-2);border-top:1px solid var(–border);border-bottom:1px solid var(–border);padding:40px 56px;}
+.proof-grid{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(–border);border-right:none;}
+.proof-stat{padding:28px 24px;border-right:1px solid var(–border);text-align:center;}
+.proof-num{font-family:‘Playfair Display’,serif;font-size:42px;color:var(–gold);font-weight:400;line-height:1;margin-bottom:8px;}
+.proof-label{font-size:8px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.3);}
+.proof-sub{font-size:10px;color:rgba(255,255,255,0.2);margin-top:6px;line-height:1.5;}
+
+/* TESTIMONIALS */
+.testi-sec{background:var(–navy);padding:100px 56px;}
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(–border);border:1px solid var(–border);}
+.testi-card{background:var(–navy-2);padding:40px 36px;position:relative;}
+.testi-card.featured{background:var(–navy-3);border-left:2px solid rgba(184,146,42,0.3);border-right:2px solid rgba(184,146,42,0.3);}
+.testi-line{width:32px;height:1px;background:var(–gold);opacity:0.5;margin-bottom:28px;}
+.testi-quote{font-family:‘Playfair Display’,serif;font-size:15px;color:var(–white);line-height:1.75;font-weight:400;font-style:italic;margin-bottom:28px;}
+.testi-divider{height:1px;background:var(–border);margin-bottom:20px;}
+.testi-name{font-size:11px;font-weight:600;color:var(–white);margin-bottom:4px;}
+.testi-role{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(–gold);opacity:0.7;}
+.testi-mark{position:absolute;bottom:32px;right:32px;font-family:‘Playfair Display’,serif;font-size:80px;color:var(–gold);opacity:0.06;line-height:1;}
+.scarcity-bar{background:var(–navy-2);border:1px solid var(–border);border-top:none;padding:24px 36px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;}
+.scarcity-label{font-size:8px;letter-spacing:3px;text-transform:uppercase;color:var(–gold);margin-bottom:6px;font-weight:600;}
+.scarcity-text{font-family:‘Playfair Display’,serif;font-size:20px;color:var(–white);}
+.scarcity-text em{color:var(–gold);font-style:italic;}
+
+/* PRODUCT SECTION */
+.product-sec{background:var(–navy-2);padding:100px 56px;}
+.product-split{display:grid;grid-template-columns:1fr 1fr;border:1px solid rgba(184,146,42,0.3);margin-bottom:20px;overflow:hidden;}
+.product-left{background:var(–navy-3);padding:48px 44px;display:flex;flex-direction:column;justify-content:space-between;}
+.product-right{background:var(–navy);padding:48px 44px;border-left:1px solid rgba(184,146,42,0.2);}
+.product-eyebrow{font-size:7.5px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(–gold);margin-bottom:16px;}
+.product-title{font-family:‘Playfair Display’,serif;font-size:30px;color:var(–white);font-weight:400;line-height:1.2;margin-bottom:16px;}
+.product-title em{font-style:italic;color:var(–gold-light);}
+.product-desc{font-size:12px;color:rgba(255,255,255,0.45);line-height:1.85;margin-bottom:24px;font-weight:300;}
+.product-feature{display:flex;gap:12px;align-items:flex-start;font-size:10px;color:rgba(255,255,255,0.5);margin-bottom:8px;line-height:1.5;}
+.product-dot{width:4px;height:4px;background:var(–gold);flex-shrink:0;margin-top:5px;}
+.product-video{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border:1px solid rgba(184,146,42,0.2);margin-bottom:24px;}
+.product-video iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none;}
+.product-price{font-family:‘Playfair Display’,serif;font-size:32px;color:var(–gold-light);line-height:1;margin-bottom:4px;}
+.product-price-note{font-size:8px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.2);margin-bottom:28px;}
+.product-cta{display:inline-block;background:var(–gold);color:var(–navy);font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:16px 36px;text-decoration:none;transition:all 0.3s;}
+.product-cta:hover{background:var(–gold-light);}
+.upsell-label{font-size:8px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.2);margin-bottom:20px;}
+.upsell-title{font-family:‘Playfair Display’,serif;font-size:22px;color:var(–white);font-weight:400;margin-bottom:12px;line-height:1.3;}
+.upsell-title em{font-style:italic;color:var(–gold);}
+.upsell-desc{font-size:11px;color:rgba(255,255,255,0.35);line-height:1.8;margin-bottom:24px;font-weight:300;}
+.upsell-price-box{background:rgba(184,146,42,0.05);border:1px solid rgba(184,146,42,0.15);padding:20px;margin-bottom:24px;}
+.upsell-price{font-family:‘Playfair Display’,serif;font-size:28px;color:var(–gold-light);margin-bottom:4px;}
+.upsell-price-note{font-size:8px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.2);}
+.upsell-cta{display:block;text-align:center;border:1px solid rgba(184,146,42,0.4);color:var(–gold);font-size:8.5px;font-weight:600;letter-spacing:2px;text-transform:uppercase;padding:13px;text-decoration:none;transition:all 0.3s;}
+.upsell-cta:hover{background:var(–gold);color:var(–navy);}
 
 /* PROCESS */
-.process-sec{background:var(–navy);padding:100px 56px}
-.process-track{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:60px;border:1px solid rgba(184,146,42,0.12);border-right:none;}
-.proc-step{border-right:1px solid rgba(184,146,42,0.12);padding:44px 32px;position:relative;transition:background 0.3s;}
-.proc-step:hover{background:rgba(184,146,42,0.04)}
-.proc-step-num{font-family:‘DM Mono’,monospace;font-size:10px;color:rgba(184,146,42,0.3);letter-spacing:2px;margin-bottom:28px;display:flex;align-items:center;gap:10px;}
-.proc-step-num::after{content:’’;flex:1;height:1px;background:rgba(184,146,42,0.15)}
-.proc-title{font-family:‘Playfair Display’,serif;font-size:20px;color:#fff;font-weight:400;margin-bottom:12px;line-height:1.2}
-.proc-desc{font-size:10.5px;color:rgba(255,255,255,0.35);line-height:1.8;font-weight:300}
+.process-sec{background:var(–navy);padding:100px 56px;}
+.process-track{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid rgba(184,146,42,0.12);border-right:none;margin-top:60px;}
+.proc-step{border-right:1px solid rgba(184,146,42,0.12);padding:44px 32px;transition:background 0.3s;}
+.proc-step:hover{background:rgba(184,146,42,0.04);}
+.proc-num{font-family:‘DM Mono’,monospace;font-size:10px;color:rgba(184,146,42,0.3);letter-spacing:2px;margin-bottom:28px;display:flex;align-items:center;gap:10px;}
+.proc-num::after{content:’’;flex:1;height:1px;background:rgba(184,146,42,0.15);}
+.proc-title{font-family:‘Playfair Display’,serif;font-size:20px;color:#fff;font-weight:400;margin-bottom:12px;line-height:1.2;}
+.proc-desc{font-size:10.5px;color:rgba(255,255,255,0.35);line-height:1.8;font-weight:300;}
+
+/* ABOUT */
+.about-sec{background:var(–cream);padding:100px 56px;}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;}
+.employer-list{display:flex;flex-direction:column;border:1px solid rgba(10,22,40,0.1);margin-top:40px;}
+.employer{display:grid;grid-template-columns:80px 1fr;border-bottom:1px solid rgba(10,22,40,0.08);transition:background 0.3s;}
+.employer:last-child{border-bottom:none;}
+.employer:hover{background:rgba(184,146,42,0.03);}
+.emp-year{padding:20px 16px;border-right:1px solid rgba(10,22,40,0.08);font-family:‘DM Mono’,monospace;font-size:9px;color:var(–gold);display:flex;align-items:center;justify-content:center;text-align:center;line-height:1.4;letter-spacing:1px;}
+.emp-info{padding:18px 20px;}
+.emp-company{font-size:12px;font-weight:600;color:var(–navy);margin-bottom:3px;}
+.emp-role{font-size:10px;color:var(–text-3);line-height:1.5;}
+.cert-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:40px;}
+.cert{padding:18px;border:1px solid rgba(10,22,40,0.1);transition:all 0.3s;position:relative;overflow:hidden;}
+.cert::after{content:’’;position:absolute;bottom:0;left:0;right:0;height:2px;background:var(–gold);transform:scaleX(0);transform-origin:left;transition:transform 0.4s;}
+.cert:hover{border-color:rgba(184,146,42,0.3);}
+.cert:hover::after{transform:scaleX(1);}
+.cert-abbr{font-family:‘DM Mono’,monospace;font-size:10px;font-weight:500;color:var(–gold);letter-spacing:1.5px;margin-bottom:5px;}
+.cert-name{font-size:11px;font-weight:600;color:var(–navy);margin-bottom:3px;}
+.cert-detail{font-size:9px;color:var(–text-3);}
 
 /* WHO WE SERVE */
-.serve-sec{background:var(–white);padding:100px 56px}
-.serve-header{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:end;margin-bottom:56px}
-.serve-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid rgba(10,22,40,0.08);border-right:none;border-bottom:none}
+.serve-sec{background:var(–white);padding:100px 56px;}
+.serve-header{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:end;margin-bottom:56px;}
+.serve-grid{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid rgba(10,22,40,0.08);border-right:none;border-bottom:none;}
 .serve-card{border-right:1px solid rgba(10,22,40,0.08);border-bottom:1px solid rgba(10,22,40,0.08);padding:36px 30px;transition:all 0.3s;position:relative;overflow:hidden;}
-.serve-card::before{content:’’;position:absolute;top:0;left:0;width:2px;height:0;background:var(–gold);transition:height 0.4s}
-.serve-card:hover{background:rgba(10,22,40,0.02)}
-.serve-card:hover::before{height:100%}
+.serve-card::before{content:’’;position:absolute;top:0;left:0;width:2px;height:0;background:var(–gold);transition:height 0.4s;}
+.serve-card:hover{background:rgba(10,22,40,0.02);}
+.serve-card:hover::before{height:100%;}
 .serve-marker{display:inline-flex;align-items:center;gap:8px;margin-bottom:18px;}
-.serve-dot{width:6px;height:6px;background:var(–gold);flex-shrink:0}
-.serve-type{font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(–gold);font-weight:600}
-.serve-title{font-size:14px;font-weight:600;color:var(–navy);margin-bottom:8px;line-height:1.3}
-.serve-pain{font-size:10.5px;color:var(–text-2);line-height:1.75;font-weight:300}
+.serve-dot{width:6px;height:6px;background:var(–gold);flex-shrink:0;}
+.serve-type{font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(–gold);font-weight:600;}
+.serve-title{font-size:14px;font-weight:600;color:var(–navy);margin-bottom:8px;line-height:1.3;}
+.serve-pain{font-size:10.5px;color:var(–text-2);line-height:1.75;font-weight:300;}
 
 /* PRICING */
-.pricing-sec{background:var(–navy-2);padding:100px 56px}
-.pricing-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:56px;border:1px solid rgba(184,146,42,0.12);border-right:none}
+.pricing-sec{background:var(–navy-2);padding:100px 56px;}
+.pricing-grid{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid rgba(184,146,42,0.12);border-right:none;margin-top:56px;}
 .pc{border-right:1px solid rgba(184,146,42,0.12);overflow:hidden;position:relative;transition:background 0.4s;}
-.pc:hover{background:rgba(184,146,42,0.03)}
-.pc.featured{background:rgba(184,146,42,0.06);border-color:rgba(184,146,42,0.3)}
-.pc-top{padding:28px 28px 24px;border-bottom:1px solid rgba(184,146,42,0.1)}
-.pc.featured .pc-top{border-color:rgba(184,146,42,0.25)}
-.pc-label{font-size:8px;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:12px;font-weight:500}
-.pc.featured .pc-label{color:rgba(184,146,42,0.7)}
-.pc-price{font-family:‘Playfair Display’,serif;font-size:38px;color:#fff;line-height:1;font-weight:400}
-.pc.featured .pc-price{color:var(–gold-light)}
-.pc-per{font-size:9px;color:rgba(255,255,255,0.25);margin-top:4px;letter-spacing:0.5px}
-.pc-body{padding:24px 28px}
-.pc-feat{font-size:10px;color:rgba(255,255,255,0.4);line-height:1;padding:7px 0;border-bottom:1px solid rgba(255,255,255,0.05);display:flex;align-items:center;gap:10px}
-.pc-feat:last-of-type{border-bottom:none}
-.pc-feat::before{content:’’;width:4px;height:4px;background:var(–gold);opacity:0.5;flex-shrink:0}
-.pc.featured .pc-feat{color:rgba(255,255,255,0.6)}
-.pc.featured .pc-feat::before{opacity:1}
+.pc:hover{background:rgba(184,146,42,0.03);}
+.pc.featured{background:rgba(184,146,42,0.06);}
+.pc-top{padding:28px 28px 24px;border-bottom:1px solid rgba(184,146,42,0.1);}
+.pc-label{font-size:8px;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:12px;font-weight:500;}
+.pc.featured .pc-label{color:rgba(184,146,42,0.7);}
+.pc-price{font-family:‘Playfair Display’,serif;font-size:38px;color:#fff;line-height:1;font-weight:400;}
+.pc.featured .pc-price{color:var(–gold-light);}
+.pc-per{font-size:9px;color:rgba(255,255,255,0.25);margin-top:4px;}
+.pc-body{padding:24px 28px;}
+.pc-feat{font-size:10px;color:rgba(255,255,255,0.4);padding:7px 0;border-bottom:1px solid rgba(255,255,255,0.05);display:flex;align-items:center;gap:10px;}
+.pc-feat:last-of-type{border-bottom:none;}
+.pc-feat::before{content:’’;width:4px;height:4px;background:var(–gold);opacity:0.5;flex-shrink:0;}
+.pc.featured .pc-feat{color:rgba(255,255,255,0.6);}
+.pc.featured .pc-feat::before{opacity:1;}
 .pc-cta{display:block;text-align:center;margin:20px 0 0;font-size:8.5px;font-weight:600;letter-spacing:2px;text-transform:uppercase;padding:13px;text-decoration:none;border:1px solid rgba(184,146,42,0.25);color:rgba(255,255,255,0.4);transition:all 0.3s;}
-.pc-cta:hover{border-color:var(–gold);color:var(–gold)}
-.pc.featured .pc-cta{background:var(–gold);border-color:var(–gold);color:var(–navy)}
-.pc.featured .pc-cta:hover{background:var(–gold-light)}
+.pc-cta:hover{border-color:var(–gold);color:var(–gold);}
+.pc.featured .pc-cta{background:var(–gold);border-color:var(–gold);color:var(–navy);}
 .pc-badge{position:absolute;top:0;right:0;background:var(–gold);font-size:7px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(–navy);padding:5px 12px;}
 
-/* CTA SECTION */
-.cta-sec{background:var(–navy);padding:120px 56px;text-align:center;position:relative;overflow:hidden;}
+/* CTA / BOOKING */
+.cta-sec{background:var(–navy);padding:100px 56px;text-align:center;position:relative;overflow:hidden;}
 .cta-bg-lines{position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(rgba(184,146,42,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(184,146,42,0.04) 1px,transparent 1px);background-size:80px 80px;}
 .cta-bg-circle{position:absolute;width:600px;height:600px;border:1px solid rgba(184,146,42,0.06);border-radius:50%;top:50%;left:50%;transform:translate(-50%,-50%);}
-.cta-bg-circle-2{position:absolute;width:400px;height:400px;border:1px solid rgba(184,146,42,0.08);border-radius:50%;top:50%;left:50%;transform:translate(-50%,-50%);}
-.cta-inner{position:relative;z-index:2;max-width:700px;margin:0 auto}
-.cta-title{font-family:‘Playfair Display’,serif;font-size:clamp(38px,4vw,62px);color:#fff;line-height:1.07;font-weight:400;margin-bottom:18px;letter-spacing:-0.5px;}
-.cta-title .it{font-style:italic;color:var(–gold)}
-.cta-sub{font-size:12px;color:rgba(255,255,255,0.35);line-height:1.8;margin-bottom:48px;font-weight:300}
-.cta-actions{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
-.cta-contact-bar{display:flex;align-items:center;justify-content:center;gap:48px;margin-top:56px;padding-top:48px;border-top:1px solid rgba(184,146,42,0.1);flex-wrap:wrap;}
-.cci-label{font-size:8px;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,0.2);margin-bottom:6px}
-.cci-value{font-family:‘Playfair Display’,serif;font-size:17px;color:var(–gold);letter-spacing:0.3px}
-.cci-value a{color:inherit;text-decoration:none}
+.cta-inner{position:relative;z-index:2;max-width:860px;margin:0 auto;}
+.cta-title{font-family:‘Playfair Display’,serif;font-size:clamp(36px,4vw,60px);color:#fff;line-height:1.07;font-weight:400;margin-bottom:18px;}
+.cta-title .it{font-style:italic;color:var(–gold);}
+.cta-sub{font-size:12px;color:rgba(255,255,255,0.35);line-height:1.8;margin-bottom:40px;font-weight:300;max-width:580px;margin-left:auto;margin-right:auto;}
+.cal-wrap{background:rgba(255,255,255,0.03);border:1px solid var(–border);padding:8px;margin-bottom:48px;}
+.cta-contact-bar{display:flex;align-items:center;justify-content:center;gap:48px;padding-top:40px;border-top:1px solid rgba(184,146,42,0.1);flex-wrap:wrap;}
+.cci-label{font-size:8px;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,0.2);margin-bottom:6px;}
+.cci-value{font-family:‘Playfair Display’,serif;font-size:17px;color:var(–gold);}
+.cci-value a{color:inherit;text-decoration:none;}
 
 /* FOOTER */
-footer{background:#060F1C;padding:32px 56px;display:flex;align-items:center;justify-content:space-between;border-top:1px solid rgba(184,146,42,0.08);}
-.footer-left{display:flex;align-items:center;gap:16px}
-.footer-logo-mark{width:28px;height:28px;border:1px solid rgba(184,146,42,0.4);display:flex;align-items:center;justify-content:center;font-size:16px;color:var(–gold);}
-.footer-name{font-size:10px;color:rgba(255,255,255,0.3);letter-spacing:1.5px;text-transform:uppercase}
-.footer-links{display:flex;gap:28px}
-.footer-links a{font-size:8.5px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.2);text-decoration:none;transition:color 0.2s}
-.footer-links a:hover{color:var(–gold)}
-.footer-copy{font-size:8.5px;color:rgba(255,255,255,0.1);letter-spacing:0.5px}
+footer{background:#060F1C;padding:32px 56px;display:flex;align-items:center;justify-content:space-between;border-top:1px solid rgba(184,146,42,0.08);flex-wrap:wrap;gap:16px;}
+.footer-links{display:flex;gap:24px;flex-wrap:wrap;}
+.footer-links a{font-size:8.5px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.2);text-decoration:none;transition:color 0.2s;}
+.footer-links a:hover{color:var(–gold);}
+.footer-copy{font-size:8.5px;color:rgba(255,255,255,0.1);}
 
 /* SCROLL REVEAL */
-.reveal{opacity:0;transform:translateY(28px);transition:opacity 0.7s ease,transform 0.7s ease}
-.reveal.visible{opacity:1;transform:translateY(0)}
-.reveal-delay-1{transition-delay:0.1s}
-.reveal-delay-2{transition-delay:0.2s}
-.reveal-delay-3{transition-delay:0.3s}
-.reveal-delay-4{transition-delay:0.4s}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity 0.7s ease,transform 0.7s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+.reveal-delay-1{transition-delay:0.1s;}
+.reveal-delay-2{transition-delay:0.2s;}
+.reveal-delay-3{transition-delay:0.3s;}
 
-/* SCROLL INDICATOR */
-.scroll-indicator{position:absolute;bottom:32px;left:56px;z-index:10;display:flex;flex-direction:column;align-items:center;gap:8px;}
-.scroll-line{width:1px;height:48px;background:rgba(184,146,42,0.3);position:relative;overflow:hidden}
-.scroll-line::after{content:’’;position:absolute;top:-100%;left:0;right:0;height:100%;background:var(–gold);animation:scrollAnim 1.8s ease infinite;}
-@keyframes scrollAnim{0%{top:-100%}100%{top:100%}}
-.scroll-text{font-size:7.5px;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,0.2);writing-mode:vertical-lr}
+/* EXIT POPUP */
+#exitPopup{display:none;position:fixed;inset:0;background:rgba(10,22,40,0.92);z-index:9000;align-items:center;justify-content:center;backdrop-filter:blur(8px);}
+.popup-box{background:var(–navy-2);border:1px solid rgba(184,146,42,0.3);max-width:520px;width:90%;padding:52px 44px;position:relative;}
+.popup-close{position:absolute;top:16px;right:20px;background:none;border:none;color:rgba(255,255,255,0.3);font-size:22px;cursor:pointer;line-height:1;}
+.popup-title{font-family:‘Playfair Display’,serif;font-size:26px;color:var(–white);font-weight:400;line-height:1.2;margin-bottom:12px;}
+.popup-title em{font-style:italic;color:var(–gold);}
+.popup-sub{font-size:11px;color:rgba(255,255,255,0.4);line-height:1.8;margin-bottom:28px;}
+.popup-form{display:flex;}
+.popup-input{flex:1;background:rgba(255,255,255,0.05);border:1px solid rgba(184,146,42,0.3);border-right:none;padding:14px 18px;font-size:11px;color:var(–white);font-family:‘DM Sans’,sans-serif;outline:none;}
+.popup-btn{background:var(–gold);color:var(–navy);border:none;padding:14px 20px;font-size:8px;font-weight:700;letter-spacing:2px;text-transform:uppercase;cursor:pointer;white-space:nowrap;}
+.popup-note{font-size:8px;color:rgba(255,255,255,0.15);letter-spacing:1px;margin-top:12px;}
+.popup-success{display:none;margin-top:16px;padding:14px;background:rgba(184,146,42,0.1);border:1px solid rgba(184,146,42,0.3);font-size:11px;color:var(–gold);}
 
 /* MOBILE */
 @media(max-width:900px){
-nav{padding:0 24px}
-.nav-center{display:none}
-.hero{grid-template-columns:1fr;min-height:auto}
-.hero-left{padding:120px 24px 80px;display:flex!important;opacity:1!important;transform:none!important;}
-.hero-right{display:none}
-.hero-stats{right:0;grid-template-columns:repeat(2,1fr)}
-.hero .reveal{opacity:1!important;transform:translateY(0)!important;}
-.section{padding:72px 24px}
-.services-sec,.about-sec,.process-sec,.serve-sec,.pricing-sec,.cta-sec,.full-services-sec{padding:72px 24px}
-.services-grid,.serve-grid,.tier-service-grid{grid-template-columns:1fr}
-.process-track{grid-template-columns:1fr 1fr}
-.pricing-grid{grid-template-columns:1fr 1fr}
-.about-grid{grid-template-columns:1fr;gap:48px}
-.services-header,.serve-header{grid-template-columns:1fr}
-.cta-contact-bar{gap:32px}
-footer{flex-direction:column;gap:16px;text-align:center;padding:24px}
-.footer-links{flex-wrap:wrap;justify-content:center}
-.scroll-indicator{display:none}
-.cred-strip{padding:16px 24px}
+nav{padding:0 20px;height:60px;}
+.nav-center{display:none;}
+.nav-btn{padding:9px 16px;font-size:8px;}
+.hero{grid-template-columns:1fr;overflow:hidden;}
+.hero-left{padding:100px 20px 160px;}
+.hero-right{display:none;}
+.hero-stats{position:relative;grid-template-columns:repeat(2,1fr);}
+.reveal{opacity:1!important;transform:none!important;}
+.services-sec,.about-sec,.process-sec,.serve-sec,.pricing-sec,.cta-sec,.product-sec,.why-sec,.testi-sec{padding:64px 20px;}
+.proof-sec{padding:32px 20px;}
+.cred-strip{padding:16px 20px;}
+.services-header,.serve-header{grid-template-columns:1fr;}
+.services-grid,.serve-grid{grid-template-columns:1fr;}
+.process-track{grid-template-columns:1fr;}
+.pricing-grid{grid-template-columns:1fr;}
+.about-grid,.why-grid{grid-template-columns:1fr;gap:40px;}
+.proof-grid{grid-template-columns:repeat(2,1fr);}
+.testi-grid{grid-template-columns:1fr;}
+.product-split{grid-template-columns:1fr;}
+.product-right{border-left:none;border-top:1px solid rgba(184,146,42,0.2);}
+.cert-grid{grid-template-columns:1fr 1fr;}
+.cta-contact-bar{gap:24px;justify-content:flex-start;}
+footer{flex-direction:column;text-align:center;padding:24px 20px;}
+.footer-links{justify-content:center;}
 }
 @media(max-width:540px){
-.pricing-grid{grid-template-columns:1fr}
-.cert-grid{grid-template-columns:1fr}
-.hero-stats{grid-template-columns:repeat(2,1fr)}
+.hero-stats{grid-template-columns:repeat(2,1fr);}
+.proof-grid{grid-template-columns:1fr 1fr;}
+.cert-grid{grid-template-columns:1fr;}
 }
 </style>
 
@@ -300,18 +312,17 @@ footer{flex-direction:column;gap:16px;text-align:center;padding:24px}
 
 <nav id="mainNav">
   <a class="nav-brand" href="#">
-    <img src="logo.jpeg" alt="Geaux Uptown Solutions" style="height:40px;width:auto;object-fit:contain;display:block;" />
+    <img src="logo.jpeg" alt="Geaux Uptown Solutions" class="nav-logo-img" onerror="this.style.display='none'" />
   </a>
   <div class="nav-center">
     <a href="#services">Services</a>
     <a href="#products">Products</a>
-    <a href="#full-services">All Services</a>
     <a href="#about">About</a>
     <a href="#who-we-serve">Who We Serve</a>
     <a href="#pricing">Pricing</a>
     <a href="#contact">Contact</a>
   </div>
-  <a href="#contact" class="nav-btn"><span>Start a Conversation</span></a>
+  <a href="#contact" class="nav-btn">Start a Conversation</a>
 </nav>
 
 <!-- HERO -->
@@ -323,13 +334,9 @@ footer{flex-direction:column;gap:16px;text-align:center;padding:24px}
       <div class="hero-tag-text">Premium Healthcare AI Consulting · Dallas, TX · Remote Nationwide</div>
     </div>
     <h1 class="hero-title reveal reveal-delay-1">
-      Your operation is<br>
-      losing money <span class="italic">every single</span><br>
-      <span class="bold">night after hours.</span>
+      Your operation is<br>losing money <span class="italic">every single</span><br><span class="bold">night after hours.</span>
     </h1>
-    <p class="hero-desc reveal reveal-delay-2">
-      Missed leads. Manual workflows. No documented processes. No AI. Geaux Uptown Solutions fixes all of it — with 19 years of Fortune 4 healthcare operations experience and AI automation built specifically for your practice. Most clients see results within 30 days.
-    </p>
+    <p class="hero-desc reveal reveal-delay-2">Missed leads. Manual workflows. No documented processes. No AI. Geaux Uptown Solutions fixes all of it — with 19 years of Fortune 4 healthcare operations experience and AI automation built specifically for your practice. Most clients see results within 30 days.</p>
     <div class="hero-actions reveal reveal-delay-3">
       <a href="#contact" class="btn-gold">Claim Your Discovery Call</a>
       <a href="#services" class="btn-ghost">See How It Works</a>
@@ -342,26 +349,10 @@ footer{flex-direction:column;gap:16px;text-align:center;padding:24px}
     </div>
   </div>
   <div class="hero-stats">
-    <div class="hstat">
-      <div class="hstat-num">19+</div>
-      <div class="hstat-label">Years Healthcare Ops</div>
-    </div>
-    <div class="hstat">
-      <div class="hstat-num">Fortune 4</div>
-      <div class="hstat-label">Enterprise Background</div>
-    </div>
-    <div class="hstat">
-      <div class="hstat-num">Seed–B</div>
-      <div class="hstat-label">Stage We Specialize In</div>
-    </div>
-    <div class="hstat">
-      <div class="hstat-num">10–20hrs</div>
-      <div class="hstat-label">Per Month · No Overhead</div>
-    </div>
-  </div>
-  <div class="scroll-indicator">
-    <div class="scroll-line"></div>
-    <div class="scroll-text">Scroll</div>
+    <div class="hstat"><div class="hstat-num">19+</div><div class="hstat-label">Years Healthcare Ops</div></div>
+    <div class="hstat"><div class="hstat-num">Fortune 4</div><div class="hstat-label">Enterprise Background</div></div>
+    <div class="hstat"><div class="hstat-num">Seed–B</div><div class="hstat-label">Stage We Specialize In</div></div>
+    <div class="hstat"><div class="hstat-num">10–20hrs</div><div class="hstat-label">Per Month · No Overhead</div></div>
   </div>
 </section>
 
@@ -370,22 +361,34 @@ footer{flex-direction:column;gap:16px;text-align:center;padding:24px}
 <div class="ticker">
   <div class="ticker-track">
     <span class="ticker-item">AI Implementation <span class="ticker-sep">·</span></span>
-    <span class="ticker-item">Operations Infrastructure <span class="ticker-sep">·</span></span>
     <span class="ticker-item">Root Cause Analysis <span class="ticker-sep">·</span></span>
     <span class="ticker-item">Fractional COO <span class="ticker-sep">·</span></span>
     <span class="ticker-item">SOP Development <span class="ticker-sep">·</span></span>
     <span class="ticker-item">Six Sigma Yellow Belt <span class="ticker-sep">·</span></span>
     <span class="ticker-item">Scrum Master <span class="ticker-sep">·</span></span>
     <span class="ticker-item">HIPAA Compliance <span class="ticker-sep">·</span></span>
+    <span class="ticker-item">Operations Infrastructure <span class="ticker-sep">·</span></span>
     <span class="ticker-item">AI Implementation <span class="ticker-sep">·</span></span>
-    <span class="ticker-item">Operations Infrastructure <span class="ticker-sep">·</span></span>
     <span class="ticker-item">Root Cause Analysis <span class="ticker-sep">·</span></span>
     <span class="ticker-item">Fractional COO <span class="ticker-sep">·</span></span>
     <span class="ticker-item">SOP Development <span class="ticker-sep">·</span></span>
     <span class="ticker-item">Six Sigma Yellow Belt <span class="ticker-sep">·</span></span>
     <span class="ticker-item">Scrum Master <span class="ticker-sep">·</span></span>
     <span class="ticker-item">HIPAA Compliance <span class="ticker-sep">·</span></span>
+    <span class="ticker-item">Operations Infrastructure <span class="ticker-sep">·</span></span>
   </div>
+</div>
+
+<!-- CRED STRIP -->
+
+<div class="cred-strip">
+  <div class="cred-strip-item"><div class="cred-strip-dot"></div>Lean Six Sigma Yellow Belt</div>
+  <div class="cred-strip-item"><div class="cred-strip-dot"></div>Certified Scrum Master</div>
+  <div class="cred-strip-item"><div class="cred-strip-dot"></div>PTCB Licensed · TX Board Licensed</div>
+  <div class="cred-strip-item"><div class="cred-strip-dot"></div>McKesson Fortune 4</div>
+  <div class="cred-strip-item"><div class="cred-strip-dot"></div>Parkland Health System</div>
+  <div class="cred-strip-item"><div class="cred-strip-dot"></div>Root Cause Analysis Specialist</div>
+  <div class="cred-strip-item"><div class="cred-strip-dot"></div>Dallas, TX · Remote Nationwide</div>
 </div>
 
 <!-- SERVICES OVERVIEW -->
@@ -397,31 +400,27 @@ footer{flex-direction:column;gap:16px;text-align:center;padding:24px}
         <div class="s-eyebrow"><div class="s-eyebrow-rule"></div><div class="s-eyebrow-text">What We Build</div></div>
         <h2 class="s-title light">Four Ways We Build Your <span class="it">Infrastructure</span></h2>
       </div>
-      <p class="s-body light reveal reveal-delay-1">From fractional COO leadership to AI automation — Fortune 4 healthcare operations expertise deployed for organizations that need to scale without the chaos.</p>
+      <p class="s-body light reveal reveal-delay-1">Fortune 4 healthcare operations expertise deployed for organizations that need to scale without the chaos.</p>
     </div>
     <div class="services-grid">
       <div class="svc reveal">
         <span class="svc-num">01 — AI AUTOMATION</span>
-        <div class="svc-icon-area">
-          <svg class="svc-icon-svg" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="1"/><path d="M8 21h8M12 17v4"/><circle cx="12" cy="10" r="3"/><path d="M6 10h2M16 10h2"/></svg>
-        </div>
+        <div class="svc-icon-area"><svg class="svc-icon-svg" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="1"/><path d="M8 21h8M12 17v4"/><circle cx="12" cy="10" r="3"/></svg></div>
         <div class="svc-title">AI Automation and Concierge</div>
-        <p class="svc-desc">Custom AI systems that handle your leads, qualify clients, and book appointments 24/7 — built specifically for your business, not a generic template.</p>
+        <p class="svc-desc">Custom AI systems that handle your leads, qualify clients, and book appointments 24/7 — built specifically for healthcare, not a generic template.</p>
         <div class="svc-list">
           <div class="svc-item">AI concierge for lead capture and qualification</div>
           <div class="svc-item">Automated client intake and booking</div>
-          <div class="svc-item">HubSpot and Zapier workflow integration</div>
+          <div class="svc-item">HubSpot and Make.com workflow integration</div>
           <div class="svc-item">Provider dashboard with AI consultation notes</div>
         </div>
         <div class="svc-rate">From $5,000 <span class="svc-rate-note">setup + $2,000/mo</span></div>
       </div>
       <div class="svc reveal reveal-delay-1">
         <span class="svc-num">02 — FRACTIONAL COO</span>
-        <div class="svc-icon-area">
-          <svg class="svc-icon-svg" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
-        </div>
+        <div class="svc-icon-area"><svg class="svc-icon-svg" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
         <div class="svc-title">Fractional COO Leadership</div>
-        <p class="svc-desc">Senior operations leadership for healthcare organizations. SOPs, compliance frameworks, team structure, and AI systems — without the $300K full-time cost.</p>
+        <p class="svc-desc">Senior operations leadership without the $300K full-time cost. SOPs, compliance frameworks, team structure, and AI systems that scale with you.</p>
         <div class="svc-list">
           <div class="svc-item">Operational diagnostic and gap analysis</div>
           <div class="svc-item">Team structure and cross-training design</div>
@@ -432,13 +431,11 @@ footer{flex-direction:column;gap:16px;text-align:center;padding:24px}
       </div>
       <div class="svc reveal reveal-delay-2">
         <span class="svc-num">03 — ROOT CAUSE ANALYSIS</span>
-        <div class="svc-icon-area">
-          <svg class="svc-icon-svg" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/><path d="M11 8v3l2 2"/></svg>
-        </div>
+        <div class="svc-icon-area"><svg class="svc-icon-svg" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/><path d="M11 8v3l2 2"/></svg></div>
         <div class="svc-title">Process Improvement and Analysis</div>
-        <p class="svc-desc">Using Six Sigma methodology to find exactly why your systems break — and build the processes that prevent them from breaking again.</p>
+        <p class="svc-desc">Using Six Sigma methodology to find exactly why your systems fail — and build the processes that prevent them from failing again.</p>
         <div class="svc-list">
-          <div class="svc-item">Root cause analysis using Six Sigma methodology</div>
+          <div class="svc-item">Root cause analysis using Six Sigma</div>
           <div class="svc-item">Full operational gap analysis with data</div>
           <div class="svc-item">90-day implementation roadmap</div>
           <div class="svc-item">C-suite ready executive presentation</div>
@@ -447,9 +444,7 @@ footer{flex-direction:column;gap:16px;text-align:center;padding:24px}
       </div>
       <div class="svc reveal reveal-delay-3">
         <span class="svc-num">04 — DOCUMENTATION</span>
-        <div class="svc-icon-area">
-          <svg class="svc-icon-svg" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14,2 14,8 20,8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
-        </div>
+        <div class="svc-icon-area"><svg class="svc-icon-svg" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14,2 14,8 20,8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
         <div class="svc-title">SOPs, BRDs, and Job Aids</div>
         <p class="svc-desc">Professional documentation written by someone who has authored SOPs and BRDs inside Fortune 500 healthcare organizations for 18 years.</p>
         <div class="svc-list">
@@ -464,461 +459,131 @@ footer{flex-direction:column;gap:16px;text-align:center;padding:24px}
   </div>
 </section>
 
-<!-- CREDENTIALS STRIP -->
-
-<div class="cred-strip">
-  <div class="cred-strip-item"><div class="cred-strip-dot"></div>Lean Six Sigma Yellow Belt</div>
-  <div class="cred-strip-item"><div class="cred-strip-dot"></div>Certified Scrum Master</div>
-  <div class="cred-strip-item"><div class="cred-strip-dot"></div>PTCB Licensed Pharmacy Technician</div>
-  <div class="cred-strip-item"><div class="cred-strip-dot"></div>TX Board Licensed</div>
-  <div class="cred-strip-item"><div class="cred-strip-dot"></div>McKesson Fortune 4</div>
-  <div class="cred-strip-item"><div class="cred-strip-dot"></div>Parkland Health System</div>
-  <div class="cred-strip-item"><div class="cred-strip-dot"></div>Root Cause Analysis Specialist</div>
-  <div class="cred-strip-item"><div class="cred-strip-dot"></div>Dallas, TX · Remote Nationwide</div>
-</div>
-
 <!-- WHY GEAUX UPTOWN -->
 
-<section style="background:var(--navy-2);padding:100px 56px;">
+<section class="why-sec" id="why">
   <div class="section-inner">
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;">
+    <div class="why-grid">
       <div class="reveal">
         <div class="s-eyebrow"><div class="s-eyebrow-rule"></div><div class="s-eyebrow-text">Why Geaux Uptown</div></div>
         <h2 class="s-title light">There Is Nobody Else<br>Who Does <span class="it">All of This.</span></h2>
-        <p class="s-body light" style="margin-top:14px;">Most consultants understand operations or AI. A few understand healthcare. Almost none hold a pharmacy license, a Scrum Master certification, a Six Sigma belt, and 19 years inside Fortune 4 healthcare — all at once. That combination is not a resume. It is an unfair advantage for every client we work with.</p>
+        <p class="s-body light" style="margin-top:14px;">Most consultants understand operations or AI. A few understand healthcare. Almost none hold a pharmacy license, a Scrum Master certification, a Six Sigma belt, and 19 years inside Fortune 4 healthcare — all at once. That combination is your unfair advantage.</p>
       </div>
       <div class="reveal reveal-delay-1">
-        <div style="display:flex;flex-direction:column;gap:0;border:1px solid var(--border);">
-          <div style="display:grid;grid-template-columns:48px 1fr;border-bottom:1px solid var(--border);">
-            <div style="background:var(--navy);display:flex;align-items:center;justify-content:center;padding:20px 0;">
-              <div style="width:1px;height:24px;background:var(--gold);opacity:0.6;"></div>
-            </div>
-            <div style="padding:20px 24px;background:var(--navy);">
-              <div style="font-size:11px;font-weight:600;color:var(--white);margin-bottom:4px;">The Only Combination That Matters</div>
-              <div style="font-size:10px;color:rgba(255,255,255,0.4);line-height:1.6;">Fortune 4 ops + pharmacy license + Six Sigma + AI automation. In one consultant. Nowhere else.</div>
-            </div>
-          </div>
-          <div style="display:grid;grid-template-columns:48px 1fr;border-bottom:1px solid var(--border);">
-            <div style="background:var(--navy);display:flex;align-items:center;justify-content:center;padding:20px 0;">
-              <div style="width:1px;height:24px;background:var(--gold);opacity:0.6;"></div>
-            </div>
-            <div style="padding:20px 24px;background:var(--navy);">
-              <div style="font-size:11px;font-weight:600;color:var(--white);margin-bottom:4px;">Built From the Inside Out</div>
-              <div style="font-size:10px;color:rgba(255,255,255,0.4);line-height:1.6;">19 years inside the most demanding healthcare environments in the country. We do not consult from the outside. We have lived every problem we fix.</div>
-            </div>
-          </div>
-          <div style="display:grid;grid-template-columns:48px 1fr;border-bottom:1px solid var(--border);">
-            <div style="background:var(--navy);display:flex;align-items:center;justify-content:center;padding:20px 0;">
-              <div style="width:1px;height:24px;background:var(--gold);opacity:0.6;"></div>
-            </div>
-            <div style="padding:20px 24px;background:var(--navy);">
-              <div style="font-size:11px;font-weight:600;color:var(--white);margin-bottom:4px;">Results in 30 Days or Less</div>
-              <div style="font-size:10px;color:rgba(255,255,255,0.4);line-height:1.6;">AI builds delivered in 5 to 7 days. First SOP in 3 to 5. No 90-day onboarding. No bloated discovery phases. You see work product immediately.</div>
-            </div>
-          </div>
-          <div style="display:grid;grid-template-columns:48px 1fr;border-bottom:1px solid var(--border);">
-            <div style="background:var(--navy);display:flex;align-items:center;justify-content:center;padding:20px 0;">
-              <div style="width:1px;height:24px;background:var(--gold);opacity:0.6;"></div>
-            </div>
-            <div style="padding:20px 24px;background:var(--navy);">
-              <div style="font-size:11px;font-weight:600;color:var(--white);margin-bottom:4px;">Systems That Run Without You</div>
-              <div style="font-size:10px;color:rgba(255,255,255,0.4);line-height:1.6;">Every system we build is documented, trained, and handed off so your team can run it independently from day one. We build assets, not dependencies.</div>
-            </div>
-          </div>
-          <div style="display:grid;grid-template-columns:48px 1fr;">
-            <div style="background:var(--navy);display:flex;align-items:center;justify-content:center;padding:20px 0;">
-              <div style="width:1px;height:24px;background:var(--gold);opacity:0.6;"></div>
-            </div>
-            <div style="padding:20px 24px;background:var(--navy);">
-              <div style="font-size:11px;font-weight:600;color:var(--white);margin-bottom:4px;">Woman-Owned · New Orleans Native · Dallas Based</div>
-              <div style="font-size:10px;color:rgba(255,255,255,0.4);line-height:1.6;">WOSB certified. New Orleans resilience. Dallas precision. We bring both the heart and the rigor to every engagement.</div>
-            </div>
-          </div>
+        <div style="border:1px solid var(--border);">
+          <div class="why-card-row"><div class="why-card-accent"><div style="width:1px;height:24px;background:var(--gold);opacity:0.6;"></div></div><div class="why-card-body"><div class="why-card-title">The Only Combination That Matters</div><div class="why-card-text">Fortune 4 ops + pharmacy license + Six Sigma + AI automation. In one consultant. Nowhere else.</div></div></div>
+          <div class="why-card-row"><div class="why-card-accent"><div style="width:1px;height:24px;background:var(--gold);opacity:0.6;"></div></div><div class="why-card-body"><div class="why-card-title">Built From the Inside Out</div><div class="why-card-text">19 years inside the most demanding healthcare environments. We have lived every problem we fix.</div></div></div>
+          <div class="why-card-row"><div class="why-card-accent"><div style="width:1px;height:24px;background:var(--gold);opacity:0.6;"></div></div><div class="why-card-body"><div class="why-card-title">Results in 30 Days or Less</div><div class="why-card-text">AI builds in 5 to 7 days. First SOP in 3 to 5. No 90-day onboarding. No bloated discovery phases.</div></div></div>
+          <div class="why-card-row"><div class="why-card-accent"><div style="width:1px;height:24px;background:var(--gold);opacity:0.6;"></div></div><div class="why-card-body"><div class="why-card-title">Systems That Run Without You</div><div class="why-card-text">Every system documented, trained, and handed off. Your team runs it independently from day one.</div></div></div>
+          <div class="why-card-row" style="border-bottom:none;"><div class="why-card-accent"><div style="width:1px;height:24px;background:var(--gold);opacity:0.6;"></div></div><div class="why-card-body"><div class="why-card-title">Woman-Owned · New Orleans Native · Dallas Based</div><div class="why-card-text">WOSB certified. New Orleans resilience. Dallas precision. Heart and rigor in every engagement.</div></div></div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- SOCIAL PROOF STRIP -->
+<!-- SOCIAL PROOF -->
 
-<div style="background:var(--navy-2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:40px 56px;">
-  <div style="max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid var(--border);border-right:none;">
-    <div style="padding:28px 24px;border-right:1px solid var(--border);text-align:center;">
-      <div style="font-family:'Playfair Display',serif;font-size:42px;color:var(--gold);font-weight:400;line-height:1;margin-bottom:8px;">60s</div>
-      <div style="font-size:8px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.3);">AI Response Time</div>
-      <div style="font-size:10px;color:rgba(255,255,255,0.2);margin-top:6px;line-height:1.5;">vs 4+ hour industry average</div>
-    </div>
-    <div style="padding:28px 24px;border-right:1px solid var(--border);text-align:center;">
-      <div style="font-family:'Playfair Display',serif;font-size:42px;color:var(--gold);font-weight:400;line-height:1;margin-bottom:8px;">5–7</div>
-      <div style="font-size:8px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.3);">Day Delivery</div>
-      <div style="font-size:10px;color:rgba(255,255,255,0.2);margin-top:6px;line-height:1.5;">AI builds live and operational</div>
-    </div>
-    <div style="padding:28px 24px;border-right:1px solid var(--border);text-align:center;">
-      <div style="font-family:'Playfair Display',serif;font-size:42px;color:var(--gold);font-weight:400;line-height:1;margin-bottom:8px;">$56B</div>
-      <div style="font-size:8px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.3);">Healthcare AI Market 2026</div>
-      <div style="font-size:10px;color:rgba(255,255,255,0.2);margin-top:6px;line-height:1.5;">43% CAGR — your window is now</div>
-    </div>
-    <div style="padding:28px 24px;border-right:1px solid var(--border);text-align:center;">
-      <div style="font-family:'Playfair Display',serif;font-size:42px;color:var(--gold);font-weight:400;line-height:1;margin-bottom:8px;">1/10</div>
-      <div style="font-size:8px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.3);">Cost of Full-Time COO</div>
-      <div style="font-size:10px;color:rgba(255,255,255,0.2);margin-top:6px;line-height:1.5;">Fortune 4 expertise. Fractional price.</div>
+<div class="proof-sec">
+  <div class="section-inner">
+    <div class="proof-grid">
+      <div class="proof-stat"><div class="proof-num">60s</div><div class="proof-label">AI Response Time</div><div class="proof-sub">vs 4+ hour industry average</div></div>
+      <div class="proof-stat"><div class="proof-num">5–7</div><div class="proof-label">Day Delivery</div><div class="proof-sub">AI builds live and operational</div></div>
+      <div class="proof-stat"><div class="proof-num">$56B</div><div class="proof-label">Healthcare AI Market 2026</div><div class="proof-sub">43% CAGR — your window is now</div></div>
+      <div class="proof-stat" style="border-right:none;"><div class="proof-num">1/10</div><div class="proof-label">Cost of Full-Time COO</div><div class="proof-sub">Fortune 4 expertise. Fractional price.</div></div>
     </div>
   </div>
 </div>
 
 <!-- TESTIMONIALS -->
 
-<section style="background:var(--navy);padding:100px 56px;" id="testimonials">
+<section class="testi-sec" id="testimonials">
   <div class="section-inner">
-    <div class="reveal" style="margin-bottom:56px;">
+    <div class="reveal" style="margin-bottom:48px;">
       <div class="s-eyebrow"><div class="s-eyebrow-rule"></div><div class="s-eyebrow-text">Client Results</div></div>
       <h2 class="s-title light">What Happens When You <span class="it">Stop Doing It Manually.</span></h2>
     </div>
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);">
-
-```
-  <div class="reveal" style="background:var(--navy-2);padding:40px 36px;position:relative;">
-    <div style="width:32px;height:1px;background:var(--gold);opacity:0.5;margin-bottom:28px;"></div>
-    <p style="font-family:'Playfair Display',serif;font-size:16px;color:var(--white);line-height:1.7;font-weight:400;font-style:italic;margin-bottom:28px;">"We were losing 40% of our leads after hours. Every inquiry that came in after 5pm just disappeared. Within 30 days of working with Geaux Uptown, we had an AI system responding in under 60 seconds around the clock. We have not missed a lead since."</p>
-    <div style="border-top:1px solid var(--border);padding-top:20px;">
-      <div style="font-size:11px;font-weight:600;color:var(--white);margin-bottom:4px;">MedSpa Owner</div>
-      <div style="font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);opacity:0.7;">Dallas–Fort Worth Area</div>
+    <div class="testi-grid">
+      <div class="testi-card reveal">
+        <div class="testi-line"></div>
+        <p class="testi-quote">"We were losing 40% of our leads after hours. Every inquiry after 5pm just disappeared. Within 30 days of working with Geaux Uptown we had an AI system responding in under 60 seconds around the clock. We have not missed a lead since."</p>
+        <div class="testi-divider"></div>
+        <div class="testi-name">MedSpa Owner</div>
+        <div class="testi-role">Dallas–Fort Worth Area</div>
+        <div class="testi-mark">"</div>
+      </div>
+      <div class="testi-card featured reveal reveal-delay-1">
+        <div class="testi-line"></div>
+        <p class="testi-quote">"I have worked with operations consultants before. None of them understood the clinical side the way Geaux Uptown does. They speak our language, understand our workflows, and build systems that actually work in a healthcare environment — not generic tools repurposed for us."</p>
+        <div class="testi-divider"></div>
+        <div class="testi-name">Practice Manager</div>
+        <div class="testi-role">Specialty Clinic · Texas</div>
+        <div class="testi-mark">"</div>
+      </div>
+      <div class="testi-card reveal reveal-delay-2">
+        <div class="testi-line"></div>
+        <p class="testi-quote">"The ROI conversation was over before it started. We invested $7,500 in the AI build. In the first 90 days we captured revenue from leads that would have simply been lost after hours. Geaux Uptown did not just build a system — they changed how our practice operates."</p>
+        <div class="testi-divider"></div>
+        <div class="testi-name">Aesthetic Practice Owner</div>
+        <div class="testi-role">North Texas</div>
+        <div class="testi-mark">"</div>
+      </div>
     </div>
-    <div style="position:absolute;bottom:32px;right:32px;font-family:'Playfair Display',serif;font-size:80px;color:var(--gold);opacity:0.06;line-height:1;">"</div>
-  </div>
-
-  <div class="reveal reveal-delay-1" style="background:var(--navy-3);padding:40px 36px;position:relative;border-left:2px solid rgba(184,146,42,0.3);border-right:2px solid rgba(184,146,42,0.3);">
-    <div style="width:32px;height:1px;background:var(--gold);opacity:0.5;margin-bottom:28px;"></div>
-    <p style="font-family:'Playfair Display',serif;font-size:16px;color:var(--white);line-height:1.7;font-weight:400;font-style:italic;margin-bottom:28px;">"I have worked with operations consultants before. None of them understood the clinical side the way Geaux Uptown does. They speak our language, understand our workflows, and build systems that actually work in a healthcare environment — not generic tools repurposed for us."</p>
-    <div style="border-top:1px solid var(--border);padding-top:20px;">
-      <div style="font-size:11px;font-weight:600;color:var(--white);margin-bottom:4px;">Practice Manager</div>
-      <div style="font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);opacity:0.7;">Specialty Clinic · Texas</div>
+    <div class="scarcity-bar reveal">
+      <div>
+        <div class="scarcity-label">Current Availability</div>
+        <div class="scarcity-text">We take <em>3 new clients</em> per month. April 2026 has <em>1 spot remaining.</em></div>
+      </div>
+      <a href="#contact" class="btn-gold">Claim the Last Spot</a>
     </div>
-    <div style="position:absolute;bottom:32px;right:32px;font-family:'Playfair Display',serif;font-size:80px;color:var(--gold);opacity:0.06;line-height:1;">"</div>
-  </div>
-
-  <div class="reveal reveal-delay-2" style="background:var(--navy-2);padding:40px 36px;position:relative;">
-    <div style="width:32px;height:1px;background:var(--gold);opacity:0.5;margin-bottom:28px;"></div>
-    <p style="font-family:'Playfair Display',serif;font-size:16px;color:var(--white);line-height:1.7;font-weight:400;font-style:italic;margin-bottom:28px;">"The ROI conversation was over before it started. We invested $7,500 in the AI build. In the first 90 days we captured revenue from leads that would have simply been lost after hours. Geaux Uptown did not just build a system — they changed how our practice operates."</p>
-    <div style="border-top:1px solid var(--border);padding-top:20px;">
-      <div style="font-size:11px;font-weight:600;color:var(--white);margin-bottom:4px;">Aesthetic Practice Owner</div>
-      <div style="font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);opacity:0.7;">North Texas</div>
-    </div>
-    <div style="position:absolute;bottom:32px;right:32px;font-family:'Playfair Display',serif;font-size:80px;color:var(--gold);opacity:0.06;line-height:1;">"</div>
-  </div>
-
-</div>
-
-<!-- SCARCITY BAR -->
-<div class="reveal" style="margin-top:1px;background:var(--navy-2);border:1px solid var(--border);border-top:none;padding:24px 36px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;">
-  <div>
-    <div style="font-size:8px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:6px;font-weight:600;">Current Availability</div>
-    <div style="font-family:'Playfair Display',serif;font-size:20px;color:var(--white);">We take <span style="color:var(--gold);font-style:italic;">3 new clients</span> per month. April 2026 has <span style="color:var(--gold);font-style:italic;">1 spot remaining.</span></div>
-  </div>
-  <a href="#contact" class="btn-gold" style="white-space:nowrap;">Claim the Last Spot</a>
-</div>
-```
-
   </div>
 </section>
 
-<!-- FULL SERVICES — ALL 5 TIERS -->
+<!-- PRODUCTS -->
 
-<section class="full-services-sec" id="full-services">
+<section class="product-sec" id="products">
   <div class="section-inner">
-    <div class="reveal" style="margin-bottom:56px;">
-      <div class="s-eyebrow"><div class="s-eyebrow-rule"></div><div class="s-eyebrow-text">Complete Service Menu</div></div>
-      <h2 class="s-title light">Every Service We <span class="it">Offer</span></h2>
-      <p class="s-body light" style="margin-top:10px">Five service tiers built around 18 years of real healthcare operations. From $37 digital products to full Fractional COO engagements.</p>
+    <div class="reveal" style="margin-bottom:48px;">
+      <div class="s-eyebrow"><div class="s-eyebrow-rule"></div><div class="s-eyebrow-text">Digital Products</div></div>
+      <h2 class="s-title light">Start Immediately. <span class="it">No Call Required.</span></h2>
+      <p class="s-body light" style="margin-top:10px;">Ready-to-deploy tools built from 19 years of real healthcare operations. Buy once. Use forever.</p>
     </div>
-
-```
-<!-- TIER 01 -->
-<div class="tier-band reveal" style="padding:14px 0;margin-bottom:0;">
-  <span class="tier-band-num" style="font-family:'DM Mono',monospace;font-size:10px;color:rgba(184,146,42,0.5);letter-spacing:2px;">Tier 01</span>
-  <div class="tier-band-divider"></div>
-  <span class="tier-band-name">Digital Products</span>
-  <span class="tier-band-range">$37 — $297</span>
-</div>
-<div class="tier-service-grid reveal reveal-delay-1">
-  <div class="tier-svc">
-    <div class="tier-svc-num">Product 01</div>
-    <div class="tier-svc-name">AI Prompt Pack for Healthcare</div>
-    <div class="tier-svc-desc">40 copy-paste ChatGPT prompts built specifically for healthcare professionals. SOPs, patient communications, reports, and proposals done in minutes.</div>
-    <div class="tier-svc-price">$37</div>
-    <div class="tier-svc-price-note">One time · Instant delivery</div>
-    <div class="tier-svc-divider"></div>
-    <ul class="tier-svc-list">
-      <li>40 healthcare-specific prompts</li>
-      <li>SOP writing and documentation prompts</li>
-      <li>Patient communication templates</li>
-      <li>Proposal and report prompts</li>
-    </ul>
-    <a href="#contact" class="tier-svc-link">Get the Prompt Pack</a>
-  </div>
-  <div class="tier-svc featured">
-    <div class="tier-svc-badge">Most Popular</div>
-    <div class="tier-svc-num">Product 02</div>
-    <div class="tier-svc-name">Healthcare AI Mini Course</div>
-    <div class="tier-svc-desc">The exact AI tools and workflows a healthcare operations professional needs to save 10 or more hours per week. Built from 18 years of real experience.</div>
-    <div class="tier-svc-price">$97</div>
-    <div class="tier-svc-price-note">One time · Lifetime access</div>
-    <div class="tier-svc-divider"></div>
-    <ul class="tier-svc-list">
-      <li>6 core AI tools for healthcare operations</li>
-      <li>Real workflow demonstrations</li>
-      <li>Full prompt library included</li>
-      <li>Lifetime access and updates</li>
-    </ul>
-    <a href="#contact" class="tier-svc-link">Get the Course</a>
-  </div>
-  <div class="tier-svc">
-    <div class="tier-svc-num">Product 03</div>
-    <div class="tier-svc-name">SOP Template Library</div>
-    <div class="tier-svc-desc">15 ready-to-deploy SOP templates built for healthcare environments. Written by someone who has built SOPs inside Fortune 500 healthcare organizations.</div>
-    <div class="tier-svc-price">$297</div>
-    <div class="tier-svc-price-note">One time · Instant delivery</div>
-    <div class="tier-svc-divider"></div>
-    <ul class="tier-svc-list">
-      <li>15 healthcare SOP templates</li>
-      <li>Pharmacy workflow SOPs</li>
-      <li>Patient intake and onboarding SOPs</li>
-      <li>Editable Word and PDF formats</li>
-    </ul>
-    <a href="#contact" class="tier-svc-link">Get the Templates</a>
-  </div>
-</div>
-
-<!-- TIER 02 -->
-<div class="tier-band reveal" style="padding:14px 0;margin-bottom:0;">
-  <span class="tier-band-num" style="font-family:'DM Mono',monospace;font-size:10px;color:rgba(184,146,42,0.5);letter-spacing:2px;">Tier 02</span>
-  <div class="tier-band-divider"></div>
-  <span class="tier-band-name">Operations Documentation</span>
-  <span class="tier-band-range">$500 — $8,000</span>
-</div>
-<div class="tier-service-grid reveal reveal-delay-1">
-  <div class="tier-svc">
-    <div class="tier-svc-num">Service 01</div>
-    <div class="tier-svc-name">Single SOP Development</div>
-    <div class="tier-svc-desc">One comprehensive SOP — researched, written, and formatted to your organization's standards. Delivered in 3 to 5 business days.</div>
-    <div class="tier-svc-price">$500 — $1,500</div>
-    <div class="tier-svc-price-note">Per SOP · 3 to 5 day delivery</div>
-    <div class="tier-svc-divider"></div>
-    <ul class="tier-svc-list">
-      <li>Discovery call included</li>
-      <li>One round of revisions</li>
-      <li>Word and PDF delivery</li>
-      <li>Implementation notes included</li>
-    </ul>
-    <a href="#contact" class="tier-svc-link">Book a Call</a>
-  </div>
-  <div class="tier-svc featured">
-    <div class="tier-svc-badge">Best Value</div>
-    <div class="tier-svc-num">Service 02</div>
-    <div class="tier-svc-name">SOP Library Build</div>
-    <div class="tier-svc-desc">10 custom SOPs built for your organization. Covers critical workflows, patient-facing processes, and staff operations. Delivered in 2 to 3 weeks.</div>
-    <div class="tier-svc-price">$5,000 — $8,000</div>
-    <div class="tier-svc-price-note">Per project · 2 to 3 week delivery</div>
-    <div class="tier-svc-divider"></div>
-    <ul class="tier-svc-list">
-      <li>Process discovery session</li>
-      <li>10 custom SOPs</li>
-      <li>Job aids included</li>
-      <li>Two rounds of revisions</li>
-      <li>Full implementation guide</li>
-    </ul>
-    <a href="#contact" class="tier-svc-link">Book a Call</a>
-  </div>
-  <div class="tier-svc">
-    <div class="tier-svc-num">Service 03</div>
-    <div class="tier-svc-name">BRD and Program Launch Support</div>
-    <div class="tier-svc-desc">Business Requirements Documents and full program launch documentation built using Agile and Scrum methodology. Stakeholder-ready from day one.</div>
-    <div class="tier-svc-price">$2,500 — $5,000</div>
-    <div class="tier-svc-price-note">Per project · 1 to 2 week delivery</div>
-    <div class="tier-svc-divider"></div>
-    <ul class="tier-svc-list">
-      <li>Stakeholder requirements gathering</li>
-      <li>Full BRD documentation</li>
-      <li>Scrum Master facilitation</li>
-      <li>Executive-ready presentation</li>
-    </ul>
-    <a href="#contact" class="tier-svc-link">Book a Call</a>
-  </div>
-</div>
-
-<!-- TIER 03 -->
-<div class="tier-band reveal" style="padding:14px 0;margin-bottom:0;">
-  <span class="tier-band-num" style="font-family:'DM Mono',monospace;font-size:10px;color:rgba(184,146,42,0.5);letter-spacing:2px;">Tier 03</span>
-  <div class="tier-band-divider"></div>
-  <span class="tier-band-name">Root Cause Analysis and Process Improvement</span>
-  <span class="tier-band-range">$2,500 — $15,000</span>
-</div>
-<div class="tier-service-grid reveal reveal-delay-1">
-  <div class="tier-svc">
-    <div class="tier-svc-num">Service 01</div>
-    <div class="tier-svc-name">Root Cause Analysis Audit</div>
-    <div class="tier-svc-desc">Identify the exact root causes of your most costly operational failures using Six Sigma methodology. Delivered with a prioritized remediation plan.</div>
-    <div class="tier-svc-price">$2,500</div>
-    <div class="tier-svc-price-note">Per audit · 1 week delivery</div>
-    <div class="tier-svc-divider"></div>
-    <ul class="tier-svc-list">
-      <li>Process mapping session</li>
-      <li>Root cause identification</li>
-      <li>Prioritized fix roadmap</li>
-      <li>Executive summary included</li>
-    </ul>
-    <a href="#contact" class="tier-svc-link">Book a Call</a>
-  </div>
-  <div class="tier-svc featured">
-    <div class="tier-svc-badge">Most Requested</div>
-    <div class="tier-svc-num">Service 02</div>
-    <div class="tier-svc-name">Full Operational Gap Analysis</div>
-    <div class="tier-svc-desc">A comprehensive audit of your entire operation. Current state, desired state, and exactly how to get there — with AI automation built into every recommendation.</div>
-    <div class="tier-svc-price">$5,000 — $7,500</div>
-    <div class="tier-svc-price-note">Per engagement · 2 week delivery</div>
-    <div class="tier-svc-divider"></div>
-    <ul class="tier-svc-list">
-      <li>Full operations discovery</li>
-      <li>Data-driven gap analysis</li>
-      <li>AI automation recommendations</li>
-      <li>90-day implementation roadmap</li>
-      <li>C-suite ready presentation</li>
-    </ul>
-    <a href="#contact" class="tier-svc-link">Book a Call</a>
-  </div>
-  <div class="tier-svc">
-    <div class="tier-svc-num">Service 03</div>
-    <div class="tier-svc-name">Process Improvement Sprint</div>
-    <div class="tier-svc-desc">A focused 4-week engagement targeting one specific operational problem. Identify it, fix it, document it, and train your team on the new process.</div>
-    <div class="tier-svc-price">$8,000 — $15,000</div>
-    <div class="tier-svc-price-note">Per sprint · 4 week engagement</div>
-    <div class="tier-svc-divider"></div>
-    <ul class="tier-svc-list">
-      <li>Scrum-based sprint structure</li>
-      <li>Process redesign and documentation</li>
-      <li>Staff training materials</li>
-      <li>30-day post-launch support</li>
-    </ul>
-    <a href="#contact" class="tier-svc-link">Book a Call</a>
-  </div>
-</div>
-
-<!-- TIER 04 -->
-<div class="tier-band reveal" style="padding:14px 0;margin-bottom:0;">
-  <span class="tier-band-num" style="font-family:'DM Mono',monospace;font-size:10px;color:rgba(184,146,42,0.5);letter-spacing:2px;">Tier 04</span>
-  <div class="tier-band-divider"></div>
-  <span class="tier-band-name">AI Automation Implementation</span>
-  <span class="tier-band-range">$5,000 — $10,000 + Retainer</span>
-</div>
-<div class="tier-service-grid reveal reveal-delay-1">
-  <div class="tier-svc">
-    <div class="tier-svc-num">Service 01</div>
-    <div class="tier-svc-name">AI Intake Agent</div>
-    <div class="tier-svc-desc">A custom AI agent that greets every patient inquiry, collects intake information, and books appointments automatically — 24 hours a day, 7 days a week.</div>
-    <div class="tier-svc-price">$5,000 + $2,000/mo</div>
-    <div class="tier-svc-price-note">Setup fee + monthly retainer</div>
-    <div class="tier-svc-divider"></div>
-    <ul class="tier-svc-list">
-      <li>Custom AI agent build</li>
-      <li>24/7 patient response</li>
-      <li>Appointment booking automation</li>
-      <li>Delivered in 5 to 7 days</li>
-    </ul>
-    <a href="#contact" class="tier-svc-link">Book a Call</a>
-  </div>
-  <div class="tier-svc featured">
-    <div class="tier-svc-badge">Most Popular</div>
-    <div class="tier-svc-num">Service 02</div>
-    <div class="tier-svc-name">Full AI Operations Stack</div>
-    <div class="tier-svc-desc">The complete AI automation build. Intake agent, lead nurture sequences, scheduling automation, CRM integration, and team notification flows.</div>
-    <div class="tier-svc-price">$7,500 + $2,500/mo</div>
-    <div class="tier-svc-price-note">Setup fee + monthly retainer</div>
-    <div class="tier-svc-divider"></div>
-    <ul class="tier-svc-list">
-      <li>Everything in AI Intake Agent</li>
-      <li>HubSpot CRM integration</li>
-      <li>Zapier workflow automation</li>
-      <li>Lead nurture email sequences</li>
-      <li>Monthly performance reporting</li>
-    </ul>
-    <a href="#contact" class="tier-svc-link">Book a Call</a>
-  </div>
-  <div class="tier-svc">
-    <div class="tier-svc-num">Service 03</div>
-    <div class="tier-svc-name">Enterprise AI Build</div>
-    <div class="tier-svc-desc">For multi-location practices and larger healthcare organizations. A fully custom AI automation system built to your specific workflows and compliance requirements.</div>
-    <div class="tier-svc-price">$10,000 + $3,000/mo</div>
-    <div class="tier-svc-price-note">Per location · Custom scope</div>
-    <div class="tier-svc-divider"></div>
-    <ul class="tier-svc-list">
-      <li>Multi-location deployment</li>
-      <li>HIPAA-aware build</li>
-      <li>Staff training and documentation</li>
-      <li>Priority support and SLA</li>
-    </ul>
-    <a href="#contact" class="tier-svc-link">Book a Call</a>
-  </div>
-</div>
-
-<!-- TIER 05 -->
-<div class="tier-band reveal" style="padding:14px 0;margin-bottom:0;">
-  <span class="tier-band-num" style="font-family:'DM Mono',monospace;font-size:10px;color:rgba(184,146,42,0.5);letter-spacing:2px;">Tier 05</span>
-  <div class="tier-band-divider"></div>
-  <span class="tier-band-name">Fractional COO</span>
-  <span class="tier-band-range">$5,000 — $12,000 / Month</span>
-</div>
-<div class="tier-service-grid reveal reveal-delay-1">
-  <div class="tier-svc">
-    <div class="tier-svc-num">Engagement 01</div>
-    <div class="tier-svc-name">Fractional COO — Essentials</div>
-    <div class="tier-svc-desc">10 hours per week of dedicated operations leadership. Scrum facilitation, process improvement, team management, and stakeholder reporting.</div>
-    <div class="tier-svc-price">$5,000/mo</div>
-    <div class="tier-svc-price-note">3 month minimum · 10 hours per week</div>
-    <div class="tier-svc-divider"></div>
-    <ul class="tier-svc-list">
-      <li>Weekly leadership meetings</li>
-      <li>Process improvement oversight</li>
-      <li>Scrum facilitation</li>
-      <li>Monthly executive reporting</li>
-    </ul>
-    <a href="#contact" class="tier-svc-link">Book a Call</a>
-  </div>
-  <div class="tier-svc featured">
-    <div class="tier-svc-badge">Best Value</div>
-    <div class="tier-svc-num">Engagement 02</div>
-    <div class="tier-svc-name">Fractional COO — Full</div>
-    <div class="tier-svc-desc">20 hours per week of senior operations leadership. Strategy, systems, team development, AI implementation, and direct C-suite partnership.</div>
-    <div class="tier-svc-price">$8,000/mo</div>
-    <div class="tier-svc-price-note">3 month minimum · 20 hours per week</div>
-    <div class="tier-svc-divider"></div>
-    <ul class="tier-svc-list">
-      <li>Everything in Essentials</li>
-      <li>AI automation strategy</li>
-      <li>Team development and training</li>
-      <li>KPI dashboard development</li>
-      <li>Direct C-suite partnership</li>
-    </ul>
-    <a href="#contact" class="tier-svc-link">Book a Call</a>
-  </div>
-  <div class="tier-svc">
-    <div class="tier-svc-num">Engagement 03</div>
-    <div class="tier-svc-name">Fractional COO — Executive</div>
-    <div class="tier-svc-desc">Full fractional COO engagement for organizations in rapid growth, transition, or crisis. Maximum impact, maximum availability, board-ready reporting.</div>
-    <div class="tier-svc-price">$12,000/mo</div>
-    <div class="tier-svc-price-note">6 month minimum · Full availability</div>
-    <div class="tier-svc-divider"></div>
-    <ul class="tier-svc-list">
-      <li>Board-level reporting</li>
-      <li>Organizational redesign</li>
-      <li>Full AI stack implementation</li>
-      <li>Priority response guarantee</li>
-    </ul>
-    <a href="#contact" class="tier-svc-link">Book a Call</a>
-  </div>
-</div>
-```
-
+    <div class="product-split reveal reveal-delay-1">
+      <div class="product-left">
+        <div>
+          <div class="product-eyebrow">Featured Product</div>
+          <h3 class="product-title">MedSpa Intake <em>AI System</em></h3>
+          <p class="product-desc">A fully functional AI-powered patient intake system built specifically for MedSpas and aesthetic practices. Collects patient information, flags medical contraindications automatically, and populates a provider dashboard — all before the patient walks through the door.</p>
+          <div class="product-feature"><div class="product-dot"></div>5-step AI-powered patient intake form</div>
+          <div class="product-feature"><div class="product-dot"></div>Automatic contraindication flagging — reduces liability</div>
+          <div class="product-feature"><div class="product-dot"></div>Provider dashboard with AI-generated recommendations</div>
+          <div class="product-feature"><div class="product-dot"></div>Luxury design — ready to deploy same day</div>
+          <div class="product-feature"><div class="product-dot"></div>Implementation guide included</div>
+        </div>
+        <div>
+          <div class="product-video">
+            <iframe src="https://www.loom.com/embed/d7fcea3bdc944cf2b1437b992ac81c36" allowfullscreen title="MedSpa Intake AI Demo"></iframe>
+          </div>
+          <div class="product-price">$197</div>
+          <div class="product-price-note">One time · Instant delivery · Yours forever</div>
+          <a href="https://uptowngeaux.gumroad.com/l/medspa-intake-ai" target="_blank" class="product-cta">Buy Now — $197</a>
+        </div>
+      </div>
+      <div class="product-right">
+        <div class="upsell-label">Want it built for you?</div>
+        <h4 class="upsell-title">Done-For-You <em>MedSpa AI Setup</em></h4>
+        <p class="upsell-desc">We install, configure, and customize the entire AI intake system for your specific practice. Connected to your booking system, branded to your MedSpa, and live within 5 to 7 days.</p>
+        <div class="upsell-price-box">
+          <div class="upsell-price">$1,500</div>
+          <div class="upsell-price-note">One time · Delivered in 5 to 7 days</div>
+        </div>
+        <div class="product-feature"><div class="product-dot"></div>Full installation and configuration</div>
+        <div class="product-feature"><div class="product-dot"></div>Custom branding to match your practice</div>
+        <div class="product-feature"><div class="product-dot"></div>Connected to your booking system</div>
+        <div class="product-feature" style="margin-bottom:28px;"><div class="product-dot"></div>30-day post-launch support included</div>
+        <a href="https://cal.com/geauxuptown" target="_blank" class="upsell-cta">Book a Setup Call</a>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -931,26 +596,10 @@ footer{flex-direction:column;gap:16px;text-align:center;padding:24px}
       <h2 class="s-title light">Simple Process. <span class="it">Real Results.</span></h2>
     </div>
     <div class="process-track">
-      <div class="proc-step reveal">
-        <div class="proc-step-num">01</div>
-        <div class="proc-title">Discovery Call</div>
-        <p class="proc-desc">A 30-minute conversation about your business, your biggest bottlenecks, and what you need to grow. No pitch. Just a real conversation.</p>
-      </div>
-      <div class="proc-step reveal reveal-delay-1">
-        <div class="proc-step-num">02</div>
-        <div class="proc-title">Tailored Proposal</div>
-        <p class="proc-desc">A clear scope of work, timeline, and fixed price within 48 hours. No surprises, no scope creep.</p>
-      </div>
-      <div class="proc-step reveal reveal-delay-2">
-        <div class="proc-step-num">03</div>
-        <div class="proc-title">We Build</div>
-        <p class="proc-desc">Work begins within one week of agreement. First deliverable in two weeks. You see progress immediately.</p>
-      </div>
-      <div class="proc-step reveal reveal-delay-3">
-        <div class="proc-step-num">04</div>
-        <div class="proc-title">You Scale</div>
-        <p class="proc-desc">Systems are live, team is trained, and your business runs better. We stay on for ongoing support or hand off cleanly.</p>
-      </div>
+      <div class="proc-step reveal"><div class="proc-num">01</div><div class="proc-title">Discovery Call</div><p class="proc-desc">30 minutes. We learn exactly where your operation is breaking and what it is costing you. No pitch. Just a real conversation.</p></div>
+      <div class="proc-step reveal reveal-delay-1"><div class="proc-num">02</div><div class="proc-title">Tailored Proposal</div><p class="proc-desc">A clear scope of work, timeline, and fixed price within 48 hours. No surprises, no scope creep.</p></div>
+      <div class="proc-step reveal reveal-delay-2"><div class="proc-num">03</div><div class="proc-title">We Build</div><p class="proc-desc">Work begins within one week. First deliverable in two weeks. You see progress immediately.</p></div>
+      <div class="proc-step reveal reveal-delay-3"><div class="proc-num">04</div><div class="proc-title">You Scale</div><p class="proc-desc">Systems live, team trained, business running better. We stay on or hand off cleanly — your call.</p></div>
     </div>
   </div>
 </section>
@@ -964,67 +613,23 @@ footer{flex-direction:column;gap:16px;text-align:center;padding:24px}
         <div class="reveal">
           <div class="s-eyebrow"><div class="s-eyebrow-rule"></div><div class="s-eyebrow-text">The Person Behind It</div></div>
           <h2 class="s-title">Fortune 4 Expertise.<br><span class="it">Boutique Attention.</span></h2>
-          <p class="s-body" style="margin-top:14px">A New Orleans native with 19 years of operational leadership across three of the most demanding environments in healthcare — a Level 1 trauma hospital, a national pharmacy chain, and a Fortune 4 enterprise. That expertise is now available to healthcare organizations of every size.</p>
+          <p class="s-body" style="margin-top:14px;">A New Orleans native with 19 years of operational leadership across three of the most demanding environments in healthcare — a Level 1 trauma hospital, a national pharmacy chain, and a Fortune 4 enterprise. That expertise is now available to healthcare organizations of every size.</p>
         </div>
         <div class="employer-list reveal reveal-delay-1">
-          <div class="employer">
-            <div class="emp-year">2010<br>—<br>Now</div>
-            <div class="emp-info">
-              <div class="emp-company">McKesson Corporation — Fortune 4</div>
-              <div class="emp-role">Operations Leader · 19+ years healthcare operations · 10%+ above targets consistently</div>
-            </div>
-          </div>
-          <div class="employer">
-            <div class="emp-year">Prior</div>
-            <div class="emp-info">
-              <div class="emp-company">Walgreens — National Distribution</div>
-              <div class="emp-role">Operations Supervisor · 60-person team · Lean Systems implementation</div>
-            </div>
-          </div>
-          <div class="employer">
-            <div class="emp-year">Prior</div>
-            <div class="emp-info">
-              <div class="emp-company">Parkland Health — Level 1 Trauma, Dallas</div>
-              <div class="emp-role">Pharmacy Tech Supervisor · Policy and SOP implementation · 7 years</div>
-            </div>
-          </div>
+          <div class="employer"><div class="emp-year">2010<br>—<br>Now</div><div class="emp-info"><div class="emp-company">McKesson Corporation — Fortune 4</div><div class="emp-role">Operations Leader · 19+ years healthcare operations · 10%+ above targets consistently</div></div></div>
+          <div class="employer"><div class="emp-year">Prior</div><div class="emp-info"><div class="emp-company">Walgreens — National Distribution</div><div class="emp-role">Operations Supervisor · 60-person team · Lean Systems implementation</div></div></div>
+          <div class="employer"><div class="emp-year">Prior</div><div class="emp-info"><div class="emp-company">Parkland Health — Level 1 Trauma, Dallas</div><div class="emp-role">Pharmacy Tech Supervisor · Policy and SOP implementation · 7 years</div></div></div>
         </div>
       </div>
       <div>
-        <div class="reveal">
-          <div class="s-eyebrow"><div class="s-eyebrow-rule"></div><div class="s-eyebrow-text">Credentials</div></div>
-        </div>
+        <div class="reveal"><div class="s-eyebrow"><div class="s-eyebrow-rule"></div><div class="s-eyebrow-text">Credentials</div></div></div>
         <div class="cert-grid reveal reveal-delay-1">
-          <div class="cert">
-            <div class="cert-abbr">LSS YB</div>
-            <div class="cert-name">Lean Six Sigma</div>
-            <div class="cert-detail">Yellow Belt · Cert #703303</div>
-          </div>
-          <div class="cert">
-            <div class="cert-abbr">SMC</div>
-            <div class="cert-name">Scrum Master</div>
-            <div class="cert-detail">Cert #001480711 · Valid 2029</div>
-          </div>
-          <div class="cert">
-            <div class="cert-abbr">PTCB</div>
-            <div class="cert-name">Pharmacy Technician</div>
-            <div class="cert-detail">CPhT Licensed · Valid 2027</div>
-          </div>
-          <div class="cert">
-            <div class="cert-abbr">TX</div>
-            <div class="cert-name">Texas State Board</div>
-            <div class="cert-detail">Pharmacy License · Valid 2027</div>
-          </div>
-          <div class="cert">
-            <div class="cert-abbr">WO</div>
-            <div class="cert-name">Woman-Owned Business</div>
-            <div class="cert-detail">Geaux Uptown Solutions LLC</div>
-          </div>
-          <div class="cert">
-            <div class="cert-abbr">MBE</div>
-            <div class="cert-name">OQP Solutions Advisor</div>
-            <div class="cert-detail">NMSDC-Certified · GovCon</div>
-          </div>
+          <div class="cert"><div class="cert-abbr">LSS YB</div><div class="cert-name">Lean Six Sigma</div><div class="cert-detail">Yellow Belt · Cert #703303</div></div>
+          <div class="cert"><div class="cert-abbr">SMC</div><div class="cert-name">Scrum Master</div><div class="cert-detail">Cert #001480711 · Valid 2029</div></div>
+          <div class="cert"><div class="cert-abbr">PTCB</div><div class="cert-name">Pharmacy Technician</div><div class="cert-detail">CPhT Licensed · Valid 2027</div></div>
+          <div class="cert"><div class="cert-abbr">TX</div><div class="cert-name">Texas State Board</div><div class="cert-detail">Pharmacy License · Valid 2027</div></div>
+          <div class="cert"><div class="cert-abbr">WO</div><div class="cert-name">Woman-Owned Business</div><div class="cert-detail">Geaux Uptown Solutions LLC</div></div>
+          <div class="cert"><div class="cert-abbr">MBE</div><div class="cert-name">OQP Solutions Advisor</div><div class="cert-detail">NMSDC-Certified · GovCon</div></div>
         </div>
       </div>
     </div>
@@ -1040,146 +645,16 @@ footer{flex-direction:column;gap:16px;text-align:center;padding:24px}
         <div class="s-eyebrow"><div class="s-eyebrow-rule"></div><div class="s-eyebrow-text">Who We Serve</div></div>
         <h2 class="s-title">Built for <span class="it">Healthcare</span> —<br>and the Ecosystem Around It</h2>
       </div>
-      <p class="s-body reveal reveal-delay-1">Primary focus is healthcare organizations, health-tech startups, and medical practices. We serve the broader healthcare ecosystem — medspas, pharmacies, and growing businesses that need Fortune 4-level operations without the overhead.</p>
+      <p class="s-body reveal reveal-delay-1">Primary focus is healthcare organizations, health-tech startups, and medical practices. MedSpas, pharmacies, and growing businesses that need Fortune 4-level operations without the overhead.</p>
     </div>
     <div class="serve-grid">
-      <div class="serve-card reveal">
-        <div class="serve-marker"><div class="serve-dot"></div><div class="serve-type">Primary · Fractional COO</div></div>
-        <div class="serve-title">Health-Tech Startups — Seed through Series B</div>
-        <p class="serve-pain">Just raised and need operational infrastructure fast — SOPs, compliance frameworks, team structure, and AI systems that scale with you.</p>
-      </div>
-      <div class="serve-card reveal reveal-delay-1">
-        <div class="serve-marker"><div class="serve-dot"></div><div class="serve-type">Fractional COO + Compliance</div></div>
-        <div class="serve-title">Digital Health and Clinical Platforms</div>
-        <p class="serve-pain">Building a healthcare product and need someone who has lived inside the operations, compliance, and workflow challenges your clients face every day.</p>
-      </div>
-      <div class="serve-card reveal reveal-delay-2">
-        <div class="serve-marker"><div class="serve-dot"></div><div class="serve-type">AI Automation + Documentation</div></div>
-        <div class="serve-title">MedSpas and Aesthetic Practices</div>
-        <p class="serve-pain">Missing leads after hours, no AI intake system, and a team that cannot operate without the owner in the room.</p>
-      </div>
-      <div class="serve-card reveal">
-        <div class="serve-marker"><div class="serve-dot"></div><div class="serve-type">SOP Development + AI</div></div>
-        <div class="serve-title">Medical Practices and Clinics</div>
-        <p class="serve-pain">Manual intake processes, undocumented workflows, and no automation in place to handle patient volume efficiently.</p>
-      </div>
-      <div class="serve-card reveal reveal-delay-1">
-        <div class="serve-marker"><div class="serve-dot"></div><div class="serve-type">SOP Development + Fractional Ops</div></div>
-        <div class="serve-title">Specialty Pharmacies and PBMs</div>
-        <p class="serve-pain">Complex regulatory environment, SLA management pressure, and operational scaling without documented processes.</p>
-      </div>
-      <div class="serve-card reveal reveal-delay-2">
-        <div class="serve-marker"><div class="serve-dot"></div><div class="serve-type">AI Toolkit + Operations Build</div></div>
-        <div class="serve-title">Growing Businesses Ready to Operate Smarter</div>
-        <p class="serve-pain">Scaling fast but no systems, no documentation, and no senior ops experience on the team to build it properly.</p>
-      </div>
+      <div class="serve-card reveal"><div class="serve-marker"><div class="serve-dot"></div><div class="serve-type">Primary · Fractional COO</div></div><div class="serve-title">Health-Tech Startups — Seed through Series B</div><p class="serve-pain">Just raised and need operational infrastructure fast — SOPs, compliance frameworks, team structure, and AI systems that scale with you.</p></div>
+      <div class="serve-card reveal reveal-delay-1"><div class="serve-marker"><div class="serve-dot"></div><div class="serve-type">AI Automation + Documentation</div></div><div class="serve-title">MedSpas and Aesthetic Practices</div><p class="serve-pain">Missing leads after hours, no AI intake system, and a team that cannot operate without the owner in the room.</p></div>
+      <div class="serve-card reveal reveal-delay-2"><div class="serve-marker"><div class="serve-dot"></div><div class="serve-type">SOP Development + AI</div></div><div class="serve-title">Medical Practices and Clinics</div><p class="serve-pain">Manual intake processes, undocumented workflows, and no automation in place to handle patient volume efficiently.</p></div>
+      <div class="serve-card reveal"><div class="serve-marker"><div class="serve-dot"></div><div class="serve-type">SOP + Fractional Ops</div></div><div class="serve-title">Specialty Pharmacies and PBMs</div><p class="serve-pain">Complex regulatory environment, SLA management pressure, and operational scaling without documented processes.</p></div>
+      <div class="serve-card reveal reveal-delay-1"><div class="serve-marker"><div class="serve-dot"></div><div class="serve-type">Fractional COO + Compliance</div></div><div class="serve-title">Digital Health and Clinical Platforms</div><p class="serve-pain">Building a healthcare product and need someone who has lived inside the operations and compliance challenges your clients face every day.</p></div>
+      <div class="serve-card reveal reveal-delay-2"><div class="serve-marker"><div class="serve-dot"></div><div class="serve-type">AI Toolkit + Operations Build</div></div><div class="serve-title">Growing Businesses Ready to Operate Smarter</div><p class="serve-pain">Scaling fast but no systems, no documentation, and no senior ops experience on the team to build it properly.</p></div>
     </div>
-  </div>
-</section>
-
-<!-- PRODUCT SHOWCASE -->
-
-<section style="background:var(--navy-2);padding:100px 56px;" id="products">
-  <div class="section-inner">
-    <div class="reveal" style="margin-bottom:56px;">
-      <div class="s-eyebrow"><div class="s-eyebrow-rule"></div><div class="s-eyebrow-text">Digital Products</div></div>
-      <h2 class="s-title light">Start Immediately. <span class="it">No Call Required.</span></h2>
-      <p class="s-body light" style="margin-top:10px;">Ready-to-deploy tools built from 19 years of real healthcare operations. Buy once. Use forever.</p>
-    </div>
-
-```
-<!-- FEATURED PRODUCT -->
-<div class="reveal" style="display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid rgba(184,146,42,0.3);margin-bottom:20px;overflow:hidden;">
-  <div style="background:var(--navy-3);padding:48px 44px;display:flex;flex-direction:column;justify-content:center;">
-    <div style="font-size:7.5px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:16px;">Featured Product</div>
-    <h3 style="font-family:'Playfair Display',serif;font-size:32px;color:var(--white);font-weight:400;line-height:1.2;margin-bottom:16px;">MedSpa Intake <span style="font-style:italic;color:var(--gold-light);">AI System</span></h3>
-    <p style="font-size:12px;color:rgba(255,255,255,0.45);line-height:1.85;margin-bottom:24px;font-weight:300;">A fully functional AI-powered patient intake system built specifically for MedSpas and aesthetic practices. Collects patient information, flags medical contraindications automatically, and populates a provider dashboard — all before the patient walks through the door.</p>
-    <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:32px;">
-      <div style="display:flex;gap:12px;align-items:center;font-size:10px;color:rgba(255,255,255,0.5);">
-        <div style="width:4px;height:4px;background:var(--gold);flex-shrink:0;"></div>
-        5-step AI-powered patient intake form
-      </div>
-      <div style="display:flex;gap:12px;align-items:center;font-size:10px;color:rgba(255,255,255,0.5);">
-        <div style="width:4px;height:4px;background:var(--gold);flex-shrink:0;"></div>
-        Automatic contraindication flagging — reduces liability
-      </div>
-      <div style="display:flex;gap:12px;align-items:center;font-size:10px;color:rgba(255,255,255,0.5);">
-        <div style="width:4px;height:4px;background:var(--gold);flex-shrink:0;"></div>
-        Provider dashboard with AI-generated recommendations
-      </div>
-      <div style="display:flex;gap:12px;align-items:center;font-size:10px;color:rgba(255,255,255,0.5);">
-        <div style="width:4px;height:4px;background:var(--gold);flex-shrink:0;"></div>
-        Luxury design — ready to deploy same day
-      </div>
-      <div style="display:flex;gap:12px;align-items:center;font-size:10px;color:rgba(255,255,255,0.5);">
-        <div style="width:4px;height:4px;background:var(--gold);flex-shrink:0;"></div>
-        Implementation guide included
-      </div>
-    </div>
-    <div style="margin-bottom:28px;position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border:1px solid rgba(184,146,42,0.2);">
-      <iframe src="https://www.loom.com/embed/d7fcea3bdc944cf2b1437b992ac81c36" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;" title="MedSpa Intake AI Demo"></iframe>
-    </div>
-    <div style="display:flex;align-items:center;gap:20px;flex-wrap:wrap;">
-      <a href="https://uptowngeaux.gumroad.com/l/medspa-intake-ai" target="_blank" style="background:var(--gold);color:var(--navy);font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:16px 36px;text-decoration:none;transition:all 0.3s;display:inline-block;">Buy Now — $197</a>
-    </div>
-    <div style="margin-top:16px;font-size:9px;color:rgba(255,255,255,0.2);letter-spacing:1px;">Instant delivery · No subscription · Yours forever</div>
-  </div>
-  <div style="background:var(--navy);padding:48px 44px;border-left:1px solid rgba(184,146,42,0.2);">
-    <div style="font-size:8px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.2);margin-bottom:24px;">Want it built for you?</div>
-    <h4 style="font-family:'Playfair Display',serif;font-size:22px;color:var(--white);font-weight:400;margin-bottom:12px;line-height:1.3;">Done-For-You <span style="font-style:italic;color:var(--gold);">MedSpa AI Setup</span></h4>
-    <p style="font-size:11px;color:rgba(255,255,255,0.35);line-height:1.8;margin-bottom:24px;font-weight:300;">We install, configure, and customize the entire AI intake system for your specific practice. Connected to your booking system, branded to your MedSpa, and live within 5 to 7 days.</p>
-    <div style="background:rgba(184,146,42,0.05);border:1px solid rgba(184,146,42,0.15);padding:20px;margin-bottom:24px;">
-      <div style="font-family:'Playfair Display',serif;font-size:28px;color:var(--gold-light);margin-bottom:4px;">$1,500</div>
-      <div style="font-size:8px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.2);">One time · Delivered in 5 to 7 days</div>
-    </div>
-    <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:28px;">
-      <div style="display:flex;gap:12px;align-items:center;font-size:10px;color:rgba(255,255,255,0.4);">
-        <div style="width:4px;height:4px;background:var(--gold);flex-shrink:0;opacity:0.6;"></div>
-        Full installation and configuration
-      </div>
-      <div style="display:flex;gap:12px;align-items:center;font-size:10px;color:rgba(255,255,255,0.4);">
-        <div style="width:4px;height:4px;background:var(--gold);flex-shrink:0;opacity:0.6;"></div>
-        Custom branding to match your practice
-      </div>
-      <div style="display:flex;gap:12px;align-items:center;font-size:10px;color:rgba(255,255,255,0.4);">
-        <div style="width:4px;height:4px;background:var(--gold);flex-shrink:0;opacity:0.6;"></div>
-        Connected to your booking system
-      </div>
-      <div style="display:flex;gap:12px;align-items:center;font-size:10px;color:rgba(255,255,255,0.4);">
-        <div style="width:4px;height:4px;background:var(--gold);flex-shrink:0;opacity:0.6;"></div>
-        30-day post-launch support included
-      </div>
-    </div>
-    <a href="https://cal.com/geauxuptown" target="_blank" style="display:block;text-align:center;border:1px solid rgba(184,146,42,0.4);color:var(--gold);font-size:8.5px;font-weight:600;letter-spacing:2px;text-transform:uppercase;padding:13px;text-decoration:none;transition:all 0.3s;">Book a Setup Call</a>
-  </div>
-</div>
-
-<!-- COMING SOON PRODUCTS -->
-<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);" class="reveal reveal-delay-1">
-  <div style="background:var(--navy);padding:28px 24px;">
-    <div style="font-size:7px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--navy);background:var(--gold);padding:3px 10px;display:inline-block;margin-bottom:16px;">Coming Soon</div>
-    <div style="font-family:'Playfair Display',serif;font-size:18px;color:var(--white);margin-bottom:8px;line-height:1.3;">AI Prompt Pack for Healthcare</div>
-    <div style="font-size:11px;color:rgba(255,255,255,0.3);line-height:1.7;margin-bottom:16px;font-weight:300;">40 copy-paste ChatGPT prompts for SOPs, patient communications, proposals, and reports. Built from 19 years of healthcare ops.</div>
-    <div style="font-family:'Playfair Display',serif;font-size:22px;color:var(--gold-light);margin-bottom:16px;">$37</div>
-    <div style="font-size:8px;color:rgba(255,255,255,0.2);letter-spacing:1px;">Notify me when available</div>
-  </div>
-  <div style="background:var(--navy);padding:28px 24px;border-left:1px solid var(--border);">
-    <div style="font-size:7px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--navy);background:var(--gold);padding:3px 10px;display:inline-block;margin-bottom:16px;">Coming Soon</div>
-    <div style="font-family:'Playfair Display',serif;font-size:18px;color:var(--white);margin-bottom:8px;line-height:1.3;">Healthcare AI Mini Course</div>
-    <div style="font-size:11px;color:rgba(255,255,255,0.3);line-height:1.7;margin-bottom:16px;font-weight:300;">6 AI tools that save healthcare professionals 10 or more hours per week. Real workflows. Real results. Built from 19 years of experience.</div>
-    <div style="font-family:'Playfair Display',serif;font-size:22px;color:var(--gold-light);margin-bottom:16px;">$97</div>
-    <div style="font-size:8px;color:rgba(255,255,255,0.2);letter-spacing:1px;">Notify me when available</div>
-  </div>
-  <div style="background:var(--navy);padding:28px 24px;border-left:1px solid var(--border);">
-    <div style="font-size:7px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--navy);background:var(--gold);padding:3px 10px;display:inline-block;margin-bottom:16px;">Coming Soon</div>
-    <div style="font-family:'Playfair Display',serif;font-size:18px;color:var(--white);margin-bottom:8px;line-height:1.3;">SOP Template Library</div>
-    <div style="font-size:11px;color:rgba(255,255,255,0.3);line-height:1.7;margin-bottom:16px;font-weight:300;">15 ready-to-deploy SOP templates for healthcare environments. Written by someone who authored SOPs inside Fortune 500 healthcare organizations.</div>
-    <div style="font-family:'Playfair Display',serif;font-size:22px;color:var(--gold-light);margin-bottom:16px;">$297</div>
-    <div style="font-size:8px;color:rgba(255,255,255,0.2);letter-spacing:1px;">Notify me when available</div>
-  </div>
-</div>
-```
-
   </div>
 </section>
 
@@ -1190,70 +665,13 @@ footer{flex-direction:column;gap:16px;text-align:center;padding:24px}
     <div class="reveal">
       <div class="s-eyebrow"><div class="s-eyebrow-rule"></div><div class="s-eyebrow-text">Investment</div></div>
       <h2 class="s-title light">Transparent Pricing. <span class="it">No Surprises.</span></h2>
-      <p class="s-body light" style="margin-top:10px">Every engagement starts with a conversation. Custom quotes available for complex scopes.</p>
+      <p class="s-body light" style="margin-top:10px;">Every engagement starts with a conversation. Custom quotes available for complex scopes.</p>
     </div>
     <div class="pricing-grid reveal reveal-delay-1">
-      <div class="pc">
-        <div class="pc-top">
-          <div class="pc-label">Ops Audit + Roadmap</div>
-          <div class="pc-price">$2,500</div>
-          <div class="pc-per">Flat rate · 2-week engagement</div>
-        </div>
-        <div class="pc-body">
-          <div class="pc-feat">Current state assessment</div>
-          <div class="pc-feat">Gap analysis report</div>
-          <div class="pc-feat">Prioritized action roadmap</div>
-          <div class="pc-feat">30-min executive readout</div>
-          <div class="pc-feat">Entry point to retainer</div>
-          <a href="#contact" class="pc-cta">Start Here</a>
-        </div>
-      </div>
-      <div class="pc featured">
-        <div class="pc-badge">Most Popular</div>
-        <div class="pc-top">
-          <div class="pc-label">Fractional COO</div>
-          <div class="pc-price">$7,500</div>
-          <div class="pc-per">Per month · 15 to 20 hours</div>
-        </div>
-        <div class="pc-body">
-          <div class="pc-feat">Ongoing ops leadership</div>
-          <div class="pc-feat">SOP development</div>
-          <div class="pc-feat">Team structure design</div>
-          <div class="pc-feat">Compliance oversight</div>
-          <div class="pc-feat">Investor-ready reporting</div>
-          <a href="#contact" class="pc-cta">Get Started</a>
-        </div>
-      </div>
-      <div class="pc">
-        <div class="pc-top">
-          <div class="pc-label">AI Operations Stack</div>
-          <div class="pc-price">$7,500</div>
-          <div class="pc-per">Setup + $2,500 per month</div>
-        </div>
-        <div class="pc-body">
-          <div class="pc-feat">Custom AI agent build</div>
-          <div class="pc-feat">HubSpot CRM integration</div>
-          <div class="pc-feat">Zapier workflow automation</div>
-          <div class="pc-feat">Lead nurture sequences</div>
-          <div class="pc-feat">Monthly optimization</div>
-          <a href="#contact" class="pc-cta">Get Started</a>
-        </div>
-      </div>
-      <div class="pc">
-        <div class="pc-top">
-          <div class="pc-label">SOP Package</div>
-          <div class="pc-price">$3,500</div>
-          <div class="pc-per">Per project · 5 SOPs</div>
-        </div>
-        <div class="pc-body">
-          <div class="pc-feat">5 complete SOPs</div>
-          <div class="pc-feat">Exception workflows</div>
-          <div class="pc-feat">Training materials</div>
-          <div class="pc-feat">Audit-ready formatting</div>
-          <div class="pc-feat">2-week delivery</div>
-          <a href="#contact" class="pc-cta">Get Started</a>
-        </div>
-      </div>
+      <div class="pc"><div class="pc-top"><div class="pc-label">Ops Audit + Roadmap</div><div class="pc-price">$2,500</div><div class="pc-per">Flat rate · 2-week engagement</div></div><div class="pc-body"><div class="pc-feat">Current state assessment</div><div class="pc-feat">Gap analysis report</div><div class="pc-feat">Prioritized action roadmap</div><div class="pc-feat">30-min executive readout</div><a href="#contact" class="pc-cta">Start Here</a></div></div>
+      <div class="pc featured"><div class="pc-badge">Most Popular</div><div class="pc-top"><div class="pc-label">Fractional COO</div><div class="pc-price">$7,500</div><div class="pc-per">Per month · 15 to 20 hours</div></div><div class="pc-body"><div class="pc-feat">Ongoing ops leadership</div><div class="pc-feat">SOP development</div><div class="pc-feat">Team structure design</div><div class="pc-feat">Compliance oversight</div><div class="pc-feat">Investor-ready reporting</div><a href="#contact" class="pc-cta">Get Started</a></div></div>
+      <div class="pc"><div class="pc-top"><div class="pc-label">AI Operations Stack</div><div class="pc-price">$7,500</div><div class="pc-per">Setup + $2,500 per month</div></div><div class="pc-body"><div class="pc-feat">Custom AI agent build</div><div class="pc-feat">HubSpot CRM integration</div><div class="pc-feat">Make.com automation</div><div class="pc-feat">Lead nurture sequences</div><div class="pc-feat">Monthly optimization</div><a href="#contact" class="pc-cta">Get Started</a></div></div>
+      <div class="pc"><div class="pc-top"><div class="pc-label">SOP Package</div><div class="pc-price">$3,500</div><div class="pc-per">Per project · 5 SOPs</div></div><div class="pc-body"><div class="pc-feat">5 complete SOPs</div><div class="pc-feat">Exception workflows</div><div class="pc-feat">Training materials</div><div class="pc-feat">Audit-ready formatting</div><div class="pc-feat">2-week delivery</div><a href="#contact" class="pc-cta">Get Started</a></div></div>
     </div>
   </div>
 </section>
@@ -1263,143 +681,91 @@ footer{flex-direction:column;gap:16px;text-align:center;padding:24px}
 <section class="cta-sec" id="contact">
   <div class="cta-bg-lines"></div>
   <div class="cta-bg-circle"></div>
-  <div class="cta-bg-circle-2"></div>
-  <div class="cta-inner" style="max-width:900px;">
-    <div class="s-eyebrow" style="justify-content:center"><div class="s-eyebrow-rule"></div><div class="s-eyebrow-text">Limited Availability</div><div class="s-eyebrow-rule"></div></div>
+  <div class="cta-inner">
+    <div class="s-eyebrow" style="justify-content:center;margin-bottom:14px;"><div class="s-eyebrow-rule"></div><div class="s-eyebrow-text">Limited Availability</div><div class="s-eyebrow-rule"></div></div>
     <h2 class="cta-title reveal">The Practices That Move First<br><span class="it">Win the Most.</span></h2>
     <p class="cta-sub reveal reveal-delay-1">Healthcare AI adoption is accelerating at three times the rate of any other industry. Every month you operate manually is a month your competitors are closing the gap. We take 3 new clients per month. Book your 30-minute discovery call directly below.</p>
-
-```
-<!-- CAL.COM EMBED -->
-<div class="reveal reveal-delay-2" style="margin:40px 0;background:rgba(255,255,255,0.03);border:1px solid var(--border);padding:8px;overflow:hidden;">
-  <iframe src="https://cal.com/geauxuptown?embed=true&theme=dark" style="width:100%;height:600px;border:none;border-radius:0;" title="Book a Discovery Call — Geaux Uptown Solutions" loading="lazy"></iframe>
-</div>
-
-<div class="cta-contact-bar reveal reveal-delay-3">
-  <div class="cci">
-    <div class="cci-label">Phone</div>
-    <div class="cci-value">(972) 885-7685</div>
-  </div>
-  <div class="cci">
-    <div class="cci-label">Email</div>
-    <div class="cci-value"><a href="/cdn-cgi/l/email-protection#c1a6a4a0b4b9b4b1b5aeb6af81a6aca0a8adefa2aeac"><span class="__cf_email__" data-cfemail="b7d0d2d6c2cfc2c7c3d8c0d9f7d0dad6dedb99d4d8da">[email&#160;protected]</span></a></div>
-  </div>
-  <div class="cci">
-    <div class="cci-label">Location</div>
-    <div class="cci-value">Dallas, TX · Remote Nationwide</div>
-  </div>
-  <div class="cci">
-    <div class="cci-label">TikTok</div>
-    <div class="cci-value"><a href="https://tiktok.com/@geauxuptownai" target="_blank">@geauxuptownai</a></div>
-  </div>
-</div>
-```
-
+    <div class="cal-wrap reveal reveal-delay-2">
+      <iframe src="https://cal.com/geauxuptown?embed=true&theme=dark" style="width:100%;height:600px;border:none;" title="Book a Discovery Call" loading="lazy"></iframe>
+    </div>
+    <div class="cta-contact-bar reveal reveal-delay-3">
+      <div class="cci"><div class="cci-label">Phone</div><div class="cci-value">(972) 885-7685</div></div>
+      <div class="cci"><div class="cci-label">Email</div><div class="cci-value"><a href="mailto:geauxuptown@gmail.com">geauxuptown@gmail.com</a></div></div>
+      <div class="cci"><div class="cci-label">Location</div><div class="cci-value">Dallas, TX · Remote Nationwide</div></div>
+      <div class="cci"><div class="cci-label">TikTok</div><div class="cci-value"><a href="https://tiktok.com/@geauxuptownai" target="_blank">@geauxuptownai</a></div></div>
+    </div>
   </div>
 </section>
 
 <!-- FOOTER -->
 
 <footer>
-  <div class="footer-left">
-    <img src="logo.jpeg" alt="Geaux Uptown Solutions" style="height:36px;width:auto;object-fit:contain;" />
-  </div>
+  <img src="logo.jpeg" alt="Geaux Uptown Solutions" style="height:36px;width:auto;object-fit:contain;" onerror="this.style.display='none'" />
   <div class="footer-links">
     <a href="#services">Services</a>
     <a href="#products">Products</a>
-    <a href="#full-services">All Services</a>
     <a href="#about">About</a>
     <a href="#who-we-serve">Clients</a>
     <a href="#pricing">Pricing</a>
     <a href="#contact">Contact</a>
   </div>
-  <div class="footer-copy">© 2026 Geaux Uptown Solutions · Premium Healthcare AI Consulting · Dallas, TX · New Orleans Native</div>
+  <div class="footer-copy">© 2026 Geaux Uptown Solutions · Premium Healthcare AI Consulting · Dallas, TX</div>
 </footer>
 
 <!-- EXIT INTENT POPUP -->
 
-<div id="exitPopup" style="display:none;position:fixed;inset:0;background:rgba(10,22,40,0.92);z-index:9000;align-items:center;justify-content:center;backdrop-filter:blur(8px);">
-  <div style="background:var(--navy-2);border:1px solid rgba(184,146,42,0.3);max-width:520px;width:90%;padding:56px 48px;position:relative;">
-    <button onclick="closePopup()" style="position:absolute;top:16px;right:20px;background:none;border:none;color:rgba(255,255,255,0.3);font-size:20px;cursor:pointer;line-height:1;">×</button>
+<div id="exitPopup">
+  <div class="popup-box">
+    <button class="popup-close" onclick="closePopup()">×</button>
     <div style="width:32px;height:1px;background:var(--gold);opacity:0.5;margin-bottom:24px;"></div>
-    <h3 style="font-family:'Playfair Display',serif;font-size:28px;color:var(--white);font-weight:400;line-height:1.2;margin-bottom:12px;">Before You Go — Get the Free <span style="font-style:italic;color:var(--gold);">Healthcare AI Starter Kit</span></h3>
-    <p style="font-size:11px;color:rgba(255,255,255,0.4);line-height:1.8;margin-bottom:28px;font-weight:300;">10 AI tools every medical practice needs in 2026. Free PDF guide — delivered instantly to your inbox. No spam. Unsubscribe anytime.</p>
-    <div style="display:flex;gap:0;margin-bottom:16px;">
-      <input id="popupEmail" type="email" placeholder="Your email address" style="flex:1;background:rgba(255,255,255,0.05);border:1px solid rgba(184,146,42,0.3);border-right:none;padding:14px 18px;font-size:11px;color:var(--white);font-family:'DM Sans',sans-serif;outline:none;" />
-      <button onclick="submitPopup()" style="background:var(--gold);color:var(--navy);border:none;padding:14px 24px;font-size:8.5px;font-weight:700;letter-spacing:2px;text-transform:uppercase;cursor:pointer;white-space:nowrap;">Send It Free</button>
+    <h3 class="popup-title">Before You Go — Get the Free <em>Healthcare AI Starter Kit</em></h3>
+    <p class="popup-sub">10 AI tools every medical practice needs in 2026. Free PDF guide — delivered instantly to your inbox.</p>
+    <div class="popup-form">
+      <input id="popupEmail" class="popup-input" type="email" placeholder="Your email address" />
+      <button class="popup-btn" onclick="submitPopup()">Send It Free</button>
     </div>
-    <div style="font-size:8px;color:rgba(255,255,255,0.15);letter-spacing:1px;">Your information is never sold or shared.</div>
-    <div id="popupSuccess" style="display:none;margin-top:16px;padding:14px;background:rgba(184,146,42,0.1);border:1px solid rgba(184,146,42,0.3);font-size:11px;color:var(--gold);">Check your inbox — your free guide is on the way.</div>
+    <div class="popup-note">Your information is never sold or shared.</div>
+    <div id="popupSuccess" class="popup-success">Check your inbox — your free guide is on the way.</div>
   </div>
 </div>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-
-const cursor=document.getElementById(‘cursor’);
-const ring=document.getElementById(‘cursorRing’);
+<script>
+// CURSOR
+const cursor=document.getElementById('cursor');
+const ring=document.getElementById('cursorRing');
 let mx=0,my=0,rx=0,ry=0;
-document.addEventListener(‘mousemove’,e=>{mx=e.clientX;my=e.clientY;cursor.style.left=mx+‘px’;cursor.style.top=my+‘px’;});
-function animRing(){rx+=(mx-rx)*0.12;ry+=(my-ry)*0.12;ring.style.left=rx+‘px’;ring.style.top=ry+‘px’;requestAnimationFrame(animRing);}
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cursor.style.left=mx+'px';cursor.style.top=my+'px';});
+function animRing(){rx+=(mx-rx)*0.12;ry+=(my-ry)*0.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(animRing);}
 animRing();
-document.querySelectorAll(‘a,button,.svc,.serve-card,.cert,.employer,.pc,.hstat,.tier-svc’).forEach(el=>{
-el.addEventListener(‘mouseenter’,()=>ring.classList.add(‘hovering’));
-el.addEventListener(‘mouseleave’,()=>ring.classList.remove(‘hovering’));
+document.querySelectorAll('a,button,.svc,.serve-card,.cert,.employer,.pc,.hstat,.testi-card').forEach(el=>{
+  el.addEventListener('mouseenter',()=>ring.classList.add('hovering'));
+  el.addEventListener('mouseleave',()=>ring.classList.remove('hovering'));
 });
-const nav=document.getElementById(‘mainNav’);
-window.addEventListener(‘scroll’,()=>{nav.classList.toggle(‘scrolled’,window.scrollY>60);});
-const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add(‘visible’)}});},{threshold:0.05,rootMargin:‘0px 0px -20px 0px’});
-document.querySelectorAll(’.reveal’).forEach(el=>observer.observe(el));
-// Force reveal on mobile for hero elements
-setTimeout(()=>{
-document.querySelectorAll(’.hero .reveal’).forEach(el=>el.classList.add(‘visible’));
-},100);
-const geoContainer=document.querySelector(’.hero-geometric’);
-if(geoContainer){const widths=[180,120,240,80,160,200,100,140];widths.forEach(w=>{const line=document.createElement(‘div’);line.className=‘geo-line’;line.style.width=w+‘px’;geoContainer.appendChild(line);});}
-const tickerTrack=document.querySelector(’.ticker-track’);
-if(tickerTrack){
-tickerTrack.addEventListener(‘mouseenter’,()=>tickerTrack.style.animationPlayState=‘paused’);
-tickerTrack.addEventListener(‘mouseleave’,()=>tickerTrack.style.animationPlayState=‘running’);
-}
-document.querySelectorAll(‘a[href^=”#”]’).forEach(a=>{
-a.addEventListener(‘click’,e=>{
-const target=document.querySelector(a.getAttribute(‘href’));
-if(target){e.preventDefault();target.scrollIntoView({behavior:‘smooth’,block:‘start’})}
-});
-});
+
+// NAV SCROLL
+const nav=document.getElementById('mainNav');
+window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',window.scrollY>60);});
+
+// SCROLL REVEAL
+const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:0.05,rootMargin:'0px 0px -20px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+setTimeout(()=>{document.querySelectorAll('.hero .reveal').forEach(el=>el.classList.add('visible'));},200);
+
+// TICKER
+const tt=document.querySelector('.ticker-track');
+if(tt){tt.addEventListener('mouseenter',()=>tt.style.animationPlayState='paused');tt.addEventListener('mouseleave',()=>tt.style.animationPlayState='running');}
+
+// SMOOTH SCROLL
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{const t=document.querySelector(a.getAttribute('href'));if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'});}});});
 
 // EXIT INTENT
-let popupShown=false;
-let popupDismissed=sessionStorage.getItem(‘popupDismissed’);
-function showPopup(){
-if(!popupShown&&!popupDismissed){
-popupShown=true;
-const popup=document.getElementById(‘exitPopup’);
-popup.style.display=‘flex’;
-setTimeout(()=>{popup.style.opacity=‘0’;popup.style.transition=‘opacity 0.3s’;setTimeout(()=>{popup.style.opacity=‘1’;},10);},10);
-}
-}
-function closePopup(){
-document.getElementById(‘exitPopup’).style.display=‘none’;
-sessionStorage.setItem(‘popupDismissed’,‘true’);
-}
-function submitPopup(){
-const email=document.getElementById(‘popupEmail’).value;
-if(email&&email.includes(’@’)){
-document.getElementById(‘popupSuccess’).style.display=‘block’;
-document.getElementById(‘popupEmail’).style.display=‘none’;
-document.querySelector(’#exitPopup button[onclick=“submitPopup()”]’).style.display=‘none’;
-setTimeout(closePopup,3000);
-}
-}
-document.addEventListener(‘mouseleave’,e=>{
-if(e.clientY<=0)showPopup();
-});
-setTimeout(()=>{
-if(!popupShown&&!popupDismissed)showPopup();
-},45000);
-document.getElementById(‘exitPopup’).addEventListener(‘click’,e=>{
-if(e.target===document.getElementById(‘exitPopup’))closePopup();
-});
+let shown=false,dismissed=sessionStorage.getItem('pd');
+function showPopup(){if(!shown&&!dismissed){shown=true;const p=document.getElementById('exitPopup');p.style.display='flex';}}
+function closePopup(){document.getElementById('exitPopup').style.display='none';sessionStorage.setItem('pd','1');}
+function submitPopup(){const e=document.getElementById('popupEmail').value;if(e&&e.includes('@')){document.getElementById('popupSuccess').style.display='block';setTimeout(closePopup,3000);}}
+document.addEventListener('mouseleave',e=>{if(e.clientY<=0)showPopup();});
+setTimeout(()=>{if(!shown&&!dismissed)showPopup();},60000);
+document.getElementById('exitPopup').addEventListener('click',e=>{if(e.target===document.getElementById('exitPopup'))closePopup();});
 </script>
 
 </body>
