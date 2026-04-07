@@ -764,4 +764,10 @@ let shown=false,dismissed=sessionStorage.getItem(‘pd’);
 function showPopup(){if(!shown&&!dismissed){shown=true;const p=document.getElementById(‘exitPopup’);p.style.display=‘flex’;}}
 function closePopup(){document.getElementById(‘exitPopup’).style.display=‘none’;sessionStorage.setItem(‘pd’,‘1’);}
 function submitPopup(){const e=document.getElementById(‘popupEmail’).value;if(e&&e.includes(’@’)){document.getElementById(‘popupSuccess’).style.display=‘block’;setTimeout(closePopup,3000);}}
-document.addEventListener(‘mouseleave’,e=>{if(e.
+document.addEventListener(‘mouseleave’,e=>{if(e.clientY<=0)showPopup();});
+setTimeout(()=>{if(!shown&&!dismissed)showPopup();},60000);
+document.getElementById(‘exitPopup’).addEventListener(‘click’,e=>{if(e.target===document.getElementById(‘exitPopup’))closePopup();});
+</script>
+
+</body>
+</html>
