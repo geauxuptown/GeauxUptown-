@@ -26,8 +26,10 @@ body{font-family:'DM Sans',sans-serif;background:var(--navy);color:var(--white);
 /* NAV */
 nav{position:fixed;top:0;left:0;right:0;z-index:500;padding:0 56px;height:68px;display:flex;align-items:center;justify-content:space-between;transition:all 0.4s ease;}
 nav.scrolled{background:rgba(10,22,40,0.97);backdrop-filter:blur(20px);border-bottom:1px solid var(–border);}
-.nav-brand{display:flex;align-items:center;text-decoration:none;}
-.nav-logo-img{height:44px;width:auto;object-fit:contain;}
+.nav-brand{display:flex;align-items:center;text-decoration:none;gap:10px;}
+.nav-logo-svg{width:28px;height:36px;flex-shrink:0;}
+.nav-logo-text{font-family:‘Playfair Display’,serif;font-size:14px;font-weight:600;color:var(–gold);letter-spacing:2px;text-transform:uppercase;line-height:1.1;}
+.nav-logo-text span{display:block;color:rgba(255,255,255,0.7);font-weight:400;font-size:11px;letter-spacing:3px;}
 .nav-center{display:flex;align-items:center;gap:28px;}
 .nav-center a{font-size:9px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.45);text-decoration:none;transition:color 0.2s;position:relative;}
 .nav-center a:hover{color:var(–gold);}
@@ -82,7 +84,7 @@ nav.scrolled{background:rgba(10,22,40,0.97);backdrop-filter:blur(20px);border-bo
 .cred-strip-item{display:flex;align-items:center;gap:8px;font-size:7.5px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.3);}
 .cred-strip-dot{width:4px;height:4px;background:var(–gold);flex-shrink:0;}
 
-/* SERVICES OVERVIEW */
+/* SERVICES */
 .services-sec{background:var(–navy-2);padding:100px 56px;}
 .services-header{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:end;margin-bottom:60px;}
 .services-grid{display:grid;grid-template-columns:repeat(2,1fr);border:1px solid rgba(184,146,42,0.12);border-right:none;border-bottom:none;}
@@ -99,7 +101,7 @@ nav.scrolled{background:rgba(10,22,40,0.97);backdrop-filter:blur(20px);border-bo
 .svc-rate{font-family:‘Playfair Display’,serif;font-size:18px;color:var(–gold-light);display:flex;align-items:baseline;gap:6px;}
 .svc-rate-note{font-family:‘DM Sans’,sans-serif;font-size:9px;color:rgba(255,255,255,0.2);font-weight:300;}
 
-/* WHY SECTION */
+/* WHY */
 .why-sec{background:var(–navy-2);padding:100px 56px;}
 .why-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
 .why-card-row{display:grid;grid-template-columns:48px 1fr;border-bottom:1px solid var(–border);}
@@ -133,7 +135,7 @@ nav.scrolled{background:rgba(10,22,40,0.97);backdrop-filter:blur(20px);border-bo
 .scarcity-text{font-family:‘Playfair Display’,serif;font-size:20px;color:var(–white);}
 .scarcity-text em{color:var(–gold);font-style:italic;}
 
-/* PRODUCT SECTION */
+/* PRODUCT */
 .product-sec{background:var(–navy-2);padding:100px 56px;}
 .product-split{display:grid;grid-template-columns:1fr 1fr;border:1px solid rgba(184,146,42,0.3);margin-bottom:20px;overflow:hidden;}
 .product-left{background:var(–navy-3);padding:48px 44px;display:flex;flex-direction:column;justify-content:space-between;}
@@ -227,7 +229,7 @@ nav.scrolled{background:rgba(10,22,40,0.97);backdrop-filter:blur(20px);border-bo
 .pc.featured .pc-cta{background:var(–gold);border-color:var(–gold);color:var(–navy);}
 .pc-badge{position:absolute;top:0;right:0;background:var(–gold);font-size:7px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(–navy);padding:5px 12px;}
 
-/* CTA / BOOKING */
+/* CTA */
 .cta-sec{background:var(–navy);padding:100px 56px;text-align:center;position:relative;overflow:hidden;}
 .cta-bg-lines{position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(rgba(184,146,42,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(184,146,42,0.04) 1px,transparent 1px);background-size:80px 80px;}
 .cta-bg-circle{position:absolute;width:600px;height:600px;border:1px solid rgba(184,146,42,0.06);border-radius:50%;top:50%;left:50%;transform:translate(-50%,-50%);}
@@ -240,13 +242,16 @@ nav.scrolled{background:rgba(10,22,40,0.97);backdrop-filter:blur(20px);border-bo
 .cci-label{font-size:8px;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,0.2);margin-bottom:6px;}
 .cci-value{font-family:‘Playfair Display’,serif;font-size:17px;color:var(–gold);}
 .cci-value a{color:inherit;text-decoration:none;}
+.cci-value.small{font-size:13px;line-height:1.5;}
 
 /* FOOTER */
 footer{background:#060F1C;padding:32px 56px;display:flex;align-items:center;justify-content:space-between;border-top:1px solid rgba(184,146,42,0.08);flex-wrap:wrap;gap:16px;}
+.footer-brand{display:flex;align-items:center;gap:10px;}
 .footer-links{display:flex;gap:24px;flex-wrap:wrap;}
 .footer-links a{font-size:8.5px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.2);text-decoration:none;transition:color 0.2s;}
 .footer-links a:hover{color:var(–gold);}
 .footer-copy{font-size:8.5px;color:rgba(255,255,255,0.1);}
+.footer-logo-text{font-family:‘Playfair Display’,serif;font-size:12px;font-weight:600;color:var(–gold);letter-spacing:2px;text-transform:uppercase;line-height:1.1;}
 
 /* SCROLL REVEAL */
 .reveal{opacity:0;transform:translateY(24px);transition:opacity 0.7s ease,transform 0.7s ease;}
@@ -308,11 +313,72 @@ footer{flex-direction:column;text-align:center;padding:24px 20px;}
 <div class="cursor" id="cursor"></div>
 <div class="cursor-ring" id="cursorRing"></div>
 
+<!-- ── INLINE SVG FLEUR-DE-LIS SYMBOL (reused throughout) ──
+     Hidden master definition; cloned by use elements below -->
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+  <symbol id="fdl" viewBox="0 0 200 260">
+    <defs>
+      <linearGradient id="fg" x1="0.2" y1="0" x2="0.8" y2="1">
+        <stop offset="0%" stop-color="#6A4A10"/>
+        <stop offset="15%" stop-color="#C9A030"/>
+        <stop offset="35%" stop-color="#F8EC90"/>
+        <stop offset="55%" stop-color="#D4A93A"/>
+        <stop offset="80%" stop-color="#B88820"/>
+        <stop offset="100%" stop-color="#6A4A10"/>
+      </linearGradient>
+      <linearGradient id="fm" x1="0.3" y1="0" x2="0.7" y2="1">
+        <stop offset="0%" stop-color="#8A6018"/>
+        <stop offset="45%" stop-color="#F5E07A"/>
+        <stop offset="100%" stop-color="#7A5010"/>
+      </linearGradient>
+      <linearGradient id="fsl" x1="1" y1="0.3" x2="0" y2="0.7">
+        <stop offset="0%" stop-color="#F0D060"/>
+        <stop offset="40%" stop-color="#C9A030"/>
+        <stop offset="100%" stop-color="#7A5810"/>
+      </linearGradient>
+      <linearGradient id="fsr" x1="0" y1="0.3" x2="1" y2="0.7">
+        <stop offset="0%" stop-color="#F0D060"/>
+        <stop offset="40%" stop-color="#C9A030"/>
+        <stop offset="100%" stop-color="#7A5810"/>
+      </linearGradient>
+      <linearGradient id="fc" x1="0.5" y1="0" x2="0.5" y2="1">
+        <stop offset="0%" stop-color="#E8C84A"/>
+        <stop offset="30%" stop-color="#F5DC78"/>
+        <stop offset="70%" stop-color="#C9A030"/>
+        <stop offset="100%" stop-color="#8A6018"/>
+      </linearGradient>
+      <filter id="fdrop"><feDropShadow dx="0" dy="1" stdDeviation="3" flood-color="#C9A030" flood-opacity="0.5"/></filter>
+    </defs>
+    <!-- Center petal -->
+    <path d="M100 8 C88 8,72 26,70 46 C68 64,74 80,82 92 C88 100,94 106,100 110 C106 106,112 100,118 92 C126 80,132 64,130 46 C128 26,112 8,100 8Z" fill="url(#fg)" filter="url(#fdrop)"/>
+    <path d="M100 14 C97 22,95 40,96 60 C97 75,99 88,100 96 C101 88,103 75,104 60 C105 40,103 22,100 14Z" fill="rgba(255,245,180,0.35)"/>
+    <!-- Stem -->
+    <rect x="94" y="108" width="12" height="44" rx="6" fill="url(#fm)"/>
+    <rect x="98" y="110" width="4" height="40" rx="2" fill="rgba(255,245,160,0.3)"/>
+    <!-- Left arm -->
+    <path d="M100 120 C88 116,68 114,50 108 C34 102,20 90,18 76 C16 62,24 50,36 50 C48 50,56 60,54 72 C52 80,46 84,40 82 C34 80,32 72,36 68 C40 64,46 66,46 70 C44 72,42 74,44 76 C46 78,50 76,52 72 C54 66,50 56,40 56 C30 56,24 66,26 76 C28 88,40 98,56 104 C68 108,86 112,100 120Z" fill="url(#fsl)" filter="url(#fdrop)"/>
+    <path d="M90 118 C78 115,62 112,48 106 C38 102,30 94,30 84" fill="none" stroke="rgba(255,240,140,0.4)" stroke-width="3" stroke-linecap="round"/>
+    <!-- Right arm -->
+    <path d="M100 120 C112 116,132 114,150 108 C166 102,180 90,182 76 C184 62,176 50,164 50 C152 50,144 60,146 72 C148 80,154 84,160 82 C166 80,168 72,164 68 C160 64,154 66,154 70 C156 72,158 74,156 76 C154 78,150 76,148 72 C146 66,150 56,160 56 C170 56,176 66,174 76 C172 88,160 98,144 104 C132 108,114 112,100 120Z" fill="url(#fsr)" filter="url(#fdrop)"/>
+    <path d="M110 118 C122 115,138 112,152 106 C162 102,170 94,170 84" fill="none" stroke="rgba(255,240,140,0.4)" stroke-width="3" stroke-linecap="round"/>
+    <!-- Collar -->
+    <rect x="72" y="150" width="56" height="9" rx="4" fill="url(#fc)"/>
+    <rect x="80" y="151" width="40" height="4" rx="2" fill="rgba(255,245,160,0.35)"/>
+    <rect x="66" y="157" width="68" height="16" rx="3" fill="url(#fc)"/>
+    <rect x="76" y="159" width="48" height="6" rx="3" fill="rgba(255,245,160,0.3)"/>
+    <path d="M62 173 L138 173 L132 190 L68 190Z" fill="url(#fc)"/>
+    <ellipse cx="100" cy="191" rx="28" ry="7" fill="url(#fc)"/>
+    <ellipse cx="100" cy="189" rx="18" ry="4" fill="rgba(255,245,160,0.3)"/>
+  </symbol>
+</svg>
+
 <!-- NAV -->
 
 <nav id="mainNav">
   <a class="nav-brand" href="#">
-    <img src="logo.jpeg" alt="Geaux Uptown Solutions" class="nav-logo-img" onerror="this.style.display='none'" />
+    <svg class="nav-logo-svg" viewBox="0 0 200 260"><use href="#fdl"/></svg>
+    <div class="nav-logo-text">Geaux Uptown<span>Solutions</span></div>
   </a>
   <div class="nav-center">
     <a href="#services">Services</a>
@@ -391,7 +457,7 @@ footer{flex-direction:column;text-align:center;padding:24px 20px;}
   <div class="cred-strip-item"><div class="cred-strip-dot"></div>Dallas, TX · Remote Nationwide</div>
 </div>
 
-<!-- SERVICES OVERVIEW -->
+<!-- SERVICES -->
 
 <section class="services-sec" id="services">
   <div class="section-inner">
@@ -690,8 +756,11 @@ footer{flex-direction:column;text-align:center;padding:24px 20px;}
     </div>
     <div class="cta-contact-bar reveal reveal-delay-3">
       <div class="cci"><div class="cci-label">Phone</div><div class="cci-value">(972) 885-7685</div></div>
-      <div class="cci"><div class="cci-label">Email</div><div class="cci-value"><a href="/cdn-cgi/l/email-protection#086f6d697d707d787c677f66486f65696164266b6765"><span class="__cf_email__" data-cfemail="781f1d190d000d080c170f16381f15191114561b1715">[email&#160;protected]</span></a></div></div>
-      <div class="cci"><div class="cci-label">Location</div><div class="cci-value">Dallas, TX · Remote Nationwide</div></div>
+      <div class="cci"><div class="cci-label">Email</div><div class="cci-value"><a href="mailto:hello@geauxuptownsolutions.com">hello@geauxuptownsolutions.com</a></div></div>
+      <div class="cci">
+        <div class="cci-label">Mailing Address</div>
+        <div class="cci-value small">PMB 2742 · 3839 McKinney Avenue, Suite 155<br>Dallas, TX 75204</div>
+      </div>
       <div class="cci"><div class="cci-label">TikTok</div><div class="cci-value"><a href="https://tiktok.com/@geauxuptownai" target="_blank">@geauxuptownai</a></div></div>
     </div>
   </div>
@@ -700,7 +769,10 @@ footer{flex-direction:column;text-align:center;padding:24px 20px;}
 <!-- FOOTER -->
 
 <footer>
-  <img src="logo.jpeg" alt="Geaux Uptown Solutions" style="height:36px;width:auto;object-fit:contain;" onerror="this.style.display='none'" />
+  <div class="footer-brand">
+    <svg viewBox="0 0 200 260" width="22" height="28"><use href="#fdl"/></svg>
+    <div class="footer-logo-text">Geaux Uptown Solutions</div>
+  </div>
   <div class="footer-links">
     <a href="#services">Services</a>
     <a href="#products">Products</a>
@@ -729,44 +801,43 @@ footer{flex-direction:column;text-align:center;padding:24px 20px;}
   </div>
 </div>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-
+<script>
 // CURSOR
-const cursor=document.getElementById(‘cursor’);
-const ring=document.getElementById(‘cursorRing’);
+const cursor=document.getElementById('cursor');
+const ring=document.getElementById('cursorRing');
 let mx=0,my=0,rx=0,ry=0;
-document.addEventListener(‘mousemove’,e=>{mx=e.clientX;my=e.clientY;cursor.style.left=mx+‘px’;cursor.style.top=my+‘px’;});
-function animRing(){rx+=(mx-rx)*0.12;ry+=(my-ry)*0.12;ring.style.left=rx+‘px’;ring.style.top=ry+‘px’;requestAnimationFrame(animRing);}
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cursor.style.left=mx+'px';cursor.style.top=my+'px';});
+function animRing(){rx+=(mx-rx)*0.12;ry+=(my-ry)*0.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(animRing);}
 animRing();
-document.querySelectorAll(‘a,button,.svc,.serve-card,.cert,.employer,.pc,.hstat,.testi-card’).forEach(el=>{
-el.addEventListener(‘mouseenter’,()=>ring.classList.add(‘hovering’));
-el.addEventListener(‘mouseleave’,()=>ring.classList.remove(‘hovering’));
+document.querySelectorAll('a,button,.svc,.serve-card,.cert,.employer,.pc,.hstat,.testi-card').forEach(el=>{
+  el.addEventListener('mouseenter',()=>ring.classList.add('hovering'));
+  el.addEventListener('mouseleave',()=>ring.classList.remove('hovering'));
 });
 
 // NAV SCROLL
-const nav=document.getElementById(‘mainNav’);
-window.addEventListener(‘scroll’,()=>{nav.classList.toggle(‘scrolled’,window.scrollY>60);});
+const nav=document.getElementById('mainNav');
+window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',window.scrollY>60);});
 
 // SCROLL REVEAL
-const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add(‘visible’);});},{threshold:0.05,rootMargin:‘0px 0px -20px 0px’});
-document.querySelectorAll(’.reveal’).forEach(el=>obs.observe(el));
-setTimeout(()=>{document.querySelectorAll(’.hero .reveal’).forEach(el=>el.classList.add(‘visible’));},200);
+const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:0.05,rootMargin:'0px 0px -20px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+setTimeout(()=>{document.querySelectorAll('.hero .reveal').forEach(el=>el.classList.add('visible'));},200);
 
 // TICKER
-const tt=document.querySelector(’.ticker-track’);
-if(tt){tt.addEventListener(‘mouseenter’,()=>tt.style.animationPlayState=‘paused’);tt.addEventListener(‘mouseleave’,()=>tt.style.animationPlayState=‘running’);}
+const tt=document.querySelector('.ticker-track');
+if(tt){tt.addEventListener('mouseenter',()=>tt.style.animationPlayState='paused');tt.addEventListener('mouseleave',()=>tt.style.animationPlayState='running');}
 
 // SMOOTH SCROLL
-document.querySelectorAll(‘a[href^=”#”]’).forEach(a=>{a.addEventListener(‘click’,e=>{const t=document.querySelector(a.getAttribute(‘href’));if(t){e.preventDefault();t.scrollIntoView({behavior:‘smooth’,block:‘start’});}});});
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{const t=document.querySelector(a.getAttribute('href'));if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'});}});});
 
 // EXIT INTENT
-let shown=false,dismissed=sessionStorage.getItem(‘pd’);
-function showPopup(){if(!shown&&!dismissed){shown=true;const p=document.getElementById(‘exitPopup’);p.style.display=‘flex’;}}
-function closePopup(){document.getElementById(‘exitPopup’).style.display=‘none’;sessionStorage.setItem(‘pd’,‘1’);}
-function submitPopup(){const e=document.getElementById(‘popupEmail’).value;if(e&&e.includes(’@’)){document.getElementById(‘popupSuccess’).style.display=‘block’;setTimeout(closePopup,3000);}}
-document.addEventListener(‘mouseleave’,e=>{if(e.clientY<=0)showPopup();});
+let shown=false,dismissed=sessionStorage.getItem('pd');
+function showPopup(){if(!shown&&!dismissed){shown=true;const p=document.getElementById('exitPopup');p.style.display='flex';}}
+function closePopup(){document.getElementById('exitPopup').style.display='none';sessionStorage.setItem('pd','1');}
+function submitPopup(){const e=document.getElementById('popupEmail').value;if(e&&e.includes('@')){document.getElementById('popupSuccess').style.display='block';setTimeout(closePopup,3000);}}
+document.addEventListener('mouseleave',e=>{if(e.clientY<=0)showPopup();});
 setTimeout(()=>{if(!shown&&!dismissed)showPopup();},60000);
-document.getElementById(‘exitPopup’).addEventListener(‘click’,e=>{if(e.target===document.getElementById(‘exitPopup’))closePopup();});
+document.getElementById('exitPopup').addEventListener('click',e=>{if(e.target===document.getElementById('exitPopup'))closePopup();});
 </script>
 
 </body>
