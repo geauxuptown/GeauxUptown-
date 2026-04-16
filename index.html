@@ -28,8 +28,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;padding:0 56px;height:68px;d
 nav.scrolled{background:rgba(10,22,40,0.97);backdrop-filter:blur(20px);border-bottom:1px solid var(–border);}
 .nav-brand{display:flex;align-items:center;text-decoration:none;gap:10px;}
 .nav-logo-svg{width:28px;height:36px;flex-shrink:0;}
-.nav-logo-text{font-family:‘Playfair Display’,serif;font-size:14px;font-weight:600;color:var(–gold);letter-spacing:2px;text-transform:uppercase;line-height:1.1;}
-.nav-logo-text span{display:block;color:rgba(255,255,255,0.7);font-weight:400;font-size:11px;letter-spacing:3px;}
+.nav-logo-text{font-family:‘Playfair Display’,serif;font-size:14px;font-weight:600;color:#D4A843;letter-spacing:2px;text-transform:uppercase;line-height:1.1;}
+.nav-logo-text span{display:block;color:rgba(255,255,255,0.75);font-weight:400;font-size:11px;letter-spacing:3px;}
 .nav-center{display:flex;align-items:center;gap:28px;}
 .nav-center a{font-size:9px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.45);text-decoration:none;transition:color 0.2s;position:relative;}
 .nav-center a:hover{color:var(–gold);}
@@ -37,7 +37,7 @@ nav.scrolled{background:rgba(10,22,40,0.97);backdrop-filter:blur(20px);border-bo
 .nav-btn:hover{background:var(–gold);color:var(–navy);}
 
 /* HERO */
-.hero{min-height:100vh;background:var(–navy);display:grid;grid-template-columns:1fr 1fr;position:relative;overflow:hidden;}
+.hero{min-height:100vh;background:#0A1628;display:grid;grid-template-columns:1fr 1fr;position:relative;overflow:hidden;}
 .hero-left{padding:140px 56px 180px;display:flex;flex-direction:column;justify-content:center;position:relative;z-index:2;}
 .hero-right{position:relative;overflow:hidden;}
 .hero-right-img{position:absolute;inset:0;background:linear-gradient(135deg,var(–navy-3),var(–navy-2));display:flex;align-items:center;justify-content:center;}
@@ -251,10 +251,10 @@ footer{background:#060F1C;padding:32px 56px;display:flex;align-items:center;just
 .footer-links a{font-size:8.5px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.2);text-decoration:none;transition:color 0.2s;}
 .footer-links a:hover{color:var(–gold);}
 .footer-copy{font-size:8.5px;color:rgba(255,255,255,0.1);}
-.footer-logo-text{font-family:‘Playfair Display’,serif;font-size:12px;font-weight:600;color:var(–gold);letter-spacing:2px;text-transform:uppercase;line-height:1.1;}
+.footer-logo-text{font-family:‘Playfair Display’,serif;font-size:12px;font-weight:600;color:#D4A843;letter-spacing:2px;text-transform:uppercase;line-height:1.1;}
 
 /* SCROLL REVEAL */
-.reveal{opacity:0;transform:translateY(24px);transition:opacity 0.7s ease,transform 0.7s ease;}
+.reveal{opacity:0;transform:translateY(20px);transition:opacity 0.6s ease,transform 0.6s ease;}
 .reveal.visible{opacity:1;transform:translateY(0);}
 .reveal-delay-1{transition-delay:0.1s;}
 .reveal-delay-2{transition-delay:0.2s;}
@@ -282,7 +282,7 @@ nav{padding:0 20px;height:60px;}
 .hero-left{padding:100px 20px 160px;}
 .hero-right{display:none;}
 .hero-stats{position:relative;grid-template-columns:repeat(2,1fr);}
-.reveal{opacity:1!important;transform:none!important;}
+.reveal{opacity:1!important;transform:translateY(0)!important;transition:none!important;}
 .services-sec,.about-sec,.process-sec,.serve-sec,.pricing-sec,.cta-sec,.product-sec,.why-sec,.testi-sec{padding:64px 20px;}
 .proof-sec{padding:32px 20px;}
 .cred-strip{padding:16px 20px;}
@@ -377,8 +377,29 @@ footer{flex-direction:column;text-align:center;padding:24px 20px;}
 
 <nav id="mainNav">
   <a class="nav-brand" href="#">
-    <svg class="nav-logo-svg" viewBox="0 0 200 260"><use href="#fdl"/></svg>
-    <div class="nav-logo-text">Geaux Uptown<span>Solutions</span></div>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 260" width="24" height="31" style="flex-shrink:0">
+      <defs>
+        <linearGradient id="ng" x1="0.2" y1="0" x2="0.8" y2="1">
+          <stop offset="0%" stop-color="#C9A030"/>
+          <stop offset="35%" stop-color="#F8EC90"/>
+          <stop offset="65%" stop-color="#D4A93A"/>
+          <stop offset="100%" stop-color="#8A6018"/>
+        </linearGradient>
+      </defs>
+      <path d="M100 8 C88 8,72 26,70 46 C68 64,74 80,82 92 C88 100,94 106,100 110 C106 106,112 100,118 92 C126 80,132 64,130 46 C128 26,112 8,100 8Z" fill="url(#ng)"/>
+      <path d="M100 14 C97 22,95 40,96 60 C97 75,99 88,100 96 C101 88,103 75,104 60 C105 40,103 22,100 14Z" fill="rgba(255,245,180,0.3)"/>
+      <rect x="94" y="108" width="12" height="40" rx="6" fill="url(#ng)"/>
+      <path d="M100 118 C88 114,68 112,50 106 C34 100,20 88,18 74 C16 60,24 48,36 48 C48 48,56 58,54 70 C52 78,46 82,40 80 C34 78,32 70,36 66 C40 62,46 64,44 70 C46 76,50 74,52 70 C54 64,50 54,40 54 C30 54,24 64,26 74 C28 86,40 96,56 102 C68 106,86 110,100 118Z" fill="url(#ng)"/>
+      <path d="M100 118 C112 114,132 112,150 106 C166 100,180 88,182 74 C184 60,176 48,164 48 C152 48,144 58,146 70 C148 78,154 82,160 80 C166 78,168 70,164 66 C160 62,154 64,156 70 C154 76,150 74,148 70 C146 64,150 54,160 54 C170 54,176 64,174 74 C172 86,160 96,144 102 C132 106,114 110,100 118Z" fill="url(#ng)"/>
+      <rect x="74" y="148" width="52" height="8" rx="3" fill="url(#ng)"/>
+      <rect x="68" y="154" width="64" height="14" rx="3" fill="url(#ng)"/>
+      <path d="M64 168 L136 168 L130 182 L70 182Z" fill="url(#ng)"/>
+      <ellipse cx="100" cy="183" rx="26" ry="6" fill="url(#ng)"/>
+    </svg>
+    <div style="display:flex;flex-direction:column;gap:0;">
+      <span style="font-family:'Playfair Display',serif;font-size:15px;font-weight:700;color:#D4A843;letter-spacing:3px;text-transform:uppercase;line-height:1;">GEAUX UPTOWN</span>
+      <span style="font-family:'DM Sans',sans-serif;font-size:8px;font-weight:300;color:rgba(255,255,255,0.55);letter-spacing:5px;text-transform:uppercase;line-height:1;margin-top:3px;">SOLUTIONS</span>
+    </div>
   </a>
   <div class="nav-center">
     <a href="#services">Services</a>
@@ -395,15 +416,15 @@ footer{flex-direction:column;text-align:center;padding:24px 20px;}
 
 <section class="hero">
   <div class="hero-left">
-    <div class="hero-tag reveal">
+    <div class="hero-tag reveal visible" style="opacity:1;transform:none;">
       <div class="hero-tag-line"></div>
       <div class="hero-tag-text">Healthcare Operations · AI Implementation · Dallas, TX · Remote Nationwide</div>
     </div>
-    <h1 class="hero-title reveal reveal-delay-1">
+    <h1 class="hero-title reveal reveal-delay-1 visible" style="opacity:1;transform:none;">
       19 Years Inside<br>the Room. <span class="italic">Now Working</span><br><span class="bold">For You.</span>
     </h1>
-    <p class="hero-desc reveal reveal-delay-2">Most consultants study healthcare. We ran it — at Fortune 4 scale, inside Level 1 trauma, across national pharmacy operations. We architect systems that execute without you, eliminate the waste costing you revenue daily, and deploy AI built for healthcare — not repurposed from a template.</p>
-    <div class="hero-actions reveal reveal-delay-3">
+    <p class="hero-desc reveal reveal-delay-2 visible" style="opacity:1;transform:none;">Most consultants study healthcare. We ran it — at Fortune 4 scale, inside Level 1 trauma, across national pharmacy operations. We architect systems that execute without you, eliminate the waste costing you revenue daily, and deploy AI built for healthcare — not repurposed from a template.</p>
+    <div class="hero-actions reveal reveal-delay-3 visible" style="opacity:1;transform:none;">
       <a href="#contact" class="btn-gold">Schedule Your Assessment</a>
       <a href="#services" class="btn-ghost">See What We Build</a>
     </div>
@@ -821,7 +842,10 @@ window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',window.scr
 // SCROLL REVEAL
 const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:0.05,rootMargin:'0px 0px -20px 0px'});
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
-setTimeout(()=>{document.querySelectorAll('.hero .reveal').forEach(el=>el.classList.add('visible'));},200);
+// Immediate hero visibility
+document.querySelectorAll('.hero .reveal').forEach(el=>el.classList.add('visible'));
+// Also trigger after small delay as backup
+setTimeout(()=>{document.querySelectorAll('.hero .reveal').forEach(el=>el.classList.add('visible'));},100);
 
 // TICKER
 const tt=document.querySelector('.ticker-track');
